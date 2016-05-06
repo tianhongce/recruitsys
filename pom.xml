@@ -29,6 +29,10 @@
 		<mysql-connector-java.version>5.1.37</mysql-connector-java.version>
 		<!-- commons-dbcp版本 -->
 		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<!-- mybatis-spring版本 -->
+		<mybatis-spring.version>1.2.3</mybatis-spring.version>
+		<!-- mybatis版本 -->
+		<mybatis.version>3.3.0</mybatis.version>
 	</properties>
 	<dependencies>
 		<!-- junit单元测试 -->
@@ -100,6 +104,73 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>${commons-dbcp.version}</version>
 		</dependency>
+		<!-- 验证码组件：Kaptcha实现验证码 -->
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<!-- mybatis-spring -->
+		<!-- mybatis-spring-1.2.3.jar -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring.version}</version>
+		</dependency>
+		<!-- mybatis -->
+		<!-- mybatis-3.3.0.jar -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<!-- spring-jdbc -->
+		<!-- spring-jdbc-4.2.3.RELEASE.jar -->
+		<!-- spring-tx-4.2.3.RELEASE.jar -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- jackson-core -->
+		<!-- jackson-core-2.7.3.jar -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+		<!-- jackson-databind-2.7.3.jar -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+		<!-- jackson-annotations-2.7.3.jar -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-lgpl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-lgpl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		 <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.1</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<!-- 解决eclipse升级报错 -->
