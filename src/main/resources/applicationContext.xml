@@ -12,7 +12,8 @@
 <context:component-scan base-package="cn.t"></context:component-scan>
 <mvc:annotation-driven></mvc:annotation-driven>
 <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
-<!-- 加载配置文件 -->
+
+	<!-- 加载配置文件 -->
 	<!-- util:properties方式,类中@Value("#{jdbc[driver]}") -->
 	<!-- <util:properties id="jdbc" location="classpath:db.properties"></util:properties> -->
 	<!-- PropertyPlaceholderConfigurer方式,这里使用其扩展,以便其在源代码中使用,类中ConfigUtils.getString("db.driver") -->
@@ -25,4 +26,12 @@
 		<property name="fileEncoding" value="UTF-8" />
 		<property name="ignoreResourceNotFound" value="false" />
 	</bean>
+	
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.driver}"></property>
+		<property name="url" value="${db.url}"></property>
+		<property name="username" value="${db.user}"></property>
+		<property name="password" value="${db.password}"></property>
+	</bean>
+	
 </beans>

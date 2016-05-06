@@ -25,6 +25,10 @@
 		<aspectjweaver.version>1.8.7</aspectjweaver.version>
 		<!-- servlet-api版本 -->
 		<servlet-api.version>2.5</servlet-api.version>
+		<!-- mysql-connector-java版本 -->
+		<mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+		<!-- commons-dbcp版本 -->
+		<commons-dbcp.version>1.4</commons-dbcp.version>
 	</properties>
 	<dependencies>
 		<!-- junit单元测试 -->
@@ -80,6 +84,21 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${servlet-api.version}</version>
+		</dependency>
+		<!-- mysql-connector-java -->
+		<!-- mysql-connector-java-5.1.37.jar -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+		</dependency>
+		<!-- commons-dbcp -->
+		<!-- commons-dbcp-1.4.jar -->
+		<!-- commons-pool-1.5.4.jar -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${commons-dbcp.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
