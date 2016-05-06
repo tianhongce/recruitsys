@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+<context:component-scan base-package="cn.t"></context:component-scan>
+<mvc:annotation-driven></mvc:annotation-driven>
+<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+<!-- 加载配置文件 -->
+	<!-- util:properties方式,类中@Value("#{jdbc[driver]}") -->
+	<!-- <util:properties id="jdbc" location="classpath:db.properties"></util:properties> -->
+	<!-- PropertyPlaceholderConfigurer方式,这里使用其扩展,以便其在源代码中使用,类中ConfigUtils.getString("db.driver") -->
+	<bean class="cn.t.util.ConfigUtils">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="UTF-8" />
+		<property name="ignoreResourceNotFound" value="false" />
+	</bean>
+</beans>
