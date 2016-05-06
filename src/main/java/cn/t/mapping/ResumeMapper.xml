@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.t.dao.ResumeMapper" >
+  <resultMap id="BaseResultMap" type="cn.t.entity.Resume" >
+    <id column="resumeid" property="resumeid" jdbcType="INTEGER" />
+    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="fullname" property="fullname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="tall" property="tall" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="politicalstatus" property="politicalstatus" jdbcType="VARCHAR" />
+    <result column="maritalstatus" property="maritalstatus" jdbcType="VARCHAR" />
+    <result column="idcardnum" property="idcardnum" jdbcType="VARCHAR" />
+    <result column="expricesyears" property="expricesyears" jdbcType="VARCHAR" />
+    <result column="nowposition" property="nowposition" jdbcType="VARCHAR" />
+    <result column="wishmonthsalary" property="wishmonthsalary" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resumeid, useremail, fullname, sex, tall, birthday, province, politicalstatus, maritalstatus, 
+    idcardnum, expricesyears, nowposition, wishmonthsalary, address, postcode, phone
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where resumeid = #{resumeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from resume
+    where resumeid = #{resumeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.t.entity.Resume" >
+    insert into resume (resumeid, useremail, fullname, 
+      sex, tall, birthday, province, 
+      politicalstatus, maritalstatus, idcardnum, 
+      expricesyears, nowposition, wishmonthsalary, 
+      address, postcode, phone
+      )
+    values (#{resumeid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{tall,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{province,jdbcType=VARCHAR}, 
+      #{politicalstatus,jdbcType=VARCHAR}, #{maritalstatus,jdbcType=VARCHAR}, #{idcardnum,jdbcType=VARCHAR}, 
+      #{expricesyears,jdbcType=VARCHAR}, #{nowposition,jdbcType=VARCHAR}, #{wishmonthsalary,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.t.entity.Resume" >
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resumeid != null" >
+        resumeid,
+      </if>
+      <if test="useremail != null" >
+        useremail,
+      </if>
+      <if test="fullname != null" >
+        fullname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="tall != null" >
+        tall,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="politicalstatus != null" >
+        politicalstatus,
+      </if>
+      <if test="maritalstatus != null" >
+        maritalstatus,
+      </if>
+      <if test="idcardnum != null" >
+        idcardnum,
+      </if>
+      <if test="expricesyears != null" >
+        expricesyears,
+      </if>
+      <if test="nowposition != null" >
+        nowposition,
+      </if>
+      <if test="wishmonthsalary != null" >
+        wishmonthsalary,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resumeid != null" >
+        #{resumeid,jdbcType=INTEGER},
+      </if>
+      <if test="useremail != null" >
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null" >
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tall != null" >
+        #{tall,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalstatus != null" >
+        #{politicalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null" >
+        #{maritalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnum != null" >
+        #{idcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="expricesyears != null" >
+        #{expricesyears,jdbcType=VARCHAR},
+      </if>
+      <if test="nowposition != null" >
+        #{nowposition,jdbcType=VARCHAR},
+      </if>
+      <if test="wishmonthsalary != null" >
+        #{wishmonthsalary,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Resume" >
+    update resume
+    <set >
+      <if test="useremail != null" >
+        useremail = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null" >
+        fullname = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tall != null" >
+        tall = #{tall,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalstatus != null" >
+        politicalstatus = #{politicalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null" >
+        maritalstatus = #{maritalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardnum != null" >
+        idcardnum = #{idcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="expricesyears != null" >
+        expricesyears = #{expricesyears,jdbcType=VARCHAR},
+      </if>
+      <if test="nowposition != null" >
+        nowposition = #{nowposition,jdbcType=VARCHAR},
+      </if>
+      <if test="wishmonthsalary != null" >
+        wishmonthsalary = #{wishmonthsalary,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resumeid = #{resumeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.t.entity.Resume" >
+    update resume
+    set useremail = #{useremail,jdbcType=VARCHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      tall = #{tall,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      province = #{province,jdbcType=VARCHAR},
+      politicalstatus = #{politicalstatus,jdbcType=VARCHAR},
+      maritalstatus = #{maritalstatus,jdbcType=VARCHAR},
+      idcardnum = #{idcardnum,jdbcType=VARCHAR},
+      expricesyears = #{expricesyears,jdbcType=VARCHAR},
+      nowposition = #{nowposition,jdbcType=VARCHAR},
+      wishmonthsalary = #{wishmonthsalary,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR}
+    where resumeid = #{resumeid,jdbcType=INTEGER}
+  </update>
+</mapper>

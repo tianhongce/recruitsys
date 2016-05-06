@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.t.dao.EvaluationMapper" >
+  <resultMap id="BaseResultMap" type="cn.t.entity.Evaluation" >
+    <id column="evainfoid" property="evainfoid" jdbcType="INTEGER" />
+    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="evaluation" property="evaluation" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    evainfoid, useremail, evaluation
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from evainfo
+    where evainfoid = #{evainfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from evainfo
+    where evainfoid = #{evainfoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.t.entity.Evaluation" >
+    insert into evainfo (evainfoid, useremail, evaluation
+      )
+    values (#{evainfoid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{evaluation,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.t.entity.Evaluation" >
+    insert into evainfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="evainfoid != null" >
+        evainfoid,
+      </if>
+      <if test="useremail != null" >
+        useremail,
+      </if>
+      <if test="evaluation != null" >
+        evaluation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="evainfoid != null" >
+        #{evainfoid,jdbcType=INTEGER},
+      </if>
+      <if test="useremail != null" >
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null" >
+        #{evaluation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Evaluation" >
+    update evainfo
+    <set >
+      <if test="useremail != null" >
+        useremail = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null" >
+        evaluation = #{evaluation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where evainfoid = #{evainfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.t.entity.Evaluation" >
+    update evainfo
+    set useremail = #{useremail,jdbcType=VARCHAR},
+      evaluation = #{evaluation,jdbcType=VARCHAR}
+    where evainfoid = #{evainfoid,jdbcType=INTEGER}
+  </update>
+</mapper>

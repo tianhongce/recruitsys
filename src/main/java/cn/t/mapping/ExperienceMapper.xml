@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.t.dao.ExperienceMapper" >
+  <resultMap id="BaseResultMap" type="cn.t.entity.Experience" >
+    <id column="expinfoid" property="expinfoid" jdbcType="INTEGER" />
+    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="sdate" property="sdate" jdbcType="DATE" />
+    <result column="edate" property="edate" jdbcType="DATE" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    expinfoid, useremail, sdate, edate, company, industry, dept, position, desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from expinfo
+    where expinfoid = #{expinfoid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from expinfo
+    where expinfoid = #{expinfoid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.t.entity.Experience" >
+    insert into expinfo (expinfoid, useremail, sdate, 
+      edate, company, industry, 
+      dept, position, desc
+      )
+    values (#{expinfoid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{sdate,jdbcType=DATE}, 
+      #{edate,jdbcType=DATE}, #{company,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
+      #{dept,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.t.entity.Experience" >
+    insert into expinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="expinfoid != null" >
+        expinfoid,
+      </if>
+      <if test="useremail != null" >
+        useremail,
+      </if>
+      <if test="sdate != null" >
+        sdate,
+      </if>
+      <if test="edate != null" >
+        edate,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="dept != null" >
+        dept,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="desc != null" >
+        desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="expinfoid != null" >
+        #{expinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="useremail != null" >
+        #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="sdate != null" >
+        #{sdate,jdbcType=DATE},
+      </if>
+      <if test="edate != null" >
+        #{edate,jdbcType=DATE},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Experience" >
+    update expinfo
+    <set >
+      <if test="useremail != null" >
+        useremail = #{useremail,jdbcType=VARCHAR},
+      </if>
+      <if test="sdate != null" >
+        sdate = #{sdate,jdbcType=DATE},
+      </if>
+      <if test="edate != null" >
+        edate = #{edate,jdbcType=DATE},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where expinfoid = #{expinfoid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.t.entity.Experience" >
+    update expinfo
+    set useremail = #{useremail,jdbcType=VARCHAR},
+      sdate = #{sdate,jdbcType=DATE},
+      edate = #{edate,jdbcType=DATE},
+      company = #{company,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      desc = #{desc,jdbcType=VARCHAR}
+    where expinfoid = #{expinfoid,jdbcType=INTEGER}
+  </update>
+</mapper>
