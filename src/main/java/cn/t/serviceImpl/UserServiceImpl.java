@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Override
 	public User getUserByEmail(String useremail) {
-		User user=usermapper.selectByEmail(useremail);
-		return user;
+//		User user=usermapper.selectByEmail(useremail);
+		return null;
 	}
 
 	@Override
@@ -45,7 +45,8 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Override
 	public int delUserByEmail(String useremail) {
-		return usermapper.deleteByEmail(useremail);
+//		return usermapper.deleteByEmail(useremail);
+		return 0;
 	}
 
 	@Override
@@ -55,8 +56,22 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Override
 	public int changeUserByEmail(User user) {
-		return usermapper.updateByEmailSelective(user);
+//		return usermapper.updateByEmailSelective(user);
+		return 0;
 	}
+
+	@Override
+	public int delUserById(Integer id) {
+		// TODO Auto-generated method stub
+		return usermapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public User getUSerByUsername(String username) {
+		User user=usermapper.selectByUsername(username);
+		return user;
+	}
+
 
 	
 

@@ -16,27 +16,22 @@
     from user
     where userid = #{userid,jdbcType=INTEGER}
   </select>
-  <select id="selectByEmail" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where useremail = #{useremail,jdbcType=VARCHAR}
+    where username = #{username,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where userid = #{userid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByEmail" parameterType="java.lang.Integer" >
-    delete from user
-    where  useremail = #{useremail,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="cn.t.entity.User" useGeneratedKeys="true" keyProperty="userid">
-    insert into user (useremail, username, 
+  <insert id="insert" parameterType="cn.t.entity.User" >
+    insert into user (userid, useremail, username, 
       userpwd)
-    values (#{useremail,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+    values (#{userid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{userpwd,jdbcType=VARCHAR})
   </insert>
- 
   <insert id="insertSelective" parameterType="cn.t.entity.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -83,20 +78,6 @@
     </set>
     where userid = #{userid,jdbcType=INTEGER}
   </update>
-  
-  <update id="updateByEmailSelective" parameterType="cn.t.entity.User" >
-    update user
-    <set >
-      <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userpwd != null" >
-        userpwd = #{userpwd,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where useremail = #{useremail,jdbcType=VARCHAR}
-  </update>
-  
   <update id="updateByPrimaryKey" parameterType="cn.t.entity.User" >
     update user
     set useremail = #{useremail,jdbcType=VARCHAR},

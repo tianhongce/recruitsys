@@ -3,7 +3,7 @@
 <mapper namespace="cn.t.dao.ResumeMapper" >
   <resultMap id="BaseResultMap" type="cn.t.entity.Resume" >
     <id column="resumeid" property="resumeid" jdbcType="INTEGER" />
-    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="fullname" property="fullname" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="tall" property="tall" jdbcType="VARCHAR" />
@@ -20,7 +20,7 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    resumeid, useremail, fullname, sex, tall, birthday, province, politicalstatus, maritalstatus, 
+    resumeid, userid, fullname, sex, tall, birthday, province, politicalstatus, maritalstatus, 
     idcardnum, expricesyears, nowposition, wishmonthsalary, address, postcode, phone
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -34,13 +34,13 @@
     where resumeid = #{resumeid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.t.entity.Resume" >
-    insert into resume (resumeid, useremail, fullname, 
+    insert into resume (resumeid, userid, fullname, 
       sex, tall, birthday, province, 
       politicalstatus, maritalstatus, idcardnum, 
       expricesyears, nowposition, wishmonthsalary, 
       address, postcode, phone
       )
-    values (#{resumeid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, 
+    values (#{resumeid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{fullname,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{tall,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{province,jdbcType=VARCHAR}, 
       #{politicalstatus,jdbcType=VARCHAR}, #{maritalstatus,jdbcType=VARCHAR}, #{idcardnum,jdbcType=VARCHAR}, 
       #{expricesyears,jdbcType=VARCHAR}, #{nowposition,jdbcType=VARCHAR}, #{wishmonthsalary,jdbcType=VARCHAR}, 
@@ -53,8 +53,8 @@
       <if test="resumeid != null" >
         resumeid,
       </if>
-      <if test="useremail != null" >
-        useremail,
+      <if test="userid != null" >
+        userid,
       </if>
       <if test="fullname != null" >
         fullname,
@@ -103,8 +103,8 @@
       <if test="resumeid != null" >
         #{resumeid,jdbcType=INTEGER},
       </if>
-      <if test="useremail != null" >
-        #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
       </if>
       <if test="fullname != null" >
         #{fullname,jdbcType=VARCHAR},
@@ -153,8 +153,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Resume" >
     update resume
     <set >
-      <if test="useremail != null" >
-        useremail = #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
       </if>
       <if test="fullname != null" >
         fullname = #{fullname,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.t.entity.Resume" >
     update resume
-    set useremail = #{useremail,jdbcType=VARCHAR},
+    set userid = #{userid,jdbcType=INTEGER},
       fullname = #{fullname,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       tall = #{tall,jdbcType=VARCHAR},

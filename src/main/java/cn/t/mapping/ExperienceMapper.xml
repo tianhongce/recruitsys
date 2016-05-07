@@ -3,7 +3,7 @@
 <mapper namespace="cn.t.dao.ExperienceMapper" >
   <resultMap id="BaseResultMap" type="cn.t.entity.Experience" >
     <id column="expinfoid" property="expinfoid" jdbcType="INTEGER" />
-    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="sdate" property="sdate" jdbcType="DATE" />
     <result column="edate" property="edate" jdbcType="DATE" />
     <result column="company" property="company" jdbcType="VARCHAR" />
@@ -13,7 +13,7 @@
     <result column="desc" property="desc" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    expinfoid, useremail, sdate, edate, company, industry, dept, position, desc
+    expinfoid, userid, sdate, edate, company, industry, dept, position, desc
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,11 +26,11 @@
     where expinfoid = #{expinfoid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.t.entity.Experience" >
-    insert into expinfo (expinfoid, useremail, sdate, 
+    insert into expinfo (expinfoid, userid, sdate, 
       edate, company, industry, 
       dept, position, desc
       )
-    values (#{expinfoid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{sdate,jdbcType=DATE}, 
+    values (#{expinfoid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{sdate,jdbcType=DATE}, 
       #{edate,jdbcType=DATE}, #{company,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
       #{dept,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
       )
@@ -41,8 +41,8 @@
       <if test="expinfoid != null" >
         expinfoid,
       </if>
-      <if test="useremail != null" >
-        useremail,
+      <if test="userid != null" >
+        userid,
       </if>
       <if test="sdate != null" >
         sdate,
@@ -70,8 +70,8 @@
       <if test="expinfoid != null" >
         #{expinfoid,jdbcType=INTEGER},
       </if>
-      <if test="useremail != null" >
-        #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
       </if>
       <if test="sdate != null" >
         #{sdate,jdbcType=DATE},
@@ -99,8 +99,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Experience" >
     update expinfo
     <set >
-      <if test="useremail != null" >
-        useremail = #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
       </if>
       <if test="sdate != null" >
         sdate = #{sdate,jdbcType=DATE},
@@ -128,7 +128,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.t.entity.Experience" >
     update expinfo
-    set useremail = #{useremail,jdbcType=VARCHAR},
+    set userid = #{userid,jdbcType=INTEGER},
       sdate = #{sdate,jdbcType=DATE},
       edate = #{edate,jdbcType=DATE},
       company = #{company,jdbcType=VARCHAR},

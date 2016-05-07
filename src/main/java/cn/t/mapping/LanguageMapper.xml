@@ -3,14 +3,14 @@
 <mapper namespace="cn.t.dao.LanguageMapper" >
   <resultMap id="BaseResultMap" type="cn.t.entity.Language" >
     <id column="langinfoid" property="langinfoid" jdbcType="INTEGER" />
-    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="lang" property="lang" jdbcType="VARCHAR" />
     <result column="degree" property="degree" jdbcType="VARCHAR" />
     <result column="subject" property="subject" jdbcType="VARCHAR" />
     <result column="grade" property="grade" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    langinfoid, useremail, lang, degree, subject, grade
+    langinfoid, userid, lang, degree, subject, grade
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,10 +23,10 @@
     where langinfoid = #{langinfoid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.t.entity.Language" >
-    insert into langinfo (langinfoid, useremail, lang, 
+    insert into langinfo (langinfoid, userid, lang, 
       degree, subject, grade
       )
-    values (#{langinfoid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{lang,jdbcType=VARCHAR}, 
+    values (#{langinfoid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{lang,jdbcType=VARCHAR}, 
       #{degree,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}
       )
   </insert>
@@ -36,8 +36,8 @@
       <if test="langinfoid != null" >
         langinfoid,
       </if>
-      <if test="useremail != null" >
-        useremail,
+      <if test="userid != null" >
+        userid,
       </if>
       <if test="lang != null" >
         lang,
@@ -56,8 +56,8 @@
       <if test="langinfoid != null" >
         #{langinfoid,jdbcType=INTEGER},
       </if>
-      <if test="useremail != null" >
-        #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
       </if>
       <if test="lang != null" >
         #{lang,jdbcType=VARCHAR},
@@ -76,8 +76,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Language" >
     update langinfo
     <set >
-      <if test="useremail != null" >
-        useremail = #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
       </if>
       <if test="lang != null" >
         lang = #{lang,jdbcType=VARCHAR},
@@ -96,7 +96,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.t.entity.Language" >
     update langinfo
-    set useremail = #{useremail,jdbcType=VARCHAR},
+    set userid = #{userid,jdbcType=INTEGER},
       lang = #{lang,jdbcType=VARCHAR},
       degree = #{degree,jdbcType=VARCHAR},
       subject = #{subject,jdbcType=VARCHAR},

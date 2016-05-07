@@ -5,7 +5,7 @@ import java.util.Date;
 public class Resume {
     private Integer resumeid;
 
-    private String useremail;
+    private Integer userid;
 
     private String fullname;
 
@@ -43,12 +43,12 @@ public class Resume {
         this.resumeid = resumeid;
     }
 
-    public String getUseremail() {
-        return useremail;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUseremail(String useremail) {
-        this.useremail = useremail == null ? null : useremail.trim();
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getFullname() {

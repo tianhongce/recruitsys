@@ -5,7 +5,7 @@ import java.util.Date;
 public class Experience {
     private Integer expinfoid;
 
-    private String useremail;
+    private Integer userid;
 
     private Date sdate;
 
@@ -29,12 +29,12 @@ public class Experience {
         this.expinfoid = expinfoid;
     }
 
-    public String getUseremail() {
-        return useremail;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUseremail(String useremail) {
-        this.useremail = useremail == null ? null : useremail.trim();
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public Date getSdate() {

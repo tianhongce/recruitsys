@@ -3,7 +3,7 @@ package cn.t.entity;
 public class Evaluation {
     private Integer evainfoid;
 
-    private String useremail;
+    private Integer userid;
 
     private String evaluation;
 
@@ -15,12 +15,12 @@ public class Evaluation {
         this.evainfoid = evainfoid;
     }
 
-    public String getUseremail() {
-        return useremail;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUseremail(String useremail) {
-        this.useremail = useremail == null ? null : useremail.trim();
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getEvaluation() {

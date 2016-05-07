@@ -3,12 +3,12 @@
 <mapper namespace="cn.t.dao.UserPositionMapper" >
   <resultMap id="BaseResultMap" type="cn.t.entity.UserPosition" >
     <id column="jobappid" property="jobappid" jdbcType="INTEGER" />
-    <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="posnum" property="posnum" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    jobappid, useremail, posnum, status
+    jobappid, userid, posnum, status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -21,9 +21,9 @@
     where jobappid = #{jobappid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.t.entity.UserPosition" >
-    insert into jobapp (jobappid, useremail, posnum, 
+    insert into jobapp (jobappid, userid, posnum, 
       status)
-    values (#{jobappid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{posnum,jdbcType=VARCHAR}, 
+    values (#{jobappid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{posnum,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.t.entity.UserPosition" >
@@ -32,8 +32,8 @@
       <if test="jobappid != null" >
         jobappid,
       </if>
-      <if test="useremail != null" >
-        useremail,
+      <if test="userid != null" >
+        userid,
       </if>
       <if test="posnum != null" >
         posnum,
@@ -46,8 +46,8 @@
       <if test="jobappid != null" >
         #{jobappid,jdbcType=INTEGER},
       </if>
-      <if test="useremail != null" >
-        #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
       </if>
       <if test="posnum != null" >
         #{posnum,jdbcType=VARCHAR},
@@ -60,8 +60,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.UserPosition" >
     update jobapp
     <set >
-      <if test="useremail != null" >
-        useremail = #{useremail,jdbcType=VARCHAR},
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
       </if>
       <if test="posnum != null" >
         posnum = #{posnum,jdbcType=VARCHAR},
@@ -74,7 +74,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.t.entity.UserPosition" >
     update jobapp
-    set useremail = #{useremail,jdbcType=VARCHAR},
+    set userid = #{userid,jdbcType=INTEGER},
       posnum = #{posnum,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR}
     where jobappid = #{jobappid,jdbcType=INTEGER}

@@ -38,7 +38,10 @@ public class TestDao {
 //		userservice.insertUser(user2);
 //		userservice.changeUserByEmail(user3);
 //		userservice.getUserByEmail("333@c.c");
-		userservice.delUserByEmail("333@c.c");
+//		userservice.delUserByEmail("333@c.c");
+		System.out.println(userservice.getUserById(2).getUsername());
+		userservice.delUserById(3);
+		System.out.println(userservice.getUSerByUsername("tian").getUserpwd());
 		
 
 	}
