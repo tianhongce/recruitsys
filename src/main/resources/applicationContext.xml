@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
@@ -15,9 +13,10 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-<context:component-scan base-package="cn.t"></context:component-scan>
-<mvc:annotation-driven></mvc:annotation-driven>
-<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	<context:component-scan base-package="cn.t"></context:component-scan>
+	<context:component-scan base-package="cn.t.controller"></context:component-scan>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 
 	<!-- 加载配置文件 -->
 	<!-- util:properties方式,类中@Value("#{jdbc[driver]}") -->
@@ -32,42 +31,50 @@
 		<property name="fileEncoding" value="UTF-8" />
 		<property name="ignoreResourceNotFound" value="false" />
 	</bean>
-	
+
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${db.driver}"></property>
 		<property name="url" value="${db.url}"></property>
 		<property name="username" value="${db.user}"></property>
 		<property name="password" value="${db.password}"></property>
 	</bean>
-	
+
 	<!-- 验证码文件 -->
-	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
-        <property name="config">  
-            <bean class="com.google.code.kaptcha.util.Config">  
-                <constructor-arg>  
-                    <props>  
-                        <prop key="kaptcha.border">no</prop>  
-                         <!-- 渲染效果：水纹：WaterRipple；鱼眼：FishEyeGimpy；阴影：ShadowGimpy -->
-	                    <prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.WaterRipple</prop>
-	                    <!-- 不要噪点 -->
-	                    <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
-                        <prop key="kaptcha.border.color">105,179,90</prop>  
-                        <prop key="kaptcha.textproducer.font.color">red</prop>  
-                        <prop key="kaptcha.image.width">250</prop>  
-                        <prop key="kaptcha.textproducer.font.size">90</prop>  
-                        <prop key="kaptcha.image.height">90</prop>  
-                        <prop key="kaptcha.session.key">code</prop>  
-                        <prop key="kaptcha.textproducer.char.length">5</prop>  
-                        <prop key="kaptcha.textproducer.font.names">宋体,楷体,微软雅黑</prop>  
-                    </props>  
-                </constructor-arg>  
-            </bean>  
-        </property>  
-    </bean>  
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg>
+					<props>
+						<prop key="kaptcha.border">no</prop>
+						<!-- 渲染效果：水纹：WaterRipple；鱼眼：FishEyeGimpy；阴影：ShadowGimpy -->
+						<prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.WaterRipple</prop>
+						<!-- 不要噪点 -->
+						<prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop>
+						<prop key="kaptcha.border.color">105,179,90</prop>
+						<prop key="kaptcha.textproducer.font.color">red</prop>
+						<prop key="kaptcha.image.width">250</prop>
+						<prop key="kaptcha.textproducer.font.size">90</prop>
+						<prop key="kaptcha.image.height">90</prop>
+						<prop key="kaptcha.session.key">code</prop>
+						<prop key="kaptcha.textproducer.char.length">5</prop>
+						<prop key="kaptcha.textproducer.font.names">宋体,楷体,微软雅黑</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds"></property>
 		<property name="mapperLocations" value="classpath:cn/t/mapping/*.xml"></property>
 	</bean>
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean  
+	   class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
+	   <property name="prefix" value="/" />  
+	   <property name="suffix" value=".jsp" />  
+	   <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>  
+	</bean> 
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.t.dao"></property>
@@ -75,12 +82,12 @@
 		<!-- <property name="annotationClass" value="cn.springmvc.annotation.MyBatisRepository"></property> -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
-	
+
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="ds"></property>
 	</bean>
-	
+
 	<!-- 注解声明事务 -->
 	<!-- <tx:annotation-driven proxy-target-class="true" -->
 	<!-- transaction-manager="transactionManager" /> -->
@@ -107,18 +114,18 @@
 			<tx:method name="*" propagation="SUPPORTS" />
 		</tx:attributes>
 	</tx:advice>
-	
-	
 
-	
+
+
+
 	<aop:config expose-proxy="true">
-		<aop:pointcut expression="within(cn.t.service*..*)"
-			id="txPointcut" />
+		<aop:pointcut expression="within(cn.t.service*..*)" id="txPointcut" />
 		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice" />
 	</aop:config>
-	
+
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
-	<bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	<bean id="mappingJackson2HttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
 			<list>
 				<value>text/html;charset=UTF-8</value>
@@ -126,12 +133,13 @@
 		</property>
 	</bean>
 	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
 			<list>
 				<ref bean="mappingJackson2HttpMessageConverter" /><!-- json转换器 -->
 			</list>
 		</property>
 	</bean>
-	
+
 </beans>

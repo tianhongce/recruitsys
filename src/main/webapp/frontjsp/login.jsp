@@ -207,6 +207,14 @@
 						id="login_form" action="login.action">
 						<input type="hidden" id="loginType" name="loginType" value="email" />
 						<div class="form-group">
+							<label for="inputUsername"
+								class="col-sm-2 control-label col-sm-offset-2">手机/邮箱</label>
+							<div class="col-md-8">
+								<input type="text" name="username" class="form-control"
+									id="inputUSername" value="" />
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="inputEmail"
 								class="col-sm-2 control-label col-sm-offset-2">手机/邮箱</label>
 							<div class="col-md-8">

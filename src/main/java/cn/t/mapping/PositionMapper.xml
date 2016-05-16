@@ -1,139 +1,174 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.t.dao.PositionMapper" >
-  <resultMap id="BaseResultMap" type="cn.t.entity.Position" >
-    <id column="posnum" property="posnum" jdbcType="VARCHAR" />
-    <result column="posname" property="posname" jdbcType="VARCHAR" />
-    <result column="company" property="company" jdbcType="VARCHAR" />
-    <result column="dept" property="dept" jdbcType="VARCHAR" />
-    <result column="place" property="place" jdbcType="VARCHAR" />
-    <result column="num" property="num" jdbcType="VARCHAR" />
-    <result column="endtime" property="endtime" jdbcType="DATE" />
-    <result column="posdesc" property="posdesc" jdbcType="VARCHAR" />
-    <result column="posreq" property="posreq" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    posnum, posname, company, dept, place, num, endtime, posdesc, posreq
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from positioninfo
-    where posnum = #{posnum,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from positioninfo
-    where posnum = #{posnum,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="cn.t.entity.Position" >
-    insert into positioninfo (posnum, posname, company, 
-      dept, place, num, endtime, 
-      posdesc, posreq)
-    values (#{posnum,jdbcType=VARCHAR}, #{posname,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
-      #{dept,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, #{endtime,jdbcType=DATE}, 
-      #{posdesc,jdbcType=VARCHAR}, #{posreq,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.t.entity.Position" >
-    insert into positioninfo
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="posnum != null" >
-        posnum,
-      </if>
-      <if test="posname != null" >
-        posname,
-      </if>
-      <if test="company != null" >
-        company,
-      </if>
-      <if test="dept != null" >
-        dept,
-      </if>
-      <if test="place != null" >
-        place,
-      </if>
-      <if test="num != null" >
-        num,
-      </if>
-      <if test="endtime != null" >
-        endtime,
-      </if>
-      <if test="posdesc != null" >
-        posdesc,
-      </if>
-      <if test="posreq != null" >
-        posreq,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="posnum != null" >
-        #{posnum,jdbcType=VARCHAR},
-      </if>
-      <if test="posname != null" >
-        #{posname,jdbcType=VARCHAR},
-      </if>
-      <if test="company != null" >
-        #{company,jdbcType=VARCHAR},
-      </if>
-      <if test="dept != null" >
-        #{dept,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null" >
-        #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="num != null" >
-        #{num,jdbcType=VARCHAR},
-      </if>
-      <if test="endtime != null" >
-        #{endtime,jdbcType=DATE},
-      </if>
-      <if test="posdesc != null" >
-        #{posdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="posreq != null" >
-        #{posreq,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Position" >
-    update positioninfo
-    <set >
-      <if test="posname != null" >
-        posname = #{posname,jdbcType=VARCHAR},
-      </if>
-      <if test="company != null" >
-        company = #{company,jdbcType=VARCHAR},
-      </if>
-      <if test="dept != null" >
-        dept = #{dept,jdbcType=VARCHAR},
-      </if>
-      <if test="place != null" >
-        place = #{place,jdbcType=VARCHAR},
-      </if>
-      <if test="num != null" >
-        num = #{num,jdbcType=VARCHAR},
-      </if>
-      <if test="endtime != null" >
-        endtime = #{endtime,jdbcType=DATE},
-      </if>
-      <if test="posdesc != null" >
-        posdesc = #{posdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="posreq != null" >
-        posreq = #{posreq,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where posnum = #{posnum,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.t.entity.Position" >
-    update positioninfo
-    set posname = #{posname,jdbcType=VARCHAR},
-      company = #{company,jdbcType=VARCHAR},
-      dept = #{dept,jdbcType=VARCHAR},
-      place = #{place,jdbcType=VARCHAR},
-      num = #{num,jdbcType=VARCHAR},
-      endtime = #{endtime,jdbcType=DATE},
-      posdesc = #{posdesc,jdbcType=VARCHAR},
-      posreq = #{posreq,jdbcType=VARCHAR}
-    where posnum = #{posnum,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="cn.t.dao.PositionMapper">
+	<resultMap id="BaseResultMap" type="cn.t.entity.Position">
+		<id column="posnum" property="posnum" jdbcType="VARCHAR" />
+		<result column="posname" property="posname" jdbcType="VARCHAR" />
+		<result column="company" property="company" jdbcType="VARCHAR" />
+		<result column="dept" property="dept" jdbcType="VARCHAR" />
+		<result column="place" property="place" jdbcType="VARCHAR" />
+		<result column="num" property="num" jdbcType="VARCHAR" />
+		<result column="endtime" property="endtime" jdbcType="DATE" />
+		<result column="posdesc" property="posdesc" jdbcType="VARCHAR" />
+		<result column="posreq" property="posreq" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		posnum, posname, company, dept, place, num, endtime,
+		posdesc, posreq
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from positioninfo
+		where posnum = #{posnum,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectAllPos" resultMap="BaseResultMap">
+		select * from positioninfo
+	</select>
+
+
+	<select id="selectByPosnameOrCompanyOrDeptOrPlace" resultMap="BaseResultMap"
+		parameterType="map">
+		select *
+		from positioninfo
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="posname != null and posname!='' "> AND posname = #{posname,jdbcType=VARCHAR}</if>
+			<if test="company != null and company!='' "> AND company = #{company,jdbcType=VARCHAR}</if>
+			<if test="dept != null and dept!='' "> AND dept = #{dept,jdbcType=VARCHAR}</if>
+			<if test="place != null and place!='' "> AND place = #{place,jdbcType=VARCHAR}</if>
+		</trim>
+
+	</select>
+
+
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		positioninfo
+		where posnum = #{posnum,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="cn.t.entity.Position">
+		insert into positioninfo
+		(posnum, posname, company,
+		dept, place, num, endtime,
+		posdesc, posreq)
+		values (#{posnum,jdbcType=VARCHAR}, #{posname,jdbcType=VARCHAR},
+		#{company,jdbcType=VARCHAR},
+		#{dept,jdbcType=VARCHAR},
+		#{place,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR},
+		#{endtime,jdbcType=DATE},
+		#{posdesc,jdbcType=VARCHAR},
+		#{posreq,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.t.entity.Position">
+		insert into positioninfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="posnum != null">
+				posnum,
+			</if>
+			<if test="posname != null">
+				posname,
+			</if>
+			<if test="company != null">
+				company,
+			</if>
+			<if test="dept != null">
+				dept,
+			</if>
+			<if test="place != null">
+				place,
+			</if>
+			<if test="num != null">
+				num,
+			</if>
+			<if test="endtime != null">
+				endtime,
+			</if>
+			<if test="posdesc != null">
+				posdesc,
+			</if>
+			<if test="posreq != null">
+				posreq,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="posnum != null">
+				#{posnum,jdbcType=VARCHAR},
+			</if>
+			<if test="posname != null">
+				#{posname,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				#{company,jdbcType=VARCHAR},
+			</if>
+			<if test="dept != null">
+				#{dept,jdbcType=VARCHAR},
+			</if>
+			<if test="place != null">
+				#{place,jdbcType=VARCHAR},
+			</if>
+			<if test="num != null">
+				#{num,jdbcType=VARCHAR},
+			</if>
+			<if test="endtime != null">
+				#{endtime,jdbcType=DATE},
+			</if>
+			<if test="posdesc != null">
+				#{posdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="posreq != null">
+				#{posreq,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.Position">
+		update positioninfo
+		<set>
+			<if test="posname != null">
+				posname = #{posname,jdbcType=VARCHAR},
+			</if>
+			<if test="company != null">
+				company = #{company,jdbcType=VARCHAR},
+			</if>
+			<if test="dept != null">
+				dept = #{dept,jdbcType=VARCHAR},
+			</if>
+			<if test="place != null">
+				place = #{place,jdbcType=VARCHAR},
+			</if>
+			<if test="num != null">
+				num = #{num,jdbcType=VARCHAR},
+			</if>
+			<if test="endtime != null">
+				endtime = #{endtime,jdbcType=DATE},
+			</if>
+			<if test="posdesc != null">
+				posdesc = #{posdesc,jdbcType=VARCHAR},
+			</if>
+			<if test="posreq != null">
+				posreq = #{posreq,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where posnum = #{posnum,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.t.entity.Position">
+		update
+		positioninfo
+		set posname = #{posname,jdbcType=VARCHAR},
+		company =
+		#{company,jdbcType=VARCHAR},
+		dept = #{dept,jdbcType=VARCHAR},
+		place =
+		#{place,jdbcType=VARCHAR},
+		num = #{num,jdbcType=VARCHAR},
+		endtime =
+		#{endtime,jdbcType=DATE},
+		posdesc = #{posdesc,jdbcType=VARCHAR},
+		posreq
+		= #{posreq,jdbcType=VARCHAR}
+		where posnum = #{posnum,jdbcType=VARCHAR}
+	</update>
 </mapper>
+

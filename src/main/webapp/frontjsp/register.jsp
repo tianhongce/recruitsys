@@ -17,7 +17,7 @@
 <meta name="description" content="南方基金人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
-<link rel="shortcut icon" href="assets/images/favicon.ico" />
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
 <title>南方基金人才招聘-注册</title>
 
 <script type="text/javascript">
@@ -26,12 +26,12 @@
 	}
 </script>
 
-<link href="assets/css/bootstrap.css" rel="stylesheet" />
-<link href="assets/css/font-awesome.css"
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css"
 	rel="stylesheet" />
-<link href="assets/css/style.css" rel="stylesheet" />
-<link href="assets/css/blue.css" rel="stylesheet" />
-<link href="assets/css/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
 <style type="text/css">
 #register_form label.error {
@@ -73,9 +73,9 @@
 }
 </style>
 </head>
-<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
 <script type="text/javascript"
-	src="assets/js/bootstrap.min.js"></script>
+	src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 <body class="front">
 	<div class="page-wrapper">
@@ -95,13 +95,13 @@
 						<div class="header-top-dropdown">
 							<div class="btn-group dropdown">
 								<button type="button" class="btn"
-									onclick="location.href='toregister.action'">
+									onclick="location.href='frontjsp/register.jsp'">
 									<i class="fa fa-search"></i> 注册
 								</button>
 							</div>
 							<div class="btn-group dropdown">
 								<button type="button" class="btn"
-									onclick="location.href='tologin.action'">
+									onclick="location.href='frontjsp/login.jsp'">
 									<i class="fa fa-user"></i> 登录
 								</button>
 							</div>
@@ -133,7 +133,7 @@
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="assets/images/index_logo.jpg" alt="南方基金"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt="南方基金"></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -234,7 +234,15 @@
 									class="col-sm-2 control-label col-sm-offset-2">邮箱</label>
 								<div class="col-md-8">
 									<input type="text" name="useremail" class="form-control"
-										id="inputEmail" placeholder="邮箱" value="" />
+										id="inputEmail" placeholder="请输入邮箱" value="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputUsername"
+									class="col-sm-2 control-label col-sm-offset-2">用户名</label>
+								<div class="col-md-8">
+									<input type="text" name="username" class="form-control"
+										id="inputUsername" placeholder="请输入用户名" value="" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -375,7 +383,7 @@
 						},
 						messages : {
 							useremail : {
-								required : "手机/邮箱不能为空"
+								required : "邮箱不能为空"
 							},
 							userpwd : {
 								required : "登录密码不能为空",
@@ -394,8 +402,8 @@
 					$.validator.addMethod("verifyuser",
 							function(value, element) {
 								return this.optional(element)
-										|| isMobile(value) || isEmail(value);
-							}, "手机/邮箱格式不对");
+										||  isEmail(value);
+							}, "邮箱格式不对");
 				});
 		var wait = 60;
 		function time(btn) {
@@ -441,7 +449,7 @@
 		
 		function checkInputType(type) {
 			if (isMobile(type)) {
-				$("#registerType").val("mobile");
+				/* $("#registerType").val("mobile");
 				$("#verifyMsgCode").show();
 				$("#verifyCode").hide();
 				$("#verifyMsgCode").parent().removeClass("col-md-8").addClass(
@@ -449,7 +457,7 @@
 				$("#inputVerifyCode").attr('placeholder', '6位数字').attr(
 						"maxlength", "6").css('float', 'left');
 				$("#inputVerifyCode-error").css('margin-top', '-5px').css(
-						'margin-right', '-110px');
+						'margin-right', '-110px'); */
 			} else {
 				$("#registerType").val("email");
 				$("#verifyMsgCode").hide();
@@ -463,8 +471,8 @@
 			}
 		}
 	</script>
-	<script type="text/javascript" src="assets/js/jquery.validate.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.toastmessage.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/*
