@@ -27,13 +27,13 @@
 	}
 </script>
 
-<link href="../ncss/bootstrap.css" rel="stylesheet" />
-<link href="../ncss/font-awesome.css" rel="stylesheet" />
-<link href="../ncss/style.css" rel="stylesheet" />
-<link href="../ncss/blue.css" rel="stylesheet" />
-<link href="../ncss/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="../ncss/ui_datepicker.css" />
+<link rel="stylesheet" href="frontjsp/assets/css/ui_datepicker.css" />
 <style type="text/css">
 label {
 	line-height: 2;

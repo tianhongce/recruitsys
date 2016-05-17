@@ -17,7 +17,7 @@
 <meta name="description" content="曹磊公司人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
-<link rel="shortcut icon" href="assets/images/favicon.ico" />
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
 <title>曹磊公司人才招聘-登录</title>
 
 <script type="text/javascript">
@@ -26,12 +26,12 @@
 	}
 </script>
 
-<link href="assets/css/bootstrap.css" rel="stylesheet" />
-<link href="assets/css/font-awesome.css"
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css"
 	rel="stylesheet" />
-<link href="assets/css/style.css" rel="stylesheet" />
-<link href="assets/css/blue.css" rel="stylesheet" />
-<link href="assets/css/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
 <style type="text/css">
 #login_form label.error {
@@ -52,9 +52,9 @@
 }
 </style>
 </head>
-<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
 <script type="text/javascript"
-	src="assets/js/bootstrap.min.js"></script>
+	src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 <body class="front">
 	<div class="page-wrapper">
@@ -112,7 +112,7 @@
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="assets/images/index_logo.jpg" alt="曹磊公司"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt="曹磊公司"></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -207,27 +207,19 @@
 						id="login_form" action="login.action">
 						<input type="hidden" id="loginType" name="loginType" value="email" />
 						<div class="form-group">
-							<label for="inputUsername"
-								class="col-sm-2 control-label col-sm-offset-2">手机/邮箱</label>
-							<div class="col-md-8">
-								<input type="text" name="username" class="form-control"
-									id="inputUSername" value="" />
-							</div>
-						</div>
-						<div class="form-group">
 							<label for="inputEmail"
-								class="col-sm-2 control-label col-sm-offset-2">手机/邮箱</label>
+								class="col-sm-2 control-label col-sm-offset-2">邮箱</label>
 							<div class="col-md-8">
-								<input type="text" name="email" class="form-control"
-									id="inputEmail" value="" />
+								<input type="text" name="useremail" class="form-control"
+									id="inputEmail" placeholder="请输入邮箱" value="" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPassword"
 								class="col-sm-2 control-label col-sm-offset-2">登录密码</label>
 							<div class="col-md-8">
-								<input type="password" name="password" class="form-control"
-									id="inputPassword" autocomplete="off" value="" /> <span
+								<input type="password" name="userpwd" class="form-control"
+									id="inputPassword" autocomplete="off" placeholder="请输入密码" value="" /> <span
 									style="color: #3d78d8; line-height: 2.5; margin-left: 5px;">
 									<a href="getpwd.action" target="_blank">忘记密码?</a>
 								</span>
@@ -244,8 +236,8 @@
 								<div style="margin-top: 10px">
 									<img
 										style="cursor: pointer; margin-right: 10px; width: 250px; height: 90px;"
-										onclick="refreshImage();return false;" id="randomImg" border=1
-										src="getImgCode.action" /> <a href="javascript:;"
+										onclick="changeVerifyCode(this)";return false;" id="randomImg" border=1
+										 src="imgcodeController/kaptcha-image.do" /> <a href="javascript:;"
 										style="float: right; margin-top: -20px; margin-right: 380px;"
 										onclick="refreshImage();return false;">看不清？换一张</a>
 								</div>
@@ -316,7 +308,7 @@
 						},
 						messages : {
 							email : {
-								required : "手机/邮箱不能为空"
+								required : "邮箱不能为空"
 							},
 							password : {
 								required : "登录密码不能为空",
@@ -331,8 +323,8 @@
 					$.validator.addMethod("verifyuser",
 							function(value, element) {
 								return this.optional(element)
-										|| isMobile(value) || isEmail(value);
-							}, "手机/邮箱格式不对");
+										||isEmail(value);
+							}, "邮箱格式不对");
 				});
 
 		function isMobile(number) {
@@ -357,9 +349,12 @@
 			document.getElementById("randomImg").setAttribute("src",
 					"getImgCode.action?r=" + Math.random());
 		}
+		function changeVerifyCode(img){
+	        img.src = "imgcodeController/kaptcha-image.do?"+Math.floor(Math.random()*100);   
+	}
 	</script>
-	<script type="text/javascript" src="assets/js/jquery.validate.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.toastmessage.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/*
