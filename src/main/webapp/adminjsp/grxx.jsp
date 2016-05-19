@@ -365,9 +365,7 @@
 				<div class="page-content">
 					<div class="page-header">
 						<h1>
-							Typography <small> <i class="icon-double-angle-right"></i>
-								This is page-header (.page-header &gt; h1)
-							</small>
+							个人信息
 						</h1>
 					</div>
 					<!-- /.page-header -->
@@ -378,10 +376,10 @@
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> Text Field </label>
+										for="form-field-1"> 姓名 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="Username"
+										<input type="text" id="form-field-1" placeholder="姓名"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -390,13 +388,12 @@
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-2"> Password Field </label>
+										for="form-field-2"> 密码 </label>
 
 									<div class="col-sm-9">
 										<input type="password" id="form-field-2"
-											placeholder="Password" class="col-xs-10 col-sm-5" /> <span
-											class="help-inline col-xs-12 col-sm-7"> <span
-											class="middle">Inline help text</span>
+											placeholder="密码" class="col-xs-10 col-sm-5" /> <span
+											class="help-inline col-xs-12 col-sm-7"> 
 										</span>
 									</div>
 								</div>
@@ -405,15 +402,13 @@
 
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-input-readonly"> Readonly field </label>
+										for="form-input-readonly"> 员工编号 </label>
 
 									<div class="col-sm-9">
 										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="This text field is readonly!" />
+											id="form-input-readonly" value="00001" />
 										<span class="help-inline col-xs-12 col-sm-7"> <label
-											class="middle"> <input class="ace" type="checkbox"
-												id="id-disable-check" /> <span class="lbl"> Disable
-													it!</span>
+											class="middle"> 
 										</label>
 										</span>
 									</div>
@@ -422,55 +417,45 @@
 								<div class="space-4"></div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right">Input
-										with Icon</label>
+									<label class="col-sm-3 control-label no-padding-right"
+										for="form-field-1"> 所在部门 </label>
 
 									<div class="col-sm-9">
-										<span class="input-icon"> <input type="text"
-											id="form-field-icon-1" /> <i class="icon-leaf blue"></i>
-										</span> <span class="input-icon input-icon-right"> <input
-											type="text" id="form-field-icon-2" /> <i
-											class="icon-leaf green"></i>
-										</span>
+										<input type="text" id="form-field-1" placeholder="部门"
+											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
-
-								<div class="space-4"></div>
-
+									<div class="space-4"></div>
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-6">Tooltip and help button</label>
+										for="form-field-1"> 所属公司 </label>
 
 									<div class="col-sm-9">
-										<input data-rel="tooltip" type="text" id="form-field-6"
-											placeholder="Tooltip on hover" title="Hello Tooltip!"
-											data-placement="bottom" /> <span class="help-button"
-											data-rel="popover" data-trigger="hover" data-placement="left"
-											data-content="More details." title="Popover on hover">?</span>
+										<input type="text" id="form-field-1" placeholder="公司"
+											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
-
 								<div class="space-4"></div>
-
+								
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-tags">Tag input</label>
+										for="form-field-tags">权限</label>
 
 									<div class="col-sm-9">
 										<input type="text" name="tags" id="form-field-tags"
-											value="Tag Input Control" placeholder="Enter tags ..." />
+											 placeholder="超级管理员" />
 									</div>
 								</div>
 
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
 										<button class="btn btn-info" type="button">
-											<i class="icon-ok bigger-110"></i> Submit
+											<i class="icon-ok bigger-110"></i> 修改
 										</button>
 
 										&nbsp; &nbsp; &nbsp;
 										<button class="btn" type="reset">
-											<i class="icon-undo bigger-110"></i> Reset
+											<i class="icon-undo bigger-110"></i> 重置
 										</button>
 									</div>
 								</div>
