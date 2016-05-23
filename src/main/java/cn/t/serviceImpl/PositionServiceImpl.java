@@ -31,12 +31,6 @@ public class PositionServiceImpl implements PositionServiceI {
 	}
 
 	@Override
-	public void editPosStu() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<Position> getAllPos() {
 		// TODO Auto-generated method stub
 		
@@ -63,6 +57,19 @@ public class PositionServiceImpl implements PositionServiceI {
 	@Override
 	public List<Position> getByPosnameOrCompanyOrDeptOrPlace(Map param) {
 		return positionmapper.selectByPosnameOrCompanyOrDeptOrPlace(param);
+	}
+	@Override
+	public int insertPos(Position pos) {
+		
+		return positionmapper.insertSelective(pos);
+	}
+	@Override
+	public int delPos(String posnum) {
+		return positionmapper.deleteByPrimaryKey(posnum);
+	}
+	@Override
+	public int editPos(Position pos) {
+		return positionmapper.updateByPrimaryKeySelective(pos);
 	}
 
 }

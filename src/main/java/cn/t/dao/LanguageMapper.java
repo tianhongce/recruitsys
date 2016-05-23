@@ -1,5 +1,7 @@
 package cn.t.dao;
 
+import java.util.List;
+
 import cn.t.entity.Language;
 
 public interface LanguageMapper {
@@ -14,4 +16,6 @@ public interface LanguageMapper {
     int updateByPrimaryKeySelective(Language record);
 
     int updateByPrimaryKey(Language record);
+    
+    List<Language> selectByUserid(Integer userid);
 }

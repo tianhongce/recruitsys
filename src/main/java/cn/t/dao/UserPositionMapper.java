@@ -1,5 +1,7 @@
 package cn.t.dao;
 
+import java.util.List;
+
 import cn.t.entity.UserPosition;
 
 public interface UserPositionMapper {
@@ -14,4 +16,7 @@ public interface UserPositionMapper {
     int updateByPrimaryKeySelective(UserPosition record);
 
     int updateByPrimaryKey(UserPosition record);
+    
+    List<UserPosition> selectByUserid(Integer userid);
+    List<UserPosition> selectByposid(String posid);
 }

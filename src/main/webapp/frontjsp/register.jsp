@@ -14,11 +14,11 @@
 <head>
 <base href="<%=basePath%>"></base>
 <meta charset="utf-8">
-<meta name="description" content="南方基金人才招聘" />
+<meta name="description" content="人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
 <link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
-<title>南方基金人才招聘-注册</title>
+<title>注册</title>
 
 <script type="text/javascript">
 	if (!window.applicationCache) {
@@ -109,7 +109,7 @@
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
 									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -137,7 +137,7 @@
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -172,14 +172,14 @@
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
 											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
+											
 											<li class="bar_li" id="campus_bar"><a
-												href="job_position.action?jobType=CAMPUS">校园招聘</a></li>
-											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">社会招聘</a></li>
+												href="job_position.action?jobType=CAMPUS">招聘岗位</a></li>
+											
 											<li class="bar_li" id="personal_bar"><a
 												href="myRecruit.action">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"><a
+											    href="myRecruit.action"></a></li>
 										</ul>
 									</div>
 								</div>

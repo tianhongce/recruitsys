@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -15,11 +16,11 @@
 <head>
 <base href="<%=basePath%>"></base>
 <meta charset="utf-8">
-<meta name="description" content="南方基金人才招聘" />
+<meta name="description" content="人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
-<link rel="shortcut icon" href="nimages/favicon.ico" />
-<title>南方基金人才招聘-招聘岗位</title>
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
+<title>招聘岗位</title>
 
 <script type="text/javascript">
 	if (!window.applicationCache) {
@@ -27,15 +28,16 @@
 	}
 </script>
 
-<link href="ncss/bootstrap.css" rel="stylesheet" />
-<link href="ncss/font-awesome.css" rel="stylesheet" />
-<link href="ncss/style.css" rel="stylesheet" />
-<link href="ncss/blue.css" rel="stylesheet" />
-<link href="ncss/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css"
+	rel="stylesheet" />
 
 </head>
-<script type="text/javascript" src="njs/jquery.min.js"></script>
-<script type="text/javascript" src="njs/bootstrap.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 <body class="front">
 	<div class="page-wrapper">
@@ -63,7 +65,7 @@
 								id="welcome">
 								<button type="button" class="btn"
 									onclick="location.href='myRecruit.action';">
-									<i class="fa fa-search"></i> 欢迎您， neu_tianhc@126.com
+									<i class="fa fa-search"></i> 欢迎您，张三
 								</button>
 							</div>
 							<div class="btn-group dropdown">
@@ -75,8 +77,7 @@
 							<div class="btn-group dropdown">
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									href="http://www.nffund.com/"><i class="fa fa-home"></i> 首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -100,11 +101,11 @@
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="nimages/index_logo.jpg" alt="南方基金"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -139,14 +140,13 @@
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
 											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
-											<li class="bar_li" id="campus_bar"><a
-												href="job_position.action?jobType=CAMPUS">校园招聘</a></li>
+
 											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">社会招聘</a></li>
+												href="job_position.action?jobType=SOCIETY">招聘岗位</a></li>
 											<li class="bar_li" id="personal_bar"><a
 												href="myRecruit.action">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
 										</ul>
 									</div>
 								</div>
@@ -196,7 +196,7 @@
 								<select id="department" name="department" class="form-control">
 								</select>
 							</div>
-							<div style="margin-top: 20px; display: none">
+							<div style="margin-top: 20px;">
 								<h6>工作地点：</h6>
 								<select class="form-control" id="location" name="location">
 									<option value="">所有</option>
@@ -245,30 +245,28 @@
 									</tr>
 								</thead>
 								<tbody>
-									<form id="campus667" name="campus" method="post"
-										action="apply.action?jobid=667">
+								<c:forEach var="pos" items="${poslist}" varStatus="stat">
+									<form name="campus" method="post"
+										action="apply.action?jobid=${pos.posnum}">
 										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav667'), 667);return false;">
-											<td>机构直销柜台岗</td>
-											<td>机构业务部</td>
-											<td>深圳</td>
-											<td align="center">1</td>
-											<td>2016-06-30</td>
-											<td><span id="nav667"><b
+											onclick="showJobDesp($('#${pos.posname}'), ${pos.posnum})">
+											<td>${pos.posname}</td>
+											<td>${pos.dept}</td>
+											<td>${pos.place}</td>
+											<td>${pos.num}</td>
+											<td>${pos.endtime}</td>
+											<td><span id="${pos.posname}"><b
 													class="arrow fa fa-angle-down"></b></span></td>
 										</tr>
-										<tr id="job667" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br />
-												1、直销客户日常业务办理，包括开户及日常交易<br />2、积极配合公司IPO及持续销售做好直销业务。<br />3机构客户日常服务工作：及时发送短信邮件等资讯，满足机构客户多元化需求；做好机构客户日常维护，提高机构客户满意度。<br />4、制作机构客户服务资讯及组织日常活动<br />5、领导交办的部门工作：部门预算、费用报销、与其他部门的联络等。<br />6、数据处理，柜台直销交易数据及分公司交易数据处理<br />
-												<br /> <br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、金融相关专业本科及以上学历<br />2、、具有较强的么文字功底和综合能力，较强的团队合作意识和吃苦耐劳的精神<br />3、
-													较强的数据处理能力<br />4、 耐心、细致、责任心强 <br /> <br />
-												</div> <strong>专业要求：</strong><br /> <br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
+										<tr id="${pos.posnum}" style="display: none">
+											<td colspan="6">
+											<strong>职位所属公司：</strong><br />
+												${pos.company}<br /> <br />
+											<strong>职位描述：</strong><br />
+												${pos.posdesc}<br /> <br />
+											<strong>职位要求：</strong><br /> 
+												${pos.posreq}<br /> <br />
+												
 												<div align="center">
 													<input type="button" class="btn btn-primary btn-sm radius"
 														onclick="applyJob(667)" value="立即申请">
@@ -277,205 +275,7 @@
 												</div></td>
 										</tr>
 									</form>
-									<form id="campus665" name="campus" method="post"
-										action="apply.action?jobid=665">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav665'), 665);return false;">
-											<td>机构业务中台岗</td>
-											<td>机构业务部</td>
-											<td>深圳</td>
-											<td align="center">1</td>
-											<td>2016-06-30</td>
-											<td><span id="nav665"><b
-													class="arrow fa fa-angle-down"></b></span></td>
-										</tr>
-										<tr id="job665" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br />
-												1、机构业务标书制作及管理；<br />2、信息披露、客户需求处理；<br />3、合同管理、投资阀值发起、投资资讯服务等；<br />
-												<br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、金融相关专业本科及以上学历<br />2、具有较强的么文字功底和综合能力，较强的团队合作意识和吃苦耐劳的精神<br />3、
-													较强的数据处理能力<br />4、 耐心、细致、责任心强 <br /> <br />
-												</div> <strong>专业要求：</strong><br /> <br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
-												<div align="center">
-													<input type="button" class="btn btn-primary btn-sm radius"
-														onclick="applyJob(665)" value="立即申请">
-													<button class="btn btn-primary btn-sm radius"
-														style="display: none">分享</button>
-												</div></td>
-										</tr>
-									</form>
-									<form id="campus663" name="campus" method="post"
-										action="apply.action?jobid=663">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav663'), 663);return false;">
-											<td>机构合同管理岗</td>
-											<td>机构业务部</td>
-											<td>深圳</td>
-											<td align="center">1</td>
-											<td>2016-06-30</td>
-											<td><span id="nav663"><b
-													class="arrow fa fa-angle-down"></b></span></td>
-										</tr>
-										<tr id="job663" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br />
-												1、公告内部审核及发布；<br />2、机构业务协议签署流程办理；<br />3、基金产品法律文件审核；<br />4、合同、文档存档。<br />
-												<br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、本科学历，金融、法律等相关专业，1年以上工作经验；<br />2、有敏锐的市场感觉和良好的沟通能力；<br />3、高度敬业精神，工作负责、细致、有耐心。<br />
-													<br />
-												</div> <strong>专业要求：</strong><br /> <br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
-												<div align="center">
-													<input type="button" class="btn btn-primary btn-sm radius"
-														onclick="applyJob(663)" value="立即申请">
-													<button class="btn btn-primary btn-sm radius"
-														style="display: none">分享</button>
-												</div></td>
-										</tr>
-									</form>
-									<form id="campus661" name="campus" method="post"
-										action="apply.action?jobid=661">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav661'), 661);return false;">
-											<td>养老金客户经理</td>
-											<td>养老金业务部</td>
-											<td>北京</td>
-											<td align="center">1</td>
-											<td>2016-06-30</td>
-											<td><span id="nav661"><b
-													class="arrow fa fa-angle-down"></b></span></td>
-										</tr>
-										<tr id="job661" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br />
-												1、负责年金客户的开拓、维护和服务工作； <br />2、策划、实施年金业务营销方案，实现销售目标； <br />3、推广公司品牌及产品，提高客户忠诚度。<br />
-												<br /> <br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、大学本科及以上学历，有资深的金融专业背景和基金产品销售经验； <br />2、具有高度的敬业精神、责任心和使命感；
-													<br />3、具有较好的团队合作和奉献精神； <br />4、具有良好的沟通能力及培训、演讲技能； <br />5、熟练掌握各种办公软件。<br />
-													<br /> <br />
-												</div> <strong>专业要求：</strong><br /> <br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
-												<div align="center">
-													<input type="button" class="btn btn-primary btn-sm radius"
-														onclick="applyJob(661)" value="立即申请">
-													<button class="btn btn-primary btn-sm radius"
-														style="display: none">分享</button>
-												</div></td>
-										</tr>
-									</form>
-									<form id="campus659" name="campus" method="post"
-										action="apply.action?jobid=659">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav659'), 659);return false;">
-											<td>养老金业务中台岗</td>
-											<td>养老金业务部</td>
-											<td>深圳</td>
-											<td align="center">1</td>
-											<td>2016-06-30</td>
-											<td><span id="nav659"><b
-													class="arrow fa fa-angle-down"></b></span></td>
-										</tr>
-										<tr id="job659" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br />
-												1、养老金业务标书制作及管理；<br />2、信息披露、客户需求处理；<br />3、合同管理、投资阀值发起、投资资讯服务等；<br />
-												<br /> <br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、金融相关专业本科及以上学历<br />2、具有较强的么文字功底和综合能力，较强的团队合作意识和吃苦耐劳的精神<br />3、
-													较强的数据处理能力<br />4、 耐心、细致、责任心强 <br /> <br />
-												</div> <strong>专业要求：</strong><br /> <br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
-												<div align="center">
-													<input type="button" class="btn btn-primary btn-sm radius"
-														onclick="applyJob(659)" value="立即申请">
-													<button class="btn btn-primary btn-sm radius"
-														style="display: none">分享</button>
-												</div></td>
-										</tr>
-									</form>
-									<form id="campus639" name="campus" method="post"
-										action="apply.action?jobid=639">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav639'), 639);return false;">
-											<td>高级文秘</td>
-											<td>办公室</td>
-											<td>深圳</td>
-											<td align="center">1</td>
-											<td>2016-04-30</td>
-											<td><span id="nav639"><b
-													class="arrow fa fa-angle-down"></b></span></td>
-										</tr>
-										<tr id="job639" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br /> 1、
-												负责起草公司党建工作计划、工作报告、工作总结及其他需报送准备的文件资料；<br />2、 负责落实公司党支部建设工作；<br />3、
-												负责组织各类党群活动，并做好相关宣传、接待工作；<br />4、
-												负责完成公司党务日常工作，包括但不限于：党员发展、组织关系接转、党内评议考核及党费收支管理等；<br />5、
-												负责协助完成办公室日常行政、文秘性事务工作；<br />6、 完成上级领导交办的其他工作。<br /> <br />
-												<br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、 中共党员；品行端正，具有良好的沟通表达能力，具有较高的保密和服务意识；<br />2、
-													本科及以上学历，政治、法律、新闻、财经、中文等相关专业优先；<br />3、
-													具有党群或团建工作经历或工作经验者优先；<br />4、
-													具备较强的公文与新闻写作能力；能熟练使用Word、Excel、PPT等日常办公软件。<br /> <br /> <br />
-												</div> <strong>专业要求：</strong><br /> <br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
-												<div align="center">
-													<input type="button" class="btn btn-primary btn-sm radius"
-														onclick="applyJob(639)" value="立即申请">
-													<button class="btn btn-primary btn-sm radius"
-														style="display: none">分享</button>
-												</div></td>
-										</tr>
-									</form>
-									<form id="campus657" name="campus" method="post"
-										action="apply.action?jobid=657">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#nav657'), 657);return false;">
-											<td>机构客户经理（南京）</td>
-											<td>合肥分公司</td>
-											<td>南京</td>
-											<td align="center">3</td>
-											<td>2016-10-31</td>
-											<td><span id="nav657"><b
-													class="arrow fa fa-angle-down"></b></span></td>
-										</tr>
-										<tr id="job657" style="display: none">
-											<td colspan="6"><strong>职位描述：</strong><br />
-												1、负责机构客户的开拓、维护和服务工作； <br />2、策划、实施机构业务营销方案，实现销售目标； <br />3、推广公司品牌及产品，提高客户忠诚度。<br />
-												<br /> <strong>职位要求：</strong><br />
-												<div style="line-height: 2">
-													1、大学本科及以上学历，有资深的金融专业背景和基金产品销售经验； <br />2、具有高度的敬业精神、责任心和使命感；
-													<br />3、具有较好的团队合作和奉献精神； <br />4、具有良好的沟通能力及培训、演讲技能； <br />5、熟练掌握各种办公软件。<br />
-													<br />
-												</div> <strong>专业要求：</strong><br /> 金融相关专业<br /> <br /> <strong>学历要求：</strong>
-
-												本科 <br /> <br /> <!--<strong>性别要求：</strong>
-												不限制<br />
-											<br /> -->
-												<div align="center">
-													<input type="button" class="btn btn-primary btn-sm radius"
-														onclick="applyJob(657)" value="立即申请">
-													<button class="btn btn-primary btn-sm radius"
-														style="display: none">分享</button>
-												</div></td>
-										</tr>
-									</form>
+									</c:forEach>
 								</tbody>
 							</table>
 
@@ -483,6 +283,8 @@
 								暂无相关职位信息</div>
 
 						</div>
+						
+						
 
 					</div>
 				</div>
@@ -494,7 +296,7 @@
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
+								<a href="http://www.nffund.com/" target="_blank">管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
 							</p>
 							<p style="margin-bottom: 10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
 						</div>
@@ -637,8 +439,10 @@
 			}
 		});
 	</script>
-	<script type="text/javascript" src="njs/jquery.validate.js"></script>
-	<script type="text/javascript" src="njs/jquery.toastmessage.js"></script>
+	<script type="text/javascript"
+		src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/*

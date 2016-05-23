@@ -1,5 +1,7 @@
 package cn.t.dao;
 
+import java.util.List;
+
 import cn.t.entity.Evaluation;
 
 public interface EvaluationMapper {
@@ -14,4 +16,6 @@ public interface EvaluationMapper {
     int updateByPrimaryKeySelective(Evaluation record);
 
     int updateByPrimaryKey(Evaluation record);
+    
+    List<Evaluation> selectByUserid(Integer userid);
 }

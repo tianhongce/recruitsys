@@ -15,6 +15,16 @@
     from evainfo
     where evainfoid = #{evainfoid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUserid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    *
+    from evainfo
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from evainfo
     where evainfoid = #{evainfoid,jdbcType=INTEGER}

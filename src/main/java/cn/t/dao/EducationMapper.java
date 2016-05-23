@@ -1,5 +1,7 @@
 package cn.t.dao;
 
+import java.util.List;
+
 import cn.t.entity.Education;
 
 public interface EducationMapper {
@@ -14,4 +16,6 @@ public interface EducationMapper {
     int updateByPrimaryKeySelective(Education record);
 
     int updateByPrimaryKey(Education record);
+    
+    public List<Education> selectByUserid(Integer userid);
 }

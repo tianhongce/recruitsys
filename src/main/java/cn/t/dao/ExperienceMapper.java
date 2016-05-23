@@ -1,5 +1,7 @@
 package cn.t.dao;
 
+import java.util.List;
+
 import cn.t.entity.Experience;
 
 public interface ExperienceMapper {
@@ -14,4 +16,6 @@ public interface ExperienceMapper {
     int updateByPrimaryKeySelective(Experience record);
 
     int updateByPrimaryKey(Experience record);
+    
+    List<Experience> selectByUserid(Integer userid);
 }

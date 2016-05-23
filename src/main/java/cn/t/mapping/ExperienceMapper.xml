@@ -21,6 +21,13 @@
     from expinfo
     where expinfoid = #{expinfoid,jdbcType=INTEGER}
   </select>
+  <select id="selectByUserid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+   *
+    from expinfo
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from expinfo
     where expinfoid = #{expinfoid,jdbcType=INTEGER}

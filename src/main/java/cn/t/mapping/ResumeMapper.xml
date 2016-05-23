@@ -29,6 +29,15 @@
     from resume
     where resumeid = #{resumeid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUserid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    *
+    from resume
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from resume
     where resumeid = #{resumeid,jdbcType=INTEGER}

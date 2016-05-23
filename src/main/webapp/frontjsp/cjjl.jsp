@@ -18,23 +18,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Mobile Meta -->
 <link rel="shortcut icon"
-	href="../nimages/favicon.ico">
+	href="../frontjsp/assets/images/favicon.ico">
 <title>我的简历</title>
 
-<script src="../njs/hm.js"></script>
+<script src="../frontjsp/assets/js/hm.js"></script>
 <script type="text/javascript">
 		if (!window.applicationCache) {
 			 self.location = "validateHtml5.action";
         }
 		</script>
 
-<link href="../ncss/bootstrap.css" rel="stylesheet" />
-<link href="../ncss/font-awesome.css" rel="stylesheet" />
-<link href="../ncss/style.css" rel="stylesheet" />
-<link href="../ncss/blue.css" rel="stylesheet" />
-<link href="../ncss/jquery.toastmessage.css" rel="stylesheet" />
+<link href="../frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="../frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="../frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="../frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="../frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="../ncss/ui_datepicker.css">
+<link rel="stylesheet" href="../frontjsp/assets/css/ui_datepicker.css">
 <style type="text/css">
 label {
 	line-height: 2;
@@ -99,8 +99,8 @@ label {
 	clear: both;
 }
 </style>
-<script type="text/javascript" src="../njs/jquery.min.js"></script>
-<script type="text/javascript" src="../njs/bootstrap.min.js"></script>
+<script type="text/javascript" src="../frontjsp/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="../frontjsp/assets/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -131,7 +131,7 @@ label {
 								id="welcome">
 								<button type="button" class="btn"
 									onclick="location.href=&#39;myRecruit.action&#39;;">
-									<i class="fa fa-search"></i> 欢迎您， 1196585084@qq.com
+									<i class="fa fa-search"></i> 欢迎您， 李四
 								</button>
 							</div>
 							<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
@@ -150,7 +150,7 @@ label {
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
 									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -174,11 +174,11 @@ label {
 						<!-- logo -->
 						<div class="logo">
 							<a href="http://www.nffund.com/nfjjRecruitSystem/"><img
-								id="logo" src="../nimages/index_logo.jpg" alt="南方基金"></a>
+								id="logo" src="../frontjsp/assets/images/index_logo.jpg" alt="南方基金"></a>
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -214,14 +214,13 @@ label {
 										<ul class="nav navbar-nav navbar-right">
 											<li class="bar_li" id="home_bar"><a
 												href="http://www.nffund.com/nfjjRecruitSystem/index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
-											<li class="bar_li" id="campus_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=CAMPUS">校园招聘</a></li>
+											
 											<li class="bar_li" id="society_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=SOCIETY">社会招聘</a></li>
+												href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=SOCIETY">招聘岗位</a></li>
 											<li class="bar_li active" id="personal_bar"><a
 												href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action">我的应聘</a></li>
+												<li class="bar_li" id="forum_bar"><a
+												href="http://www.nffund.com/jforum/" target="_blank"></a></li>
 										</ul>
 									</div>
 								</div>
@@ -349,7 +348,7 @@ function newsClick(){
 							<div align="center">
 								<img id="base_photo" width="113" height="165"
 									onload="AutoResizeImage(200,290,this)"
-									src="../nimages/no_pic.jpg" title="请上传照片">
+									src="../frontjsp/assets/images/no_pic.jpg" title="请上传照片">
 							</div>
 							<div class="btn btn-sm radius btn-primary"
 								style="position: relative; overflow: hidden; cursor: default;">
@@ -568,9 +567,9 @@ function newsClick(){
 
 	</div>
 
-	<script type="text/javascript" src="../njs/jquery.cityselect.js"></script>
-	<script type="text/javascript" src="../njs/jquery-ui.1.11.3.js"></script>
-	<script type="text/javascript" src="../njs/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="../frontjsp/assets/js/jquery.cityselect.js"></script>
+	<script type="text/javascript" src="../frontjsp/assets/js/jquery-ui.1.11.3.js"></script>
+	<script type="text/javascript" src="../frontjsp/assets/js/jquery.fileupload.js"></script>
 	<script type="text/javascript">
 	function saveInfo(bNext){
 		if(!$("#baseinfo_form").valid()) {
@@ -940,9 +939,9 @@ function newsClick(){
 		objImg.width = w;
 	}
 	</script>
-	<script type="text/javascript" src="../njs/jquery.validate.js"></script>
+	<script type="text/javascript" src="../frontjsp/assets/js/jquery.validate.js"></script>
 	<script type="text/javascript"
-		src="../njs/jquery.toastmessage.js"></script>
+		src="../frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 			$(function(){
 				/*

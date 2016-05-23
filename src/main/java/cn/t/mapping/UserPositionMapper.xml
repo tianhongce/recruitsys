@@ -16,6 +16,22 @@
     from jobapp
     where jobappid = #{jobappid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUserid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    *
+    from jobapp
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByPosid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    *
+    from jobapp
+    where posnum = #{posnum,jdbcType=VARCHAR}
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from jobapp
     where jobappid = #{jobappid,jdbcType=INTEGER}

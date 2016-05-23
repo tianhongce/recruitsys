@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.t.dao.AdminUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.t.entity.AdminUser" >
+    <id column="auserid" property="auserid" jdbcType="VARCHAR" />
+    <result column="ausername" property="ausername" jdbcType="VARCHAR" />
+    <result column="auserpwd" property="auserpwd" jdbcType="VARCHAR" />
+    <result column="adept" property="adept" jdbcType="VARCHAR" />
+    <result column="acompany" property="acompany" jdbcType="VARCHAR" />
+    <result column="apow" property="apow" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    auserid, ausername, auserpwd, adept, acompany, apow
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from adminuser
+    where auserid = #{auserid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from adminuser
+    where auserid = #{auserid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.t.entity.AdminUser" >
+    insert into adminuser (auserid, ausername, auserpwd, 
+      adept, acompany, apow
+      )
+    values (#{auserid,jdbcType=VARCHAR}, #{ausername,jdbcType=VARCHAR}, #{auserpwd,jdbcType=VARCHAR}, 
+      #{adept,jdbcType=VARCHAR}, #{acompany,jdbcType=VARCHAR}, #{apow,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.t.entity.AdminUser" >
+    insert into adminuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="auserid != null" >
+        auserid,
+      </if>
+      <if test="ausername != null" >
+        ausername,
+      </if>
+      <if test="auserpwd != null" >
+        auserpwd,
+      </if>
+      <if test="adept != null" >
+        adept,
+      </if>
+      <if test="acompany != null" >
+        acompany,
+      </if>
+      <if test="apow != null" >
+        apow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="auserid != null" >
+        #{auserid,jdbcType=VARCHAR},
+      </if>
+      <if test="ausername != null" >
+        #{ausername,jdbcType=VARCHAR},
+      </if>
+      <if test="auserpwd != null" >
+        #{auserpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="adept != null" >
+        #{adept,jdbcType=VARCHAR},
+      </if>
+      <if test="acompany != null" >
+        #{acompany,jdbcType=VARCHAR},
+      </if>
+      <if test="apow != null" >
+        #{apow,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.AdminUser" >
+    update adminuser
+    <set >
+      <if test="ausername != null" >
+        ausername = #{ausername,jdbcType=VARCHAR},
+      </if>
+      <if test="auserpwd != null" >
+        auserpwd = #{auserpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="adept != null" >
+        adept = #{adept,jdbcType=VARCHAR},
+      </if>
+      <if test="acompany != null" >
+        acompany = #{acompany,jdbcType=VARCHAR},
+      </if>
+      <if test="apow != null" >
+        apow = #{apow,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where auserid = #{auserid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.t.entity.AdminUser" >
+    update adminuser
+    set ausername = #{ausername,jdbcType=VARCHAR},
+      auserpwd = #{auserpwd,jdbcType=VARCHAR},
+      adept = #{adept,jdbcType=VARCHAR},
+      acompany = #{acompany,jdbcType=VARCHAR},
+      apow = #{apow,jdbcType=VARCHAR}
+    where auserid = #{auserid,jdbcType=VARCHAR}
+  </update>
+</mapper>

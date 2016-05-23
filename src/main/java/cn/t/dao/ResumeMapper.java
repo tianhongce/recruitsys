@@ -1,5 +1,7 @@
 package cn.t.dao;
 
+import java.util.List;
+
 import cn.t.entity.Resume;
 
 public interface ResumeMapper {
@@ -14,4 +16,6 @@ public interface ResumeMapper {
     int updateByPrimaryKeySelective(Resume record);
 
     int updateByPrimaryKey(Resume record);
+    
+    public List<Resume> selectByUserid(Integer userid);
 }
