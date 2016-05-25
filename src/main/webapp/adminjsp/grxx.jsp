@@ -105,7 +105,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> 管理员
+							class="user-info"> <small>欢迎,</small> ${session.username }
 						</span> 
 					</a>
 
@@ -167,19 +167,19 @@
 				<!-- #sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li class="active open"><a href="index.html"> <i
+					<li class="active open"><a href="grxx.jsp"> <i
 							class="icon-file-alt"></i> <span class="menu-text"> 个人信息 </span>
 					</a></li>
 
-					<li><a href="typography.html"> <i class="icon-tag"></i> <span
+					<li><a href="tjgw.jsp"> <i class="icon-tag"></i> <span
 							class="menu-text"> 添加岗位 </span>
 					</a></li>
 
-					<li><a href="#" class="dropdown-toggle"> <i
+					<li><a href="poslist.do" class="dropdown-toggle"> <i
 							class=icon-list></i> <span class="menu-text"> 查看岗位列表 </span>
 					</a></li>
 
-					<li><a href="#" class="dropdown-toggle"> <i
+					<li><a href="listUserPos.do" class="dropdown-toggle"> <i
 							class="icon-edit"></i> <span class="menu-text"> 审查岗位申请 </span>
 					</a></li>
 				</ul>
@@ -232,7 +232,7 @@
 										for="form-field-1"> 姓名 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="张三"
+										<input type="text" id="form-field-1" name="ausername" placeholder="${session.auser.ausername }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -244,7 +244,7 @@
 										for="form-field-2"> 密码 </label>
 
 									<div class="col-sm-9">
-										<input type="password" id="form-field-2"
+										<input type="password" id="form-field-2" name="auserpwd"
 											placeholder="******" class="col-xs-10 col-sm-5" /> <span
 											class="help-inline col-xs-12 col-sm-7"> 
 										</span>
@@ -258,8 +258,8 @@
 										for="form-input-readonly"> 员工编号 </label>
 
 									<div class="col-sm-9">
-										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" value="00001" />
+										<input readonly="" type="text" class="col-xs-10 col-sm-5" name="auserid"
+											id="form-input-readonly" value="${session.auser.auserid }" />
 										<span class="help-inline col-xs-12 col-sm-7"> <label
 											class="middle"> 
 										</label>
@@ -274,7 +274,7 @@
 										for="form-field-1"> 所在部门 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="研发部"
+										<input type="text" id="form-field-1" name="adept" placeholder="${session.auser.adept }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -284,7 +284,7 @@
 										for="form-field-1"> 所属公司 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" placeholder="A公司"
+										<input type="text" id="form-field-1" name="acompany" placeholder="${session.auser.acompany }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -295,20 +295,15 @@
 										for="form-field-tags">权限</label>
 
 									<div class="col-sm-9">
-										<input type="text" name="tags" id="form-field-tags"
-											 placeholder="超级管理员" />
+										<input type="text" name="tags" name="apow" id="form-field-tags"
+											 placeholder="${session.auser.apow }" />
 									</div>
 								</div>
 
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
 										<button class="btn btn-info" type="button">
-											<i class="icon-ok bigger-110"></i> 修改
-										</button>
-
-										&nbsp; &nbsp; &nbsp;
-										<button class="btn" type="reset">
-											<i class="icon-undo bigger-110"></i> 重置
+											<i class="icon-ok bigger-110"></i> 修改<a href="grxxedit.jsp">
 										</button>
 									</div>
 								</div>

@@ -1,5 +1,8 @@
 package cn.t.serviceImpl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,14 @@ public class AdminUserServiceImpl implements AdminUserServiceI {
 	@Override
 	public AdminUser getAdminUserById(String auserid) {
 		return ausermapper.selectByPrimaryKey(auserid);
+	}
+	@Override
+	public List<AdminUser> getAllAdminUser() {
+		return ausermapper.selectAllAdminUser();
+	}
+	@Override
+	public List<AdminUser> getByIdorNameorDeptorComorPow(Map param) {
+		return ausermapper.selectByIdorNameorDeptorComorPow(param);
 	}
 
 }

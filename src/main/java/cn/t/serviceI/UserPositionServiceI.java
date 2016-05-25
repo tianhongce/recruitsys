@@ -10,5 +10,6 @@ public interface UserPositionServiceI {
 	public int changeUserPosState(UserPosition userpos);
 	public List<UserPosition> getUserPosByUserid(Integer userid);
 	public List<UserPosition> getUserPosByPosnum(String posnum);
+	public List<UserPosition> getAllUserPos();
 
 }

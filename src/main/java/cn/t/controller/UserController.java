@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,11 +55,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public int login(HttpServletRequest request,
+	public String login(HttpServletRequest request,
 			@RequestParam("useremail") String useremail,
 			@RequestParam("userpwd") String userpwd,
-			@RequestParam("userpwd2") String userpwd2,
-			@RequestParam("imgcode") String imgcode) {
+			@RequestParam("imgcode") String imgcode,ModelMap model) {
 		HttpSession session = request.getSession();
 		String code = (String) session
 				.getAttribute(Constants.KAPTCHA_SESSION_KEY);
@@ -68,13 +68,37 @@ public class UserController {
 //		System.out.println(userpwd2);
 //		User u = userservice.getUserById(1);
 //		System.out.println("username"+u.getUsername());
-		User user=new User();
-		user=userservice.getUserByEmail(useremail);
-		String password=user.getUserpwd();
-		if(password==userpwd){
-			return 1;
+		System.out.println(code);
+		String msg="";
+		if(!imgcode.equals(code)){
+			 msg="验证码错误！";
+			 System.out.println(msg);
+			session.setAttribute("msg", msg);
+//			model.addAttribute("msg", msg);
+			return "frontjsp/login";
+		}else{
+			System.out.println(useremail);
+			System.out.println(userservice.getUserByEmail(useremail));
+			if(userservice.getUserByEmail(useremail)==null){
+				 msg="此用户不存在！";
+				 System.out.println(msg);
+				session.setAttribute("msg", msg);
+				return "frontjsp/login";
+			}else{
+				if(!userpwd.equals(userservice.getUserByEmail(useremail).getUserpwd())){
+					msg="密码错误！";
+					System.out.println(msg);
+					session.setAttribute("msg", msg);
+					return "frontjsp/login";
+				}else{
+					User user=userservice.getUserByEmail(useremail);
+					System.out.println(user.getUsername());
+					session.setAttribute("user", user);
+					return "redirect:frontjsp/poslist.do";
+				}
+			}
 		}
-		return 0;
+
 
 	}
 }

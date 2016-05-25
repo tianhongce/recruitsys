@@ -24,6 +24,12 @@
     where userid = #{userid,jdbcType=INTEGER}
   </select>
   
+  <select id="getAllUserPos" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    *
+    from jobapp
+  </select>
+  
   <select id="selectByPosid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     *

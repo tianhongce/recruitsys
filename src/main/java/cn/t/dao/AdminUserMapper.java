@@ -1,5 +1,8 @@
 package cn.t.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import cn.t.entity.AdminUser;
 
 public interface AdminUserMapper {
@@ -14,4 +17,6 @@ public interface AdminUserMapper {
     int updateByPrimaryKeySelective(AdminUser record);
 
     int updateByPrimaryKey(AdminUser record);
+    List<AdminUser> selectAllAdminUser();
+    List<AdminUser> selectByIdorNameorDeptorComorPow(Map param);
 }

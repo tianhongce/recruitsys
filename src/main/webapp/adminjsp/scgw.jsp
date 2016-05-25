@@ -167,19 +167,19 @@
 				<!-- #sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li><a href="index.html"> <i
+					<li><a href="grxx.jsp"> <i
 							class="icon-file-alt"></i> <span class="menu-text"> 个人信息 </span>
 					</a></li>
 
-					<li><a href="typography.html"> <i class="icon-tag"></i> <span
+					<li><a href="tjgw.jsp"> <i class="icon-tag"></i> <span
 							class="menu-text"> 添加岗位 </span>
 					</a></li>
 
-					<li><a href="#" class="dropdown-toggle"> <i
+					<li><a href="poslist.do" class="dropdown-toggle"> <i
 							class=icon-list></i> <span class="menu-text"> 查看岗位列表 </span>
 					</a></li>
 
-					<li class="active open"><a href="#" class="dropdown-toggle"> <i
+					<li class="active open"><a href="listUserPos.do" class="dropdown-toggle"> <i
 							class="icon-edit"></i> <span class="menu-text"> 审查岗位申请 </span>
 					</a></li>
 				</ul>
@@ -209,7 +209,7 @@
 					</script>
 
 					<ul class="breadcrumb">
-						<li><i class="active"></i> <a href="#">个人信息</a></li>
+						<li><i class="active"></i> <a href="#">审查岗位申请</a></li>
 					</ul>
 					<!-- .breadcrumb -->
 

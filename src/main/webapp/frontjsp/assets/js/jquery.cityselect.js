@@ -18,7 +18,7 @@ required:必选项
 
 		// 默认值
 		settings=$.extend({
-			url:"assets/js/city.min.js",
+			url:"frontjsp/assets/js/city.min.js",
 			prov:null,
 			city:null,
 			dist:null,

@@ -22,8 +22,7 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Override
 	public User getUserByEmail(String useremail) {
-//		User user=usermapper.selectByEmail(useremail);
-		return null;
+		return usermapper.selectByUseremail(useremail);
 	}
 
 	@Override

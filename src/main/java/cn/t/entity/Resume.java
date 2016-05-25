@@ -2,6 +2,8 @@ package cn.t.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Resume {
     private Integer resumeid;
 
@@ -13,6 +15,7 @@ public class Resume {
 
     private String tall;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")  
     private Date birthday;
 
     private String province;

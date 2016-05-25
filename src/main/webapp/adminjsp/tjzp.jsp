@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -11,7 +12,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>添加岗位</title>
+<title>添加招聘管理员</title>
 <meta name="keywords"
 	content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
 <meta name="description"
@@ -105,7 +106,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> ${session.ausername }
+							class="user-info"> <small>欢迎,</small> ${ ausername}
 						</span> 
 					</a>
 
@@ -167,21 +168,14 @@
 				<!-- #sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li><a href="grxx.jsp"> <i
-							class="icon-file-alt"></i> <span class="menu-text"> 个人信息 </span>
+					<li class="active open"><a href="tjzp.jsp"> <i
+							class="icon-file-alt"></i> <span class="menu-text"> 添加招聘管理员 </span>
 					</a></li>
 
-					<li class="active open"><a href="tjgw.jsp"> <i class="icon-tag"></i> <span
-							class="menu-text"> 添加岗位 </span>
+					<li><a href="listAllAdminUser.do"> <i class="icon-tag"></i> <span
+							class="menu-text"> 查看管理员列表 </span>
 					</a></li>
 
-					<li><a href="poslist.do" class="dropdown-toggle"> <i
-							class=icon-list></i> <span class="menu-text"> 查看岗位列表 </span>
-					</a></li>
-
-					<li><a href="listUserPos.do" class="dropdown-toggle"> <i
-							class="icon-edit"></i> <span class="menu-text"> 审查岗位申请 </span>
-					</a></li>
 				</ul>
 				<!-- /.nav-list -->
 
@@ -208,121 +202,116 @@
 						}
 					</script>
 
-					<ul class="breadcrumb">
-						<li><i class="active"></i> <a href="#">添加岗位</a></li>
-					</ul>
+					
 					<!-- .breadcrumb -->
 
 				</div>
 
 				<div class="page-content">
 					<div class="page-header">
+					
 						<h1>
-							添加岗位
+							添加招聘管理员 &nbsp&nbsp&nbsp&nbsp ${msg}
+							<input type='hidden' name="errorMsg" value="${msg }"/>
 						</h1>
+						
+						
 					</div>
 					<!-- /.page-header -->
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-xs-9">
 							<!-- PAGE CONTENT BEGINS -->
 
-							<form class="form-horizontal" action="addPos.do" method="post">
+							<form class="form-horizontal" action="addAdminUser.do" method="post">
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 岗位编号 </label>
+										for="form-field-1"> 员工编号 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="posnum" id="form-field-1" placeholder="编号" 
-											class="col-xs-10 col-sm-5" />
+										<input type="text" id="form-field-1" 
+											class="col-xs-10 col-sm-5" name="auserid"/><span
+											class="help-inline col-xs-12 col-sm-7"> 
+										</span>
 									</div>
 								</div>
 
 								<div class="space-4"></div>
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 岗位名称 </label>
+										for="form-field-2"> 员工姓名 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="posname" id="form-field-1" placeholder="名字"
-											class="col-xs-10 col-sm-5" />
+										<input type="text" id="form-field-2"
+											 class="col-xs-10 col-sm-5" name="ausername"/> <span
+											class="help-inline col-xs-12 col-sm-7"> 
+										</span>
 									</div>
 								</div>
 
 								<div class="space-4"></div>
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 招聘人数 </label>
+										for="form-field-2"> 用户密码 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="num" id="form-field-1" placeholder="人数"
-											class="col-xs-10 col-sm-5" />
+										<input type="text" class="col-xs-10 col-sm-5"
+											id="form-field-2"  name="auserpwd"/>
+										<span class="help-inline col-xs-12 col-sm-7"> <label
+											class="middle"> 
+										</label>
+										</span>
 									</div>
 								</div>
 								<div class="space-4"></div>
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 工作地点 </label>
+										for="form-field-2"> 部门 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="place" id="form-field-1" placeholder="地点"
-											class="col-xs-10 col-sm-5" />
+										<input type="text" id="form-field-2"
+											 class="col-xs-10 col-sm-5" name="adept"/> <span
+											class="help-inline col-xs-12 col-sm-7"> 
+										</span>
 									</div>
 								</div>
-
 								<div class="space-4"></div>
+
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 所在部门 </label>
+										for="form-field-2"> 公司 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="dept" id="form-field-1" placeholder="部门"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 所属公司 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="company" id="form-field-1" placeholder="公司"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 截止日期 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="endtime" id="form-field-1" placeholder="日期"
-											class="col-xs-10 col-sm-5" />
+										<input type="text" id="form-field-2"
+											 class="col-xs-10 col-sm-5" name="acompany"/> <span
+											class="help-inline col-xs-12 col-sm-7"> 
+										</span>
 									</div>
 								</div>
 
 								<div class="space-4"></div>
+
+								
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 岗位描述 </label>
-
-									<div class="col-sm-9">
-										<textarea class="form-control" name="posdesc" id="form-field-8" placeholder="岗位描述"></textarea>
-									</div>
+										for="form-field-tags">账号权限</label>
+										<div class="col-sm-9">
+											<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="apow">
+											<option value="">&nbsp;</option>
+											<option value="招聘管理员">招聘管理员</option>
+											<option value="超级管理员">超级管理员</option>
+											</select>
+										</div>
 								</div>
-								<div class="space-4"></div>
 
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
 										<button class="btn btn-info" type="submit">
-											<i class="icon-ok bigger-110"></i> 确认
+											<i class="icon-ok bigger-110"></i>确定
 										</button>
 
-										&nbsp; &nbsp; &nbsp;
-										<button class="btn" type="reset">
-											<i class="icon-undo bigger-110"></i> 重置
-										</button>
 									</div>
 								</div>
 								<!-- /row -->
@@ -445,6 +434,17 @@
 
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
+	<script type='text/javascript'>
+		$(function(){
+			
+			var msg = $('input[name="errorMsg"]').val();
+			
+			if(msg !==  ''){
+				alert(msg);
+			}
+			
+		});
+	</script>
 
 	<!-- inline scripts related to this page -->
 	<div style="display: none">

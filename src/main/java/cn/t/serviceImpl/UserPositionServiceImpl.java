@@ -47,5 +47,9 @@ public class UserPositionServiceImpl implements UserPositionServiceI {
 	public List<UserPosition> getUserPosByPosnum(String posnum) {
 		return userposmapper.selectByposid(posnum);
 	}
+	@Override
+	public List<UserPosition> getAllUserPos() {
+		return userposmapper.getAllUserPos();
+	}
 
 }

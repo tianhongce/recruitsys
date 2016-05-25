@@ -4,7 +4,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.t.entity.Resume;
+import cn.t.serviceI.AdminUserServiceI;
 import cn.t.serviceI.EducationServiceI;
+import cn.t.serviceI.ResumeServiceI;
 
 public class TestDao {
 
@@ -13,6 +16,8 @@ public class TestDao {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
 		EducationServiceI eduservice = (EducationServiceI) ac.getBean("EducationService");
+		ResumeServiceI resuservice = (ResumeServiceI) ac.getBean("ResumeService");
+		AdminUserServiceI adminuserservice = (AdminUserServiceI) ac.getBean("AdminUserService");
 //		UserServiceI userservice = (UserServiceI) ac.getBean("UserService");
 //		User u1 = userservice.getUserById(1);
 //		System.out.println(u1.getUsername());
@@ -43,7 +48,14 @@ public class TestDao {
 //		userservice.delUserById(3);
 //		System.out.println(userservice.getUSerByUsername("tian").getUserpwd());
 		
-		System.out.println(eduservice.getEducationByUserid(1));
+//		System.out.println(eduservice.getEducationByUserid(1));
+		
+//		AdminUser au=adminuserservice.getAdminUserById("3");
+//		System.out.println(au);
+		Resume resu=new Resume();
+		resu.setPhone("111111");
+		resu.setUserid(1);
+		resuservice.addResume(resu);
 		
 
 	}

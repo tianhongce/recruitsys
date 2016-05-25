@@ -18,6 +18,27 @@
     from adminuser
     where auserid = #{auserid,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectAllAdminUser" resultMap="BaseResultMap"  >
+    select 
+    *
+    from adminuser
+  </select>
+  
+  <select id="selectByIdorNameorDeptorComorPow" resultMap="BaseResultMap"
+		parameterType="map">
+		select *
+		from adminuser
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="auserid != null and auserid!='' "> AND auserid = #{auserid,jdbcType=VARCHAR}</if>
+			<if test="ausername != null and ausername!='' "> AND ausername = #{ausername,jdbcType=VARCHAR}</if>
+			<if test="adept != null and adept!='' "> AND adept = #{adept,jdbcType=VARCHAR}</if>
+			<if test="acompany != null and acompany!='' "> AND acompany = #{acompany,jdbcType=VARCHAR}</if>
+			<if test="apow != null and apow!='' "> AND apow = #{apow,jdbcType=VARCHAR}</if>
+		</trim>
+
+	</select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from adminuser
     where auserid = #{auserid,jdbcType=VARCHAR}

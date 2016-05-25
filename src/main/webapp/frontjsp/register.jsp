@@ -108,8 +108,8 @@
 							<div class="btn-group dropdown">
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									首页</a>
+									href="index.jsp/"><i class="fa fa-home"></i>
+									公司首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -133,7 +133,7 @@
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="frontjsp/assets/images/index_logo.jpg" alt="南方基金"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt="公司"></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -178,8 +178,7 @@
 											
 											<li class="bar_li" id="personal_bar"><a
 												href="myRecruit.action">我的应聘</a></li>
-											<li class="bar_li" id="personal_bar"><a
-											    href="myRecruit.action"></a></li>
+											<li class="bar_li" id="personal_bar"></a></li>
 										</ul>
 									</div>
 								</div>
@@ -310,7 +309,7 @@
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
+								<a href="http://www.nffund.com/" target="_blank">公司管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
 							</p>
 							<p style="margin-bottom: 10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
 						</div>

@@ -17,4 +17,5 @@ public class BaseController {
 		return new ResponseEntity<Map<String, Object>>(map,
 				HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 }

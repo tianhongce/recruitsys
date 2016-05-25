@@ -14,8 +14,9 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+<base href="<%=basePath%>"></base>
 <meta charset="utf-8">
-<meta name="description" content="南方基金人才招聘" />
+<meta name="description" content="公司人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
 <link rel="shortcut icon" href="assets/images/favicon.ico" />
@@ -99,10 +100,6 @@ label {
 }
 </style>
 </head>
-<script type="text/javascript" src="../njs/jquery.min.js"></script>
-<script type="text/javascript"
-	src="../njs/bootstrap.min.js"></script>
-
 <body class="front">
 	<div class="page-wrapper">
 		<!-- header-top start -->
@@ -129,15 +126,9 @@ label {
 								id="welcome">
 								<button type="button" class="btn"
 									onclick="location.href='myRecruit.action';">
-									<i class="fa fa-search"></i> 欢迎您， neu_tianhc@126.com
+									<i class="fa fa-search"></i> 欢迎您，${username }
 								</button>
 							</div>
-							<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-							    <i class="fa fa-search"></i> 
-							             欢迎您，
-							    neu_tianhc@126.com</button>
-						</div> -->
 							<div class="btn-group dropdown">
 								<button type="button" class="btn dropdown-toggle"
 									onclick="location.href='logout.action'">
@@ -147,8 +138,8 @@ label {
 							<div class="btn-group dropdown">
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									href="index.jsp/"><i class="fa fa-home"></i>
+									公司首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -172,11 +163,11 @@ label {
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="../nimages/index_logo.jpg" alt="南方基金"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt="公司"></a>
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -211,14 +202,13 @@ label {
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
 											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
-											<li class="bar_li" id="campus_bar"><a
-												href="job_position.action?jobType=CAMPUS">校园招聘</a></li>
+
 											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">社会招聘</a></li>
+												href="job_position.action?jobType=SOCIETY">招聘岗位</a></li>
 											<li class="bar_li" id="personal_bar"><a
 												href="myRecruit.action">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
 										</ul>
 									</div>
 								</div>
@@ -263,9 +253,9 @@ label {
 			<div class="container">
 				<div class="row">
 					<script type="text/javascript">
-						$(function() {
+						/* $(function() {
 							setActiveLeftBar();
-						});
+						}); */
 
 						function setActiveLeftBar() {
 							$(".active_bar").removeClass("active");
@@ -339,7 +329,7 @@ label {
 						<div class="progress-bar progress-bar-info" role="progressbar"
 							aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
 							style="min-width: 16%; width: 100%">
-							<span class="sr-only">您的简历已完善100%的资料</span>
+							<span class="sr-only">请完善您的简历</span>
 						</div>
 					</div>
 					<div class="col-lg-10" style="padding-left: 40px;">
@@ -352,15 +342,15 @@ label {
 							<a class="btn btn-sm radius btn-primary" type="photo" id="upload"
 								style="text-align: center;">上传照片</a>
 						</div>
-						<form method="post" id="baseinfo_form" onsubmit="return false;">
-							<input type="hidden" name="user_email" value="neu_tianhc@126.com">
-							<input type="hidden" name="resumetype" value="CN">
+						<form id="baseinfo_form" >
+							<input type="hidden" name="userid" value="1">
+							<%-- <input type="hidden" name="resume.userid" value="${user.userid }"> --%>
 							<div class="form-group">
-								<label for="fullName" class="col-md-1">姓名<small
+								<label for="fullname" class="col-md-1">姓名<small
 									class="text-default">*</small></label>
 								<div class="col-md-7">
 									<input type="text" style="float: left" class="form-control"
-										id="fullName" name="fullName" value="田红策" />
+										id="fullname" name="fullname"  />
 								</div>
 							</div>
 							<div class="space" style="padding-bottom: 30px"></div>
@@ -369,8 +359,9 @@ label {
 									class="text-default">*</small></label>
 								<div class="col-md-7">
 									<select class="form-control" name="sex" id="sex">
-										<option value="0" selected="true">男</option>
-										<option value="1">女</option>
+										<option value="" selected="ture">请选择</option>
+										<option value="男">男</option>
+										<option value="女">女</option>
 									</select>
 								</div>
 							</div>
@@ -380,19 +371,18 @@ label {
 									class="text-default">*</small></label>
 								<div class="col-md-7">
 									<input type="text" name="tall" style="float: left;"
-										class="form-control" id="tall" value="178" /> <span
+										class="form-control" id="tall"  /> <span
 										style="color: gray; line-height: 2.5; margin-left: 5px;">单位：cm</span>
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="birthDay" class="col-md-1">出生日期<small
+								<label for="birthday" class="col-md-1">出生日期<small
 									class="text-default">*</small></label>
 								<div class="col-md-7">
 									<input style="width: 65%; float: left;" class="date-picker"
 										id="id-date-picker-1" type="text"
-										data-date-format="yyyy-mm-dd" name="birthDay"
-										value="1993-07-19" />
+										data-date-format="yyyy-mm-dd" name="birthday"/>
 									<!--<span class="add-on" onclick="$('#id-date-picker-1').trigger('focus');"><i class="icon-calendar"></i></span> -->
 								</div>
 							</div>
@@ -401,75 +391,76 @@ label {
 								<label class="col-md-1" style="line-height: 1.5;">户口所在地<small
 									class="text-default">*</small></label>
 								<div id="prov-city" class="col-md-7">
-									<select class="prov" name="province" style="width: 28%"></select><select
-										class="city col-md-offset-1" name="city" style="width: 29%;"></select>
+									<select class="province" name="province" style="width: 28%"  onchange="selectMoreCity(this)"></select>
+									<select class="city col-md-offset-1" name="city" style="width: 29%;"></select>
 								</div>
 							</div>
 							<div class="space" style="padding-bottom: 10px"></div>
 							<div class="form-group">
-								<label for="politicalStatus" class="col-md-1">政治面貌<small
+								<label for="politicalstatus" class="col-md-1">政治面貌<small
 									class="text-default">*</small></label>
 								<div class="col-md-7">
-									<select class="form-control" name="politicalStatus">
-										<option value="PARTY">中共党员</option>
-										<option value="PREPARTY">预备党员</option>
-										<option value="YOUTH" selected="true">共青团员</option>
-										<option value="PUBLIC">群众</option>
-										<option value="OTHERS">其他</option>
+									<select class="form-control" name="politicalstatus">
+										<option value="" selected="selected"></option>
+										<option value="中共党员">中共党员</option>
+										<option value="预备党员">预备党员</option>
+										<option value="共青团员"">共青团员</option>
+										<option value="群众">群众</option>
+										<option value="其他">其他</option>
 									</select>
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="maritalStatus" class="col-md-1">婚姻状况<small
+								<label for="maritalstatus" class="col-md-1">婚姻状况<small
 									class="text-default">*</small></label>
 								<div class="col-md-7">
-									<select class="form-control" name="maritalStatus">
-										<option value="SINGLE" selected="true">未婚</option>
-										<option value="MARRIED">已婚</option>
-										<option value="DIVORCED">离婚</option>
-										<!-- <option value="WIDOWED" >丧偶</option> -->
+									<select class="form-control" name="maritalstatus">
+										<option value="" selected="true"></option>
+										<option value="未婚"">未婚</option>
+										<option value="已婚">已婚</option>
+										<option value="离婚">离婚</option>
 									</select>
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="idCardNumber" class="col-md-1">身份证/护照<small
+								<label for="idcardnum" class="col-md-1">身份证/护照<small
 									class="text-default">*</small></label>
 								<div class="col-md-7">
 									<input type="text" style="float: left" class="form-control"
-										id="idCardNumber" name="idCardNumber"
-										value="131102199307193417" />
+										id="idcardnumber" name="idcardnumber" />
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="expricesYears" class="col-md-1">工作年限</label>
+								<label for="expricesyears" class="col-md-1">工作年限</label>
 								<div class="col-md-7">
 									<input type="text" style="float: left;" class="form-control"
-										placeholder="单位：年" id="expricesYears" name="expricesYears" />
+										placeholder="单位：年" id="expricesyears" name="expricesyears" />
 									<span style="color: gray; line-height: 2.5; margin-left: 5px;">（应届生可不填）</span>
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="nowPosition" class="col-md-1">目前职位</label>
+								<label for="nowposition" class="col-md-1">目前职位</label>
 								<div class="col-md-7">
 									<input type="text" style="float: left;" class="form-control"
-										id="nowPosition" name="nowPosition" value="" /> <span
+										id="nowposition" name="nowposition"  /> <span
 										style="color: gray; line-height: 2.5; margin-left: 5px;">（应届生可不填）</span>
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="wishMonthSalary" class="col-md-1">期望薪酬<small
+								<label for="wishmonthsalary" class="col-md-1">期望薪酬<small
 									class="text-default">*</small></label>
 								<div class="col-md-7">
-									<select class="form-control" name="wishMonthSalary">
+									<select class="form-control" name="wishmonthsalary">
+										<option value="" selected="true"></option>
 										<option value="2000,4000">2000-4000/月</option>
 										<option value="4000,6000">4000-6000/月</option>
 										<option value="6000,8000">6000-8000/月</option>
-										<option value="8000,10000" selected="true">8000-10000/月</option>
+										<option value="8000,10000">8000-10000/月</option>
 										<option value="10000,12000">10000-12000/月</option>
 										<option value="12000,16000">12000-16000/月</option>
 										<option value="16000,20000">16000-20000/月</option>
@@ -479,8 +470,44 @@ label {
 								</div>
 							</div>
 							<div class="space"></div>
-							<button class="btn btn-default radius" id="saveBtn">保存</button>
-							<button class="btn btn-default radius" id="nextBtn">下一步</button>
+							<div class="form-group">
+								<label for="address" class="col-md-1 control-label">地址<small
+									class="text-default">*</small></label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="address"
+										id="address" placeholder="通信地址"  />
+								</div>
+							</div>
+							<div class="space" style="padding-bottom: 30px"></div>
+							<div class="form-group">
+								<label for="postcode" class="col-md-1 control-label">邮编<small
+									class="text-default">*</small></label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="postcode"
+										id="postcode" placeholder="邮政编码"  />
+								</div>
+							</div>
+							<div class="space"></div>
+							<div class="form-group">
+								<label for="phone" class="col-md-1 control-label">手机<small
+									class="text-default">*</small></label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="phone" id="phone"
+										placeholder="手机号码"  />
+								</div>
+							</div>
+							<div class="space"></div>
+							<div class="form-group">
+								<label for="email" class="col-md-1 control-label">useremail<small
+									class="text-default">*</small></label>
+								<div class="col-md-9">
+									<input type="text" readonly="readonly" class="form-control" name="email" id="email"
+										placeholder="${user.useremail }" value="${user.useremail }" />
+								</div>
+							</div>
+							
+							<button class="btn btn-default radius" id="saveBtn" >保存</button>
+							<button class="btn btn-default radius" id="nextBtn" type="submit">下一步</button>
 						</form>
 					</div>
 				</div>
@@ -493,7 +520,7 @@ label {
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
+								<a href="http://www.nffund.com/" target="_blank">公司管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
 							</p>
 							<p style="margin-bottom: 10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
 						</div>
@@ -514,17 +541,20 @@ label {
 
 	</div>
 
-	<script type="text/javascript" src="../njs/jquery.cityselect.js"></script>
-	<script type="text/javascript" src="../njs/jquery-ui.1.11.3.js"></script>
-	<script type="text/javascript" src="../njs/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
+	<script type="text/javascript"
+	src="frontjsp/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.cityselect.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery-ui.1.11.3.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.fileupload.js"></script>
 	<script type="text/javascript">
 		function saveInfo(bNext) {
-			if (!$("#baseinfo_form").valid()) {
+			 if (!$("#baseinfo_form").valid()) {
 				return;
-			}
+			} 
 
 			var options = {
-				url : "saveBaseInfo.action",
+				url : "frontjsp/addResume1.do",
 				type : "post",
 				success : function(data, statusText) {
 					if (typeof (data) == "undefined") {
@@ -619,12 +649,12 @@ label {
 
 			$("#baseinfo_form").validate({
 				rules : {
-					fullName : {
+					fullname : {
 						required : true,
 						maxlength : 6,
 						minlength : 2
 					},
-					birthDay : {
+					birthday : {
 						required : true
 					},
 					tall : {
@@ -641,36 +671,56 @@ label {
 					city : {
 						required : true
 					},
-					politicalStatus : {
+					politicalstatus : {
 						required : true
 					},
-					maritalStatus : {
+					maritalstatus : {
 						required : true
 					},
-					idCardNumber : {
+					idcardnumber : {
 						required : true,
 						maxlength : 18,
 						idcardno : true,
 						cardlength : true
 					},
-					wishMonthSalary : {
+					wishmonthsalary : {
 						required : true
 					},
-					nowPosition : {
+					nowposition : {
 						maxlength : 128,
 					},
-					expricesYears : {
+					expricesyears : {
 						number : true,
 						maxlength : 4
+					},
+					address : {
+						required : true,
+						maxlength : 128,
+						minlength : 8
+					},
+					postcode : {
+						required : true,
+						number : true,
+						maxlength : 6,
+						minlength : 4
+					},
+					phone : {
+						required : true,
+						isMobile : true
+					},
+					email : {
+						required : true,
+						email : true,
+						maxlength : 128,
 					}
 				},
 				messages : {
-					fullName : {
+					fullname : {
 						required : "请填写真实姓名",
 						minlength : "请填写真实姓名",
 						maxlength : "请填写真实姓名"
 					},
-					birthDay : {
+					birthday : {
 						required : '请选择出生日期'
 					},
 					sex : {
@@ -682,17 +732,17 @@ label {
 					city : {
 						required : "请选择省/市/县"
 					},
-					politicalStatus : {
+					politicalstatus : {
 						required : "请选择政治面貌"
 					},
-					maritalStatus : {
+					maritalstatus : {
 						required : "请选择婚姻状况"
 					},
-					idCardNumber : {
+					idcardnumber : {
 						required : "请填写身份证/护照",
 						maxlength : "身份证/护照不能超过18位"
 					},
-					wishMonthSalary : {
+					wishmonthsalary : {
 						required : "请选择期望薪酬"
 					},
 					tall : {
@@ -700,12 +750,32 @@ label {
 						digits : "请填写正确的身高",
 						range : "请填写正确的身高"
 					},
-					nowPosition : {
+					nowposition : {
 						maxlength : "填写的职位信息过长"
 					},
-					expricesYears : {
+					expricesyears : {
 						number : "填写的工作年限有误",
 						maxlength : "填写的工作年限有误"
+					},
+					address : {
+						required : "请填写通信地址",
+						maxlength : "您填写的通信地址过长",
+						minlength : "请填写正确的通信地址"
+					},
+					postcode : {
+						required : "请填写邮政编码",
+						number : "请填写正确的邮政编码",
+						maxlength : "请填写正确的邮政编码",
+						minlength : "请填写正确的邮政编码"
+					},
+					phone : {
+						required : "请填写手机号码",
+						isMobile : "请填写正确的手机号码"
+					},
+					email : {
+						required : "请填写email地址",
+						email : "请填写正确的email地址",
+						maxlength : "请填写正确的email地址"
 					}
 				}
 			});
@@ -830,8 +900,8 @@ label {
 		}
 
 		function isIdCardNo(num) {
-			var birthDay = $("input[name='birthDay']").val();
-			var arr = birthDay.split("-");
+			var birthday = $("input[name='birthday']").val();
+			var arr = birthday.split("-");
 			var year = arr[0];
 			var month = arr[1];
 			var day = arr[2];
@@ -906,8 +976,8 @@ label {
 			objImg.width = w;
 		}
 	</script>
-	<script type="text/javascript" src="../njs/jquery.validate.js"></script>
-	<script type="text/javascript" src="../njs/jquery.toastmessage.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/*
@@ -923,5 +993,12 @@ label {
 			$("#" + active_bar + "_bar").addClass("active");
 		});
 	</script>
+	<script type="text/javascript" src="frontjsp/assets/js/resume/resume.js"></script>
+		<script type="text/javascript" src="frontjsp/assets/js/morecity.js"></script>
+	<script type="text/javascript">
+	
+	</script>
+	<script type="text/javascript" src="frontjsp/assets/js/area.js"></script>
+	
 </body>
 </html>

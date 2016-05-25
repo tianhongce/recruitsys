@@ -19,4 +19,5 @@ public interface UserPositionMapper {
     
     List<UserPosition> selectByUserid(Integer userid);
     List<UserPosition> selectByposid(String posid);
+    List<UserPosition> getAllUserPos();
 }

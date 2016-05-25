@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -105,7 +106,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> 管理员
+							class="user-info"> <small>欢迎,</small> ${ ausername}
 						</span> 
 					</a>
 
@@ -167,19 +168,19 @@
 				<!-- #sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li><a href="index.html"> <i
+					<li><a href="grxx.jsp"> <i
 							class="icon-file-alt"></i> <span class="menu-text"> 个人信息 </span>
 					</a></li>
 
-					<li><a href="typography.html"> <i class="icon-tag"></i> <span
+					<li><a href="tjgw.jsp"> <i class="icon-tag"></i> <span
 							class="menu-text"> 添加岗位 </span>
 					</a></li>
 
-					<li class="active open"><a href="#" class="dropdown-toggle"> <i
+					<li class="active open"><a href="poslist.do" class="dropdown-toggle"> <i
 							class=icon-list></i> <span class="menu-text"> 查看岗位列表 </span>
 					</a></li>
 
-					<li><a href="#" class="dropdown-toggle"> <i
+					<li><a href="listUserPos.do" class="dropdown-toggle"> <i
 							class="icon-edit"></i> <span class="menu-text"> 审查岗位申请 </span>
 					</a></li>
 				</ul>
@@ -255,6 +256,7 @@
 												</thead>
 
 												<tbody>
+												<c:forEach var="pos" items="${poslist}" varStatus="stat">
 													<tr>
 														<td class="center">
 															<label>
@@ -263,14 +265,14 @@
 															</label>
 														</td>
 
-														<td>102033</td>
-														<td>软件工程师</td>
-														<td>研发</td>
-														<td>A公司</td>
-														<td>北京</td>
-														<td>10</td>
-														<td>2016.03.30</td>
-														<td>哈哈哈哈哈哈</td>
+														<td>${pos.posnum }</td>
+														<td>${pos.posname }</td>
+														<td>${pos.dept }</td>
+														<td>${pos.company }</td>
+														<td>${pos.place }</td>
+														<td>${pos.num }</td>
+														<td>${pos.endtime }</td>
+														<td>${pos.posdesc }</td>
 														<td>
 															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 																<a class="blue" href="#">
@@ -321,402 +323,8 @@
 															</div>
 														</td>
 													</tr>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>102034</td>
-														<td>软件测试工程师</td>
-														<td>研发</td>
-														<td>A公司</td>
-														<td>北京</td>
-														<td>15</td>
-														<td>2016.03.30</td>
-														<td>嘿嘿嘿</td>
-														<td>
-															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="icon-zoom-in bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="icon-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="icon-trash bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>102035</td>
-														<td>软件研发工程师</td>
-														<td>研发</td>
-														<td>B公司</td>
-														<td>南京</td>
-														<td>16</td>
-														<td>2016.03.30</td>
-														<td>哈哈哈嘿嘿嘿</td>
-														<td>
-															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="icon-zoom-in bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="icon-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="icon-trash bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>102037</td>
-														<td>项目经理</td>
-														<td>研发</td>
-														<td>C公司</td>
-														<td>北京</td>
-														<td>10</td>
-														<td>2016.12.30</td>
-														<td>哈嘿哈哈哈哈</td>
-														<td>
-															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="icon-zoom-in bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="icon-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="icon-trash bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>102036</td>
-														<td>软件架构工程师</td>
-														<td>研发</td>
-														<td>A公司</td>
-														<td>北京</td>
-														<td>10</td>
-														<td>2016.05.30</td>
-														<td>哈哈嘿哈哈哈</td>
-														<td>
-															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="icon-zoom-in bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="icon-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="icon-trash bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>102038</td>
-														<td>软件工程师</td>
-														<td>研发</td>
-														<td>A公司</td>
-														<td>北京</td>
-														<td>10</td>
-														<td>2016.03.30</td>
-														<td>哈哈哈哈哈哈</td>
-														<td>
-															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="icon-zoom-in bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="icon-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="icon-trash bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
-													<tr>
-														<td class="center">
-															<label>
-																<input type="checkbox" class="ace" />
-																<span class="lbl"></span>
-															</label>
-														</td>
-
-														<td>102037</td>
-														<td>软件工程师</td>
-														<td>研发</td>
-														<td>A公司</td>
-														<td>北京</td>
-														<td>10</td>
-														<td>2016.03.30</td>
-														<td>哈哈哈哈哈哈</td>
-														<td>
-															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="icon-zoom-in bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
-																	<i class="icon-pencil bigger-130"></i>
-																</a>
-
-																<a class="red" href="#">
-																	<i class="icon-trash bigger-130"></i>
-																</a>
-															</div>
-
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
-														</td>
-													</tr>
+													</c:forEach>
+													
 												</tbody>
 											</table>
 										</div>

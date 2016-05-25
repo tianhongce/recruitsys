@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -11,7 +12,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>添加岗位</title>
+<title>招聘管理员列表</title>
 <meta name="keywords"
 	content="Bootstrap模版,Bootstrap模版下载,Bootstrap教程,Bootstrap中文" />
 <meta name="description"
@@ -105,7 +106,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> ${session.ausername }
+							class="user-info"> <small>欢迎,</small> ${ ausername}
 						</span> 
 					</a>
 
@@ -167,21 +168,14 @@
 				<!-- #sidebar-shortcuts -->
 
 				<ul class="nav nav-list">
-					<li><a href="grxx.jsp"> <i
-							class="icon-file-alt"></i> <span class="menu-text"> 个人信息 </span>
+					<li><a href="tjzp.jsp"> <i
+							class="icon-file-alt"></i> <span class="menu-text"> 添加招聘管理员 </span>
 					</a></li>
 
-					<li class="active open"><a href="tjgw.jsp"> <i class="icon-tag"></i> <span
-							class="menu-text"> 添加岗位 </span>
+					<li class="active open"><a href="listAllAdminUser.do"> <i class="icon-tag"></i> <span
+							class="menu-text"> 查看管理员列表 </span>
 					</a></li>
 
-					<li><a href="poslist.do" class="dropdown-toggle"> <i
-							class=icon-list></i> <span class="menu-text"> 查看岗位列表 </span>
-					</a></li>
-
-					<li><a href="listUserPos.do" class="dropdown-toggle"> <i
-							class="icon-edit"></i> <span class="menu-text"> 审查岗位申请 </span>
-					</a></li>
 				</ul>
 				<!-- /.nav-list -->
 
@@ -209,124 +203,121 @@
 					</script>
 
 					<ul class="breadcrumb">
-						<li><i class="active"></i> <a href="#">添加岗位</a></li>
+						<li><i class="active"></i> <a href="#">管理员列表</a></li>
 					</ul>
 					<!-- .breadcrumb -->
 
 				</div>
 
 				<div class="page-content">
+					<!--page-header -->
 					<div class="page-header">
-						<h1>
-							添加岗位
-						</h1>
+						<div class="col-xs-12">
+						
+						</div>
 					</div>
 					<!-- /.page-header -->
 					<div class="row">
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 
-							<form class="form-horizontal" action="addPos.do" method="post">
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 岗位编号 </label>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="table-header">
+											管理员列表
+										</div>
 
-									<div class="col-sm-9">
-										<input type="text" name="posnum" id="form-field-1" placeholder="编号" 
-											class="col-xs-10 col-sm-5" />
+										<div class="table-responsive">
+											<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+												<thead>
+													<tr>
+														<th class="center">
+															<label>
+																<input type="checkbox" class="ace" />
+																<span class="lbl"></span>
+															</label>
+														</th>
+														<th>员工编号</th>
+														<th>员工姓名</th>
+														<th>部门</th>
+														<th>公司</th>
+														<th>权限</th>
+														<th></th>
+													</tr>
+												</thead>
+
+												<tbody>
+												<c:forEach var="adminuser" items="${adminuserlist}" varStatus="stat">
+													<tr>
+														<td class="center">
+															<label>
+																<input type="checkbox" class="ace" />
+																<span class="lbl"></span>
+															</label>
+														</td>
+
+														<td>${adminuser.auserid }</td>
+														<td>${adminuser.ausername }</td>
+														<td>${adminuser.auserid }</td>
+														<td>${adminuser.adept }</td>
+														<td>${adminuser.apow }</td>
+														<td>
+															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+																<a class="blue" href="#">
+																	<i class="icon-zoom-in bigger-130"></i>
+																</a>
+
+																<a class="green" href="#">
+																	<i class="icon-pencil bigger-130"></i>
+																</a>
+
+																<a class="red" href="#">
+																	<i class="icon-trash bigger-130"></i>
+																</a>
+															</div>
+
+															<div class="visible-xs visible-sm hidden-md hidden-lg">
+																<div class="inline position-relative">
+																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
+																		<i class="icon-caret-down icon-only bigger-120"></i>
+																	</button>
+
+																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+																		<li>
+																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+																				<span class="blue">
+																					<i class="icon-zoom-in bigger-120"></i>
+																				</span>
+																			</a>
+																		</li>
+
+																		<li>
+																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																				<span class="green">
+																					<i class="icon-edit bigger-120"></i>
+																				</span>
+																			</a>
+																		</li>
+
+																		<li>
+																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																				<span class="red">
+																					<i class="icon-trash bigger-120"></i>
+																				</span>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</td>
+													</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
 
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 岗位名称 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="posname" id="form-field-1" placeholder="名字"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 招聘人数 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="num" id="form-field-1" placeholder="人数"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 工作地点 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="place" id="form-field-1" placeholder="地点"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 所在部门 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="dept" id="form-field-1" placeholder="部门"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 所属公司 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="company" id="form-field-1" placeholder="公司"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 截止日期 </label>
-
-									<div class="col-sm-9">
-										<input type="text" name="endtime" id="form-field-1" placeholder="日期"
-											class="col-xs-10 col-sm-5" />
-									</div>
-								</div>
-
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right"
-										for="form-field-1"> 岗位描述 </label>
-
-									<div class="col-sm-9">
-										<textarea class="form-control" name="posdesc" id="form-field-8" placeholder="岗位描述"></textarea>
-									</div>
-								</div>
-								<div class="space-4"></div>
-
-								<div class="clearfix form-actions">
-									<div class="col-md-offset-3 col-md-9">
-										<button class="btn btn-info" type="submit">
-											<i class="icon-ok bigger-110"></i> 确认
-										</button>
-
-										&nbsp; &nbsp; &nbsp;
-										<button class="btn" type="reset">
-											<i class="icon-undo bigger-110"></i> 重置
-										</button>
-									</div>
-								</div>
-								<!-- /row -->
-							</form>
 							
 							<!-- PAGE CONTENT ENDS -->
 						</div>
@@ -402,54 +393,84 @@
 
 	<!-- basic scripts -->
 
-	<!--[if !IE]> -->
+		<!--[if !IE]> -->
 
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-	<!-- <![endif]-->
+		<!-- <![endif]-->
 
-	<!--[if IE]>
+		<!--[if IE]>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <![endif]-->
 
-	<!--[if !IE]> -->
+		<!--[if !IE]> -->
 
-	<script type="text/javascript">
-		window.jQuery
-				|| document
-						.write("<script src='assets/js/jquery-2.0.3.min.js'>"
-								+ "<"+"/script>");
-	</script>
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
 
-	<!-- <![endif]-->
+		<!-- <![endif]-->
 
-	<!--[if IE]>
+		<!--[if IE]>
 <script type="text/javascript">
  window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
 
-	<script type="text/javascript">
-		if ("ontouchend" in document)
-			document
-					.write("<script src='assets/js/jquery.mobile.custom.min.js'>"
-							+ "<"+"/script>");
-	</script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/typeahead-bs2.min.js"></script>
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/typeahead-bs2.min.js"></script>
 
-	<!-- page specific plugin scripts -->
+		<!-- page specific plugin scripts -->
 
-	<!-- ace scripts -->
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/jquery.dataTables.bootstrap.js"></script>
 
-	<script src="assets/js/ace-elements.min.js"></script>
-	<script src="assets/js/ace.min.js"></script>
+		<!-- ace scripts -->
 
-	<!-- inline scripts related to this page -->
-	<div style="display: none">
-		<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540'
-			language='JavaScript' charset='gb2312'></script>
-	</div>
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			jQuery(function($) {
+				var oTable1 = $('#sample-table-2').dataTable( {
+				/* "aoColumns": [
+			      { "bSortable": false },
+			      null, null,null, null, null,
+				  { "bSortable": false }
+				] */ } );
+				
+				
+				$('table th input:checkbox').on('click' , function(){
+					var that = this;
+					$(this).closest('table').find('tr > td:first-child input:checkbox')
+					.each(function(){
+						this.checked = that.checked;
+						$(this).closest('tr').toggleClass('selected');
+					});
+						
+				});
+			
+			
+				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('table')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+			
+					var off2 = $source.offset();
+					var w2 = $source.width();
+			
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+			})
+		</script>
+	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>

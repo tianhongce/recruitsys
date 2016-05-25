@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -14,11 +15,11 @@
 <head>
 <base href="<%=basePath%>"></base>
 <meta charset="utf-8">
-<meta name="description" content="曹磊公司人才招聘" />
+<meta name="description" content="公司人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
 <link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
-<title>曹磊公司人才招聘-登录</title>
+<title>公司人才招聘-登录</title>
 
 <script type="text/javascript">
 	if (!window.applicationCache) {
@@ -87,8 +88,8 @@
 							<div class="btn-group dropdown">
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									曹磊公司首页</a>
+									href="index.jsp"><i class="fa fa-home"></i>
+									公司首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -112,11 +113,11 @@
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="frontjsp/assets/images/index_logo.jpg" alt="曹磊公司"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -151,14 +152,13 @@
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
 											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
+											
 											<li class="bar_li" id="campus_bar"><a
-												href="job_position.action?jobType=CAMPUS">校园招聘</a></li>
-											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">社会招聘</a></li>
+												href="job_position.action?jobType=CAMPUS">招聘岗位</a></li>
+											
 											<li class="bar_li" id="personal_bar"><a
 												href="myRecruit.action">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></a></li>
 										</ul>
 									</div>
 								</div>
@@ -202,9 +202,9 @@
 				<div class="row col-lg-12">
 					<div class="space-bottom"></div>
 					<h2 class="text-center">用户登录</h2>
-					
+					<h3 class="text-center">${msg }</h3>
 					<form class="form-horizontal" role="form" method="post"
-						id="login_form" action="login.action">
+						id="login_form" action="login.do">
 						<input type="hidden" id="loginType" name="loginType" value="email" />
 						<div class="form-group">
 							<label for="inputEmail"
@@ -260,7 +260,7 @@
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">曹磊公司管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;
+								<a href="http://www.nffund.com/" target="_blank">公司管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;
 							</p>
 							<p style="margin-bottom: 10px !important;">校址：辽宁省沈阳市和平区文化路三巷11号 | 三舍C区&nbsp;&nbsp;邮编：110819</p>
 						</div>

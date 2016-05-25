@@ -42,7 +42,7 @@
     delete from resume
     where resumeid = #{resumeid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.t.entity.Resume" >
+  <insert id="insert" parameterType="cn.t.entity.Resume" useGeneratedKeys="true" keyProperty="resume.resumeid">
     insert into resume (resumeid, userid, fullname, 
       sex, tall, birthday, province, 
       politicalstatus, maritalstatus, idcardnum, 

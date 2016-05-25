@@ -65,7 +65,7 @@
 								id="welcome">
 								<button type="button" class="btn"
 									onclick="location.href='myRecruit.action';">
-									<i class="fa fa-search"></i> 欢迎您，张三
+									<i class="fa fa-search"></i> ${user.username }
 								</button>
 							</div>
 							<div class="btn-group dropdown">
@@ -77,7 +77,7 @@
 							<div class="btn-group dropdown">
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i> 首页</a>
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -236,12 +236,14 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th style="width: 35%;">职位名称</th>
-										<th style="width: 19%;">所属部门</th>
-										<th style="width: 13%;">工作地点</th>
-										<th style="width: 13%;">招聘人数</th>
-										<th style="width: 20%;">截止时间</th>
-										<th></th>
+										<th style="width: 14%;">职位名称</th>
+										<th style="width: 14%;">所属部门</th>
+										<th style="width: 14%;">所属公司</th>
+										<th style="width: 14%;">工作地点</th>
+										<th style="width: 5%;">招聘人数</th>
+										<th style="width: 14%;">截止时间</th>
+										<th style="width: 20%;">岗位介绍</th>
+										<th style="width: 5%;">申请</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -252,13 +254,16 @@
 											onclick="showJobDesp($('#${pos.posname}'), ${pos.posnum})">
 											<td>${pos.posname}</td>
 											<td>${pos.dept}</td>
+											<td>${pos.company}</td>
 											<td>${pos.place}</td>
 											<td>${pos.num}</td>
 											<td>${pos.endtime}</td>
-											<td><span id="${pos.posname}"><b
-													class="arrow fa fa-angle-down"></b></span></td>
+											<td>${pos.posdesc}</td>
+											<td>aa</td>
+											<%-- <td><span id="${pos.posname}"><b
+													class="arrow fa fa-angle-down"></b></span></td> --%>
 										</tr>
-										<tr id="${pos.posnum}" style="display: none">
+										<%-- <tr id="${pos.posnum}" style="display: none">
 											<td colspan="6">
 											<strong>职位所属公司：</strong><br />
 												${pos.company}<br /> <br />
@@ -273,7 +278,7 @@
 													<button class="btn btn-primary btn-sm radius"
 														style="display: none">分享</button>
 												</div></td>
-										</tr>
+										</tr> --%>
 									</form>
 									</c:forEach>
 								</tbody>

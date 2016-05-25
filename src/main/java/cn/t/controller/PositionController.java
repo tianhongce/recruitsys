@@ -28,7 +28,7 @@ public class PositionController {
 		this.positionservice = positionservice;
 	}
 	
-	@RequestMapping(value = "/poslist", method = RequestMethod.GET)
+	@RequestMapping(value = "/frontjsp/poslist", method = RequestMethod.GET)
 	public String getPoslist(HttpSession httpsession){
 		System.out.println("postlist请求");
 		List<Position> list = positionservice.getAllPos();
@@ -36,6 +36,17 @@ public class PositionController {
 		httpsession.setAttribute("poslist", list);
 		System.out.println(list);
 		return "frontjsp/zwlb";
+		
+		
+	}
+	@RequestMapping(value = "/adminjsp/poslist", method = RequestMethod.GET)
+	public String getadminPoslist(HttpSession httpsession){
+		System.out.println("postlist请求");
+		List<Position> list = positionservice.getAllPos();
+	
+		httpsession.setAttribute("poslist", list);
+		System.out.println(list);
+		return "adminjsp/ckgw";
 		
 		
 	}
@@ -55,7 +66,7 @@ public class PositionController {
 		return "frontjsp/zwlb";
 	}
 	
-	@RequestMapping(value = "/addPos", method = RequestMethod.POST)
+	@RequestMapping(value = "admin/addPos", method = RequestMethod.POST)
 	public String addPos(Position pos){
 		
 		int a= positionservice.insertPos(pos);
