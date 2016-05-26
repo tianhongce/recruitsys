@@ -105,7 +105,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> ${session.username }
+							class="user-info"> <small>欢迎,</small> ${auser.ausername }
 						</span> 
 					</a>
 
@@ -219,6 +219,7 @@
 					<div class="page-header">
 						<h1>
 							个人信息
+							<%-- <input type='hidden' name="errorMsg" value="${msg }"/> --%>
 						</h1>
 					</div>
 					<!-- /.page-header -->
@@ -226,13 +227,13 @@
 						<div class="col-xs-9">
 							<!-- PAGE CONTENT BEGINS -->
 
-							<form class="form-horizontal" action="editAdminUser.do" method="post">
+							<form class="form-horizontal" action="editAdminUserEdit.do" method="post">
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 姓名 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="ausername" id="form-field-1" placeholder="${session.auser.ausername }" value="${session.auser.ausername }"
+										<input type="text" name="ausername" id="form-field-1" placeholder="${auser.ausername }" value="${session.auser.ausername }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -244,8 +245,8 @@
 										for="form-field-2"> 密码 </label>
 
 									<div class="col-sm-9">
-										<input type="password" name="auserpwd" id="form-field-2"
-											placeholder="${session.auser.auserpwd }" value="${session.auser.auserpwd }" class="col-xs-10 col-sm-5" /> <span
+										<input type="text" name="auserpwd" id="form-field-2"
+											placeholder="${auser.auserpwd }" value="${auser.auserpwd }" class="col-xs-10 col-sm-5" /> <span
 											class="help-inline col-xs-12 col-sm-7"> 
 										</span>
 									</div>
@@ -259,7 +260,7 @@
 
 									<div class="col-sm-9">
 										<input readonly="" type="text" class="col-xs-10 col-sm-5"
-											id="form-input-readonly" name="auserid" value="${session.auser.auserid }" />
+											id="form-input-readonly" name="auserid" value="${auser.auserid }" />
 										<span class="help-inline col-xs-12 col-sm-7"> <label
 											class="middle"> 
 										</label>
@@ -274,7 +275,7 @@
 										for="form-field-1"> 所在部门 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="adept" id="form-field-1" placeholder="${session.auser.adept }" value="${session.auser.adept }"
+										<input type="text" name="adept" id="form-field-1" placeholder="${auser.adept }" value="${auser.adept }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -284,7 +285,7 @@
 										for="form-field-1"> 所属公司 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="acompany" id="form-field-1" placeholder="${session.auser.acompany }" value="${session.auser.acompany }"
+										<input type="text" name="acompany" id="form-field-1" placeholder="${auser.acompany }" value="${auser.acompany }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -296,7 +297,7 @@
 
 									<div class="col-sm-9">
 										<input type="text" name="apow" id="form-field-tags"
-											 placeholder="${session.auser.apow }" value="${session.auser.apow }" />
+											 placeholder="${auser.apow }" value="${auser.apow }" />
 									</div>
 								</div>
 
@@ -433,6 +434,17 @@
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 
+<script type='text/javascript'>
+		$(function(){
+/* 			
+			var msg = $('input[name="errorMsg"]').val();
+			
+			if(msg !==  ''){
+				alert(msg);
+			} */
+			
+		});
+	</script>
 	<!-- inline scripts related to this page -->
 	<div style="display: none">
 		<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540'

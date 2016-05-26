@@ -1,6 +1,12 @@
 package cn.t.entity;
 
-import java.sql.Date;
+
+
+
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Position {
     private String posnum;
@@ -15,6 +21,7 @@ public class Position {
 
     private String num;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd") 
     private Date endtime;
 
     private String posdesc;

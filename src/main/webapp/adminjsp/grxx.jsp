@@ -105,7 +105,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> ${session.username }
+							class="user-info"> <small>欢迎,</small> ${auser.ausername }
 						</span> 
 					</a>
 
@@ -232,7 +232,7 @@
 										for="form-field-1"> 姓名 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" name="ausername" placeholder="${session.auser.ausername }"
+										<input type="text" readonly="readonly" id="form-field-1" name="ausername" placeholder="${auser.ausername }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -244,8 +244,8 @@
 										for="form-field-2"> 密码 </label>
 
 									<div class="col-sm-9">
-										<input type="password" id="form-field-2" name="auserpwd"
-											placeholder="******" class="col-xs-10 col-sm-5" /> <span
+										<input type="text" readonly="readonly" id="form-field-2" name="auserpwd"
+											placeholder="${auser.auserpwd }" class="col-xs-10 col-sm-5" /> <span
 											class="help-inline col-xs-12 col-sm-7"> 
 										</span>
 									</div>
@@ -259,7 +259,7 @@
 
 									<div class="col-sm-9">
 										<input readonly="" type="text" class="col-xs-10 col-sm-5" name="auserid"
-											id="form-input-readonly" value="${session.auser.auserid }" />
+											id="form-input-readonly" value="${auser.auserid }" />
 										<span class="help-inline col-xs-12 col-sm-7"> <label
 											class="middle"> 
 										</label>
@@ -274,7 +274,7 @@
 										for="form-field-1"> 所在部门 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" name="adept" placeholder="${session.auser.adept }"
+										<input type="text" readonly="readonly" id="form-field-1" name="adept" placeholder="${auser.adept }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -284,7 +284,7 @@
 										for="form-field-1"> 所属公司 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-1" name="acompany" placeholder="${session.auser.acompany }"
+										<input type="text" readonly="readonly" id="form-field-1" name="acompany" placeholder="${auser.acompany }"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -295,15 +295,15 @@
 										for="form-field-tags">权限</label>
 
 									<div class="col-sm-9">
-										<input type="text" name="tags" name="apow" id="form-field-tags"
-											 placeholder="${session.auser.apow }" />
+										<input type="text" readonly="readonly" name="tags" name="apow" id="form-field-tags"
+											 placeholder="${auser.apow }" />
 									</div>
 								</div>
 
 								<div class="clearfix form-actions">
 									<div class="col-md-offset-3 col-md-9">
-										<button class="btn btn-info" type="button">
-											<i class="icon-ok bigger-110"></i> 修改<a href="grxxedit.jsp">
+										<button class="btn btn-info" type="button" onclick="edit()">
+											<i class="icon-edit bigger-110"></i> 修改<a href="grxxedit.jsp">
 										</button>
 									</div>
 								</div>
@@ -427,6 +427,19 @@
 
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
+
+	<script type="text/javascript">
+	
+		
+		function edit(){
+			window.location.href="editAdminUser.do" ;
+		}
+		
+
+	
+	
+	</script>
+	
 
 	<!-- inline scripts related to this page -->
 	<div style="display: none">

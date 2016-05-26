@@ -6,7 +6,8 @@ import java.util.Map;
 import cn.t.entity.Position;
 
 public interface PositionServiceI {
-	public Position getPosByPosname();
+	public Position getPosByPosname(String posname);
+	public Position getPosByPosnum(String posnum);
 	public List<Position> getAllPos();
 	public List<Position> getPosByCom();
 	public List<Position> getPosByDept();

@@ -14,11 +14,12 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+<base href="<%=basePath%>"></base>
 <meta charset="utf-8">
-<meta name="description" content="南方基金人才招聘" />
+<meta name="description" content="人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
-<link rel="shortcut icon" href="../nimages/favicon.ico" />
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
 <title>我的简历</title>
 
 <script type="text/javascript">
@@ -27,13 +28,13 @@
 	}
 </script>
 
-<link href="../ncss/bootstrap.css" rel="stylesheet" />
-<link href="../ncss/font-awesome.css" rel="stylesheet" />
-<link href="../ncss/style.css" rel="stylesheet" />
-<link href="../ncss/blue.css" rel="stylesheet" />
-<link href="../ncss/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="../ncss/ui.jqgrid.css" />
+<link rel="stylesheet" href="frontjsp/assets/css/ui.jqgrid.css" />
 <style type="text/css">
 label {
 	line-height: 2;
@@ -63,9 +64,9 @@ label {
 }
 </style>
 </head>
-<script type="text/javascript" src="../njs/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
 <script type="text/javascript"
-	src="../njs/bootstrap.min.js"></script>
+	src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 <body class="front">
 	<div class="page-wrapper">
@@ -112,7 +113,7 @@ label {
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
 									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -136,7 +137,7 @@ label {
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="../nimages/index_logo.jpg" alt="南方基金"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -314,6 +315,7 @@ label {
 						<form method="post" id="language_info_form"
 							onsubmit="return false;">
 							<input type="hidden" name="user_email" value="neu_tianhc@126.com">
+							<input type="hidden" name="userid" value="1">
 							<input type="hidden" name="resumetype" value="CN"> <input
 								type="hidden" name="langid" value="-1"> <input
 								type="hidden" name="oper" value="add">
@@ -322,6 +324,7 @@ label {
 									class="text-default">*</small></label>
 								<div class="col-md-9">
 									<select class="form-control" name="lang" id="lang">
+										<option value="">请选择</option>
 										<option value="英语">英语</option>
 										<option value="日语">日语</option>
 										<option value="俄语">俄语</option>
@@ -345,6 +348,7 @@ label {
 									class="text-default">*</small></label>
 								<div class="col-md-9">
 									<select class="form-control" name="degree" id="degree">
+										<option value="">请选择</option>
 										<option value="一般">一般</option>
 										<option value="良好">良好</option>
 										<option value="熟练">熟练</option>
@@ -379,7 +383,7 @@ label {
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
+								<a href="http://www.nffund.com/" target="_blank">管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
 							</p>
 							<p style="margin-bottom: 10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
 						</div>
@@ -401,9 +405,9 @@ label {
 	</div>
 
 	<script type="text/javascript"
-		src="../njs/jqGrid/jquery.jqGrid.src.js"></script>
+		src="frontjsp/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
 	<script type="text/javascript"
-		src="../njs/jqGrid/i18n/grid.locale-cn.js"></script>
+		src="frontjsp/assets/js/jqGrid/i18n/grid.locale-cn.js"></script>
 
 	<script type="text/javascript">
 		////////////////////////////////////////////////////////////////////////////////////////
@@ -525,7 +529,7 @@ label {
 												maxlength : "64"
 											}
 										}, ],
-								editurl : "saveLanguageInfo.action",
+								editurl : "saveLanguageInfo.do",
 								serializeRowData : serializeData
 							}).hideCol("langid");
 
@@ -589,7 +593,7 @@ label {
 			}
 
 			var options = {
-				url : "saveLanguageInfo.action",
+				url : "saveLanguageInfo.do",
 				type : "post",
 				success : function(data, statusText) {
 					if (typeof (data) == "undefined") {
@@ -670,8 +674,8 @@ label {
 			}
 		}
 	</script>
-	<script type="text/javascript" src="../njs/jquery.validate.js"></script>
-	<script type="text/javascript" src="../njs/jquery.toastmessage.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/*

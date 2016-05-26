@@ -61,7 +61,7 @@ public class UserPosController {
 		return "";
 	}
 	
-	@RequestMapping(value = "adminjsp/listUserPos", method = RequestMethod.POST)
+	@RequestMapping(value = "adminjsp/listUserPos", method = RequestMethod.GET)
 	public String listUserPos(HttpSession session){
 		List<UserPosition> userposlist=userposservice.getAllUserPos();
 		session.setAttribute("userposlist", userposlist);

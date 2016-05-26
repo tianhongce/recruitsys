@@ -105,7 +105,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> ${session.ausername }
+							class="user-info"> <small>欢迎,</small> ${auser.ausername }
 						</span> 
 					</a>
 
@@ -219,6 +219,7 @@
 					<div class="page-header">
 						<h1>
 							添加岗位
+							<input type='hidden' name="errorMsg" value="${msg }"/>
 						</h1>
 					</div>
 					<!-- /.page-header -->
@@ -226,13 +227,13 @@
 						<div class="col-xs-12">
 							<!-- PAGE CONTENT BEGINS -->
 
-							<form class="form-horizontal" action="addPos.do" method="post">
+							<form id="pos-form" class="form-horizontal" action="addPos.do" method="post">
 								<div class="form-group">
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 岗位编号 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="posnum" id="form-field-1" placeholder="编号" 
+										<input type="text" name="posnum" id="posnum" placeholder="编号" 
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -243,7 +244,7 @@
 										for="form-field-1"> 岗位名称 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="posname" id="form-field-1" placeholder="名字"
+										<input type="text" name="posname" id="posname" placeholder="名字"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -254,7 +255,7 @@
 										for="form-field-1"> 招聘人数 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="num" id="form-field-1" placeholder="人数"
+										<input type="text" name="num" id="num" placeholder="人数"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -264,7 +265,7 @@
 										for="form-field-1"> 工作地点 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="place" id="form-field-1" placeholder="地点"
+										<input type="text" name="place" id="place" placeholder="地点"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -275,7 +276,7 @@
 										for="form-field-1"> 所在部门 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="dept" id="form-field-1" placeholder="部门"
+										<input type="text" name="dept" id="dept" placeholder="部门"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -286,7 +287,7 @@
 										for="form-field-1"> 所属公司 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="company" id="form-field-1" placeholder="公司"
+										<input type="text" name="company" id="company" placeholder="公司"
 											class="col-xs-10 col-sm-5" />
 									</div>
 								</div>
@@ -297,8 +298,9 @@
 										for="form-field-1"> 截止日期 </label>
 
 									<div class="col-sm-9">
-										<input type="text" name="endtime" id="form-field-1" placeholder="日期"
-											class="col-xs-10 col-sm-5" />
+										<input type="text" name="endtime"  onClick="WdatePicker()"  placeholder="日期"
+											class="Wdate col-xs-10 col-sm-5"/>
+											
 									</div>
 								</div>
 
@@ -439,12 +441,345 @@
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/typeahead-bs2.min.js"></script>
 
-	<!-- page specific plugin scripts -->
+<!-- page specific plugin scripts -->
 
+		<script src="assets/js/jquery-ui-1.10.3.full.min.js"></script>
+		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			jQuery(function($) {
+			
+				$( "#datepicker" ).datepicker({
+					showOtherMonths: true,
+					selectOtherMonths: true,
+					isRTL:true,
+					
+/* 						format: 'mm/dd/yyyy',
+					    startDate: '-3d', */
+					changeMonth: true,
+					changeYear: true,
+					
+					showButtonPanel: true,
+					beforeShow: function() {
+						//change button colors
+						var datepicker = $(this).datepicker( "widget" );
+						setTimeout(function(){
+							var buttons = datepicker.find('.ui-datepicker-buttonpane')
+							.find('button');
+							buttons.eq(0).addClass('btn btn-xs');
+							buttons.eq(1).addClass('btn btn-xs btn-success');
+							buttons.wrapInner('<span class="bigger-110" />');
+						}, 0);
+					}
+			
+				});
+			
+			
+				//override dialog's title function to allow for HTML titles
+				$.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
+					_title: function(title) {
+						var $title = this.options.title || '&nbsp;'
+						if( ("title_html" in this.options) && this.options.title_html == true )
+							title.html($title);
+						else title.text($title);
+					}
+				}));
+			
+				$( "#id-btn-dialog1" ).on('click', function(e) {
+					e.preventDefault();
+			
+					var dialog = $( "#dialog-message" ).removeClass('hide').dialog({
+						modal: true,
+						title: "<div class='widget-header widget-header-small'><h4 class='smaller'><i class='icon-ok'></i> jQuery UI Dialog</h4></div>",
+						title_html: true,
+						buttons: [ 
+							{
+								text: "Cancel",
+								"class" : "btn btn-xs",
+								click: function() {
+									$( this ).dialog( "close" ); 
+								} 
+							},
+							{
+								text: "OK",
+								"class" : "btn btn-primary btn-xs",
+								click: function() {
+									$( this ).dialog( "close" ); 
+								} 
+							}
+						]
+					});
+			
+					/**
+					dialog.data( "uiDialog" )._title = function(title) {
+						title.html( this.options.title );
+					};
+					**/
+				});
+			
+			
+				$( "#id-btn-dialog2" ).on('click', function(e) {
+					e.preventDefault();
+				
+					$( "#dialog-confirm" ).removeClass('hide').dialog({
+						resizable: false,
+						modal: true,
+						title: "<div class='widget-header'><h4 class='smaller'><i class='icon-warning-sign red'></i> Empty the recycle bin?</h4></div>",
+						title_html: true,
+						buttons: [
+							{
+								html: "<i class='icon-trash bigger-110'></i>&nbsp; Delete all items",
+								"class" : "btn btn-danger btn-xs",
+								click: function() {
+									$( this ).dialog( "close" );
+								}
+							}
+							,
+							{
+								html: "<i class='icon-remove bigger-110'></i>&nbsp; Cancel",
+								"class" : "btn btn-xs",
+								click: function() {
+									$( this ).dialog( "close" );
+								}
+							}
+						]
+					});
+				});
+			
+			
+				
+				//autocomplete
+				 var availableTags = [
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"
+				];
+				$( "#tags" ).autocomplete({
+					source: availableTags
+				});
+			
+				//custom autocomplete (category selection)
+				$.widget( "custom.catcomplete", $.ui.autocomplete, {
+					_renderMenu: function( ul, items ) {
+						var that = this,
+						currentCategory = "";
+						$.each( items, function( index, item ) {
+							if ( item.category != currentCategory ) {
+								ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+								currentCategory = item.category;
+							}
+							that._renderItemData( ul, item );
+						});
+					}
+				});
+				
+				 var data = [
+					{ label: "anders", category: "" },
+					{ label: "andreas", category: "" },
+					{ label: "antal", category: "" },
+					{ label: "annhhx10", category: "Products" },
+					{ label: "annk K12", category: "Products" },
+					{ label: "annttop C13", category: "Products" },
+					{ label: "anders andersson", category: "People" },
+					{ label: "andreas andersson", category: "People" },
+					{ label: "andreas johnson", category: "People" }
+				];
+				$( "#search" ).catcomplete({
+					delay: 0,
+					source: data
+				});
+				
+				
+				//tooltips
+				$( "#show-option" ).tooltip({
+					show: {
+						effect: "slideDown",
+						delay: 250
+					}
+				});
+			
+				$( "#hide-option" ).tooltip({
+					hide: {
+						effect: "explode",
+						delay: 250
+					}
+				});
+			
+				$( "#open-event" ).tooltip({
+					show: null,
+					position: {
+						my: "left top",
+						at: "left bottom"
+					},
+					open: function( event, ui ) {
+						ui.tooltip.animate({ top: ui.tooltip.position().top + 10 }, "fast" );
+					}
+				});
+			
+			
+				//Menu
+				$( "#menu" ).menu();
+			
+			
+				//spinner
+				var spinner = $( "#spinner" ).spinner({
+					create: function( event, ui ) {
+						//add custom classes and icons
+						$(this)
+						.next().addClass('btn btn-success').html('<i class="icon-plus"></i>')
+						.next().addClass('btn btn-danger').html('<i class="icon-minus"></i>')
+						
+						//larger buttons on touch devices
+						if(ace.click_event == "tap") $(this).closest('.ui-spinner').addClass('ui-spinner-touch');
+					}
+				});
+			
+				//slider example
+				$( "#slider" ).slider({
+					range: true,
+					min: 0,
+					max: 500,
+					values: [ 75, 300 ]
+				});
+			
+			
+			
+				//jquery accordion
+				$( "#accordion" ).accordion({
+					collapsible: true ,
+					heightStyle: "content",
+					animate: 250,
+					header: ".accordion-header"
+				}).sortable({
+					axis: "y",
+					handle: ".accordion-header",
+					stop: function( event, ui ) {
+						// IE doesn't register the blur when sorting
+						// so trigger focusout handlers to remove .ui-state-focus
+						ui.item.children( ".accordion-header" ).triggerHandler( "focusout" );
+					}
+				});
+				//jquery tabs
+				$( "#tabs" ).tabs();
+				
+				
+				//progressbar
+				$( "#progressbar" ).progressbar({
+					value: 37,
+					create: function( event, ui ) {
+						$(this).addClass('progress progress-striped active')
+							   .children(0).addClass('progress-bar progress-bar-success');
+					}
+				});
+					
+			});
+		</script>
 	<!-- ace scripts -->
 
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
+	<script language="javascript" type="text/javascript" src="assets/My97DatePicker/WdatePicker.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+	
+		<script type="text/javascript">
+		$().ready(function() {
+			 $("#pos-form").validate({
+				 rules : {
+						posnum : {
+							required : true,
+						},
+						posname : {
+							required : true,
+						},
+						num : {
+							required : true,
+						},
+						place : {
+							required : true
+						},
+						dept : {
+							required : true,
+						},
+						company : {
+							required : true,
+						},
+						endtime : {
+							required : true,
+						},
+						posdesc : {
+							required : true
+						}
+					},
+					messages : {
+						posnum : {
+							required : "岗位编号不能为空"
+						},
+						posname : {
+							required : "岗位名称不能为空"
+						},
+						num : {
+							required : "招聘人数不能为空"
+						},
+						place : {
+							required : "工作地点不能为空"
+						},
+						dept : {
+							required : "部门不能为空",
+						},
+						company : {
+							required : "公司不能为空",
+						},
+						endtime : {
+							required : "截止时间不能为空"
+						},
+						posdesc : {
+							required : "工作描述不能为空"
+						}
+					}
+			    });
+			});
+		
+		$(function(){
+			
+			var msg = $('input[name="errorMsg"]').val();
+			
+			if(msg !==  ''){
+				alert(msg);
+			}
+			
+		});
+        </script>
+        <style>
+		.error{
+			color:red;
+				}
+		</style>
 
 	<!-- inline scripts related to this page -->
 	<div style="display: none">

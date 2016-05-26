@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +35,9 @@ public class PositionController {
 	public String getPoslist(HttpSession httpsession){
 		System.out.println("postlist请求");
 		List<Position> list = positionservice.getAllPos();
-	
+//		String msg="岗位列表";
 		httpsession.setAttribute("poslist", list);
+//		httpsession.setAttribute("msg", msg);
 		System.out.println(list);
 		return "frontjsp/zwlb";
 		
@@ -43,8 +47,9 @@ public class PositionController {
 	public String getadminPoslist(HttpSession httpsession){
 		System.out.println("postlist请求");
 		List<Position> list = positionservice.getAllPos();
-	
+		String msg="";
 		httpsession.setAttribute("poslist", list);
+		httpsession.setAttribute("msg", msg);
 		System.out.println(list);
 		return "adminjsp/ckgw";
 		
@@ -66,24 +71,42 @@ public class PositionController {
 		return "frontjsp/zwlb";
 	}
 	
-	@RequestMapping(value = "admin/addPos", method = RequestMethod.POST)
-	public String addPos(Position pos){
-		
-		int a= positionservice.insertPos(pos);
-		return "redirect:poslist.do"; 
+	@RequestMapping(value = "adminjsp/addPos", method = RequestMethod.POST)
+	public String addPos(@ModelAttribute("AdminUser") Position pos,HttpSession session,ModelMap map){
+		String posnum=pos.getPosnum();
+		String msg="添加";
+		if(positionservice.getPosByPosnum(posnum)==null){
+			int resultnum= positionservice.insertPos(pos);
+			if(resultnum>0){
+				msg="";
+				return "redirect:poslist.do"; 
+			}else{
+				msg="添加失败";
+			}
+		}else{
+			msg="该职位编号已经添加!";
+		}
+		session.setAttribute("msg", msg);
+		return "adminjsp/tjgw"; 
 	}
 
-	@RequestMapping(value = "/editPos", method = RequestMethod.POST)
-	public String editPos(Position pos){
-		
-		int a= positionservice.editPos(pos);
-		return "redirect:poslist.do"; 
+	@RequestMapping(value = "adminjsp/editPos", method = RequestMethod.POST)
+	public String editPos(HttpSession session,HttpServletRequest request){
+		String posnum = request.getParameter("posnum");
+		session.setAttribute("pos", positionservice.getPosByPosnum(posnum));
+		return "adminjsp/gwxg"; 
 	}
 	
-	@RequestMapping(value = "/delPos", method = RequestMethod.POST)
-	public String delPos(String posnum){
-		
-		int a= positionservice.delPos(posnum);
+	@RequestMapping(value = "adminjsp/delPos", method = RequestMethod.GET)
+	public String delPos(HttpSession session,HttpServletRequest request){
+		 String posnum = request.getParameter("posnum");
+		 System.out.println(posnum);
+		int resultnum= positionservice.delPos(posnum);
+		String msg="删除失败";
+		if(resultnum>0){
+			msg="删除成功!";
+		}
+		session.setAttribute("msg", msg);
 		return "redirect:poslist.do"; 
 	}
 }

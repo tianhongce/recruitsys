@@ -2,13 +2,17 @@ package cn.t.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Experience {
     private Integer expinfoid;
 
     private Integer userid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")  
     private Date sdate;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")  
     private Date edate;
 
     private String company;
@@ -19,7 +23,7 @@ public class Experience {
 
     private String position;
 
-    private String desc;
+    private String desp;
 
     public Integer getExpinfoid() {
         return expinfoid;
@@ -85,11 +89,11 @@ public class Experience {
         this.position = position == null ? null : position.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getdesp() {
+        return desp;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setdesp(String desp) {
+        this.desp = desp == null ? null : desp.trim();
     }
 }

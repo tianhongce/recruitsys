@@ -1,27 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
 
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta name="description" content="南方基金人才招聘" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Mobile Meta -->
-		<link rel="shortcut icon" href="assets/images/favicon.ico" />
-		<title>我的简历</title>
-		
+<head>
+<base href="<%=basePath%>"></base>
+<meta charset="utf-8">
+<meta name="description" content="人才招聘" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Mobile Meta -->
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
+<title>我的简历</title>
 		<script type="text/javascript">
 		if (!window.applicationCache) {
 			 self.location = "validateHtml5.action";
         }
 		</script>
 		
-		<link href="ncss/bootstrap.css" rel="stylesheet" />
-<link href="ncss/font-awesome.css" rel="stylesheet" />
-<link href="ncss/style.css" rel="stylesheet" />
-<link href="ncss/blue.css" rel="stylesheet" />
-<link href="ncss/jquery.toastmessage.css" rel="stylesheet" />
+		<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 		
 		<style type="text/css">
 	label {
@@ -39,8 +49,8 @@
 	}
 	</style>
 </head>
-	<script type="text/javascript" src="assets/plugins/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 	<body class="front">
 		<div class="page-wrapper">
@@ -104,7 +114,7 @@
 
 				<!-- logo -->
 				<div class="logo">
-					<a href="/nfjjRecruitSystem/"><img id="logo" src="assets/images/index_logo.jpg" alt="南方基金"></a>
+					<a href="/nfjjRecruitSystem/"><img id="logo" src="frontjsp/assets/images/index_logo.jpg" alt="南方基金"></a>
 				</div>
 
 				<!-- name-and-slogan -->
@@ -262,6 +272,7 @@ function newsClick(){
 				<div class="col-lg-8 col-lg-offset-1">
 		<form method="post" id="evaluation_form" onsubmit="return false;">
 			<input type="hidden" name="user_email" value="neu_tianhc@126.com">
+			<input type="hidden" name="userid" value="1">
 			<input type="hidden" name="resumetype" value="CN">
 			<div class="form-group">
 				<label for="evaluation" class="col-md-2 control-label">自我评价<small class="text-default">*</small></label>
@@ -316,7 +327,7 @@ function newsClick(){
 		}
 		
 		var options = {
-			url : "saveEvaluationInfo.action",
+			url : "saveEvaluationInfo.do",
 			type : "post",
 			success : function(data, statusText) {
 				if (typeof(data) == "undefined") {
@@ -424,8 +435,8 @@ function newsClick(){
 	}
 
 	</script>
-<script type="text/javascript" src="assets/plugins/jquery.validate.js"></script>
-		<script type="text/javascript" src="assets/js/jquery.toastmessage.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+		<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				/*

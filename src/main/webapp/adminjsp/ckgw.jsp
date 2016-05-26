@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -106,7 +107,7 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎,</small> ${ ausername}
+							class="user-info"> <small>欢迎,</small> ${ auser.ausername}
 						</span> 
 					</a>
 
@@ -231,6 +232,7 @@
 									<div class="col-xs-12">
 										<div class="table-header">
 											岗位列表
+											<input type='hidden' name="errorMsg" value="${msg }"/>
 										</div>
 
 										<div class="table-responsive">
@@ -251,7 +253,7 @@
 														<th>招聘人数</th>
 														<th>截止日期</th>
 														<th>岗位描述</th>
-														<th></th>
+														<th>删除</th>
 													</tr>
 												</thead>
 
@@ -271,56 +273,23 @@
 														<td>${pos.company }</td>
 														<td>${pos.place }</td>
 														<td>${pos.num }</td>
-														<td>${pos.endtime }</td>
+														<td><fmt:formatDate value="${pos.endtime }" pattern="yyyy-MM-dd" /> </td>
 														<td>${pos.posdesc }</td>
 														<td>
 															<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
+																<!-- <a class="blue" href="#">
 																	<i class="icon-zoom-in bigger-130"></i>
 																</a>
 
 																<a class="green" href="#">
 																	<i class="icon-pencil bigger-130"></i>
 																</a>
-
-																<a class="red" href="#">
+ -->
+																<a class="red" href="delPos.do?posnum=${pos.posnum}">
 																	<i class="icon-trash bigger-130"></i>
 																</a>
 															</div>
 
-															<div class="visible-xs visible-sm hidden-md hidden-lg">
-																<div class="inline position-relative">
-																	<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-																		<i class="icon-caret-down icon-only bigger-120"></i>
-																	</button>
-
-																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-																	</ul>
-																</div>
-															</div>
 														</td>
 													</tr>
 													</c:forEach>
@@ -483,6 +452,17 @@
 					return 'left';
 				}
 			})
+		</script>
+		<script type="text/javascript">
+			$(function(){
+			
+			var msg = $('input[name="errorMsg"]').val();
+			
+			if(msg !==  ''){
+				alert(msg);
+			}
+			
+		});
 		</script>
 	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>

@@ -30,6 +30,11 @@ public class ResumeController {
 		this.resumeservice = resumeservice;
 	}
 	
+	@RequestMapping(value = "fillResume", method = RequestMethod.POST)
+	public Map<String,String> fillResume(){
+		return null;
+		
+	}
 	
 	@RequestMapping(value = "frontjsp/addResume1", method = RequestMethod.POST)
 //	@InitBinder  

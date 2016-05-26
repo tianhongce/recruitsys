@@ -116,28 +116,74 @@ public class AdminUserController {
 	}
 	
 	@RequestMapping(value = "adminjsp/verifyAdminUser", method = RequestMethod.POST)
-	public String verifyAdminUser(@RequestParam("auserid") String auserid,@RequestParam("auserpwd") String auserpwd,HttpSession session) {
+	public String verifyAdminUser(@RequestParam("auserid") String auserid,@RequestParam("auserpwd") String auserpwd,HttpSession session,ModelMap model) {
 		String msg = "账号或密码错误";
-		if(auserpwd.equals(aus.getAdminUserById(auserid).getAuserpwd())){
-			msg="登陆成功";
-			session.setAttribute("ausername", aus.getAdminUserById(auserid).getAusername());
-			session.setAttribute("auserid", aus.getAdminUserById(auserid).getAuserid());
-			session.setAttribute("auser", aus.getAdminUserById(auserid));
-		}
-		session.setAttribute("msg", msg);
-		System.out.println(aus.getAdminUserById(auserid).getApow()+"登陆");
-		if(("超级管理员".equals(aus.getAdminUserById(auserid).getApow()))){
-			return "redirect:listAllAdminUser.do";
+		if(aus.getAdminUserById(auserid)==null){
+			msg="用户不存在";
 		}else{
-			return "adminjsp/grxx";
+			if(!auserpwd.equals(aus.getAdminUserById(auserid).getAuserpwd())){
+				msg="密码错误！";
+			}else{
+				model.addAttribute("auser", "auser");
+//				model.addAttribute("ausername", "ausername");
+				if(("超级管理员".equals(aus.getAdminUserById(auserid).getApow()))){
+					
+					model.addAttribute("auser", aus.getAdminUserById(auserid));
+					session.setAttribute("auser", aus.getAdminUserById(auserid));
+					return "redirect:listAllAdminUser.do";
+				}else{
+					model.addAttribute("auser", aus.getAdminUserById(auserid));
+					session.setAttribute("auser", aus.getAdminUserById(auserid));
+					return "redirect:getAdminUser.do";
+				}
+			}
 		}
+		model.addAttribute("msg", msg);
+		return "adminjsp/login";
+//		if(auserpwd.equals(aus.getAdminUserById(auserid).getAuserpwd())){
+//			
+//			session.setAttribute("ausername", aus.getAdminUserById(auserid).getAusername());
+//			session.setAttribute("auserid", aus.getAdminUserById(auserid).getAuserid());
+//			session.setAttribute("auser", aus.getAdminUserById(auserid));
+//		}
+//		session.setAttribute("msg", msg);
+//		System.out.println(aus.getAdminUserById(auserid).getApow()+"登陆");
+//		if(("超级管理员".equals(aus.getAdminUserById(auserid).getApow()))){
+//			return "redirect:listAllAdminUser.do";
+//		}else{
+//			return "adminjsp/grxx";
+//		}
 		
 	}
 	
-	@RequestMapping(value = "adminjsp/getAdminUser", method = RequestMethod.POST)
-	public String getAdminUser(@RequestParam("auserid") String auserid,HttpSession session) {
+	@RequestMapping(value = "adminjsp/getAdminUser", method = RequestMethod.GET)
+	public String getAdminUser(HttpSession session) {
 		AdminUser auser=(AdminUser)session.getAttribute("auser");
+		System.out.println(auser.getAusername());
 		session.setAttribute("auser", auser);
+		return "adminjsp/grxx";
+	}
+	
+	@RequestMapping(value = "adminjsp/editAdminUser", method = RequestMethod.GET)
+	public String editAdminUser(HttpSession session) {
+		AdminUser auser=(AdminUser)session.getAttribute("auser");
+		System.out.println(auser.getAusername());
+		session.setAttribute("auser", auser);
+		return "adminjsp/grxxedit";
+	}
+	
+	@RequestMapping(value = "adminjsp/editAdminUserEdit", method = RequestMethod.POST)
+	public String editAdminUserEdit(@ModelAttribute("AdminUser") AdminUser adminuser, HttpSession session) {
+		AdminUser auser=(AdminUser)session.getAttribute("auser");
+		String auserid=adminuser.getAuserid();
+		int resultnum=aus.editAdminUser(adminuser);
+		String msg="修改失败";
+		if(resultnum>0){
+			msg="修改成功!";
+		}
+		System.out.println(msg);
+		session.setAttribute("msg", msg);
+		session.setAttribute("auser", aus.getAdminUserById(auserid));
 		return "adminjsp/grxx";
 	}
 }

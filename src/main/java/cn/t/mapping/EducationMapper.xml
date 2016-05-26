@@ -34,12 +34,12 @@
     delete from eduinfo
     where eduinfoid = #{eduinfoid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.t.entity.Education" >
-    insert into eduinfo (eduinfoid, userid, sdate, 
-      edate, school, major, 
-      degree, edutype, desc
+  <insert id="insert" parameterType="cn.t.entity.Education" useGeneratedKeys="true" >
+    insert into `eduinfo` ( `userid`, `sdate`, 
+      `edate`, `school`, `major`, 
+      `degree`, `edutype`, `desc`
       )
-    values (#{eduinfoid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{sdate,jdbcType=DATE}, 
+    values ( #{userid,jdbcType=INTEGER}, #{sdate,jdbcType=DATE}, 
       #{edate,jdbcType=DATE}, #{school,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, 
       #{degree,jdbcType=VARCHAR}, #{edutype,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
       )

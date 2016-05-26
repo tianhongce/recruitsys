@@ -31,10 +31,10 @@
     where langinfoid = #{langinfoid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.t.entity.Language" >
-    insert into langinfo (langinfoid, userid, lang, 
+    insert into langinfo ( userid, lang, 
       degree, subject, grade
       )
-    values (#{langinfoid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{lang,jdbcType=VARCHAR}, 
+    values ( #{userid,jdbcType=INTEGER}, #{lang,jdbcType=VARCHAR}, 
       #{degree,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}
       )
   </insert>

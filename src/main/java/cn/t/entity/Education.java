@@ -2,13 +2,17 @@ package cn.t.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Education {
     private Integer eduinfoid;
 
     private Integer userid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")  
     private Date sdate;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")  
     private Date edate;
 
     private String school;

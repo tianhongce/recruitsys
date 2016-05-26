@@ -14,11 +14,12 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+<base href="<%=basePath%>"></base>
 <meta charset="utf-8">
-<meta name="description" content="南方基金人才招聘" />
+<meta name="description" content="人才招聘" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
-<link rel="shortcut icon" href="assets/images/favicon.ico" />
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
 <title>我的简历</title>
 
 <script type="text/javascript">
@@ -27,24 +28,24 @@
 	}
 </script>
 
-<link href="../ncss/bootstrap.css" rel="stylesheet" />
-<link href="../ncss/font-awesome.css" rel="stylesheet" />
-<link href="../ncss/style.css" rel="stylesheet" />
-<link href="../ncss/blue.css" rel="stylesheet" />
-<link href="../ncss/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="../ncss/ui.jqgrid.css" />
-<link rel="stylesheet" href="../ncss/ui_datepicker.css" />
+<link rel="stylesheet" href="frontjsp/assets/css/ui.jqgrid.css" />
+<link rel="stylesheet" href="frontjsp/assets/css/ui_datepicker.css" />
 <style type="text/css">
 label {
 	line-height: 2;
 }
 
-#education_info_form {
+#experience_info_form {
 	margin: 0px;
 }
 
-#education_info_form label.error {
+#experience_info_form label.error {
 	color: red;
 	margin-left: 5px;
 	font-size: 12px;
@@ -52,15 +53,58 @@ label {
 
 .form-control {
 	display: inline;
-	width: 67%;
+	width: 66%;
 }
 
 #desp {
 	height: 200px;
 }
 
+#company-error {
+	float: right;
+	margin-right: 107px;
+}
+
+.ui-jqgrid-bdiv {
+	overflow: hidden !important;
+}
+
 .date-picker {
 	width: 158px;
+}
+
+.ui-jqgrid tr.jqgrow td {
+	white-space: normal !important;
+	height: auto;
+	vertical-align: middle;
+	padding-top: 2px;
+}
+
+.ui-widget-overlay {
+	background: rgba(0, 0, 0, 0.25);
+	opacity: 1 !important;
+	filter: alpha(opacity = 100) !important;
+	z-index: 1039 !important;
+}
+
+.ui-datepicker-year {
+	color: #222222;
+}
+
+.ui-datepicker-month {
+	color: #222222;
+}
+
+.ui-datepicker {
+	width: 15em;
+	padding: .2em .2em 0;
+	display: none;
+	font-size: 1em;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 0.9em;
+	margin: 1px 0;
 }
 
 #sdate-error {
@@ -69,9 +113,9 @@ label {
 }
 </style>
 </head>
-<script type="text/javascript" src="../njs/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
 <script type="text/javascript"
-	src="../njs/bootstrap.min.js"></script>
+	src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 <body class="front">
 	<div class="page-wrapper">
@@ -118,7 +162,7 @@ label {
 								<a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
 									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									首页</a>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -142,7 +186,7 @@ label {
 						<!-- logo -->
 						<div class="logo">
 							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="../nimages/index_logo.jpg" alt="南方基金"></a>
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -281,7 +325,7 @@ label {
 							<div class="block clearfix">
 								<h3 class="title">我的简历</h3>
 								<div class="separator"></div>
-								<input type="hidden" id="left_bar" value="education">
+								<input type="hidden" id="left_bar" value="experience">
 								<nav>
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active_bar" id="my_baseinfo"><a
@@ -312,16 +356,14 @@ label {
 							<span class="sr-only">您的简历已完善100%的资料</span>
 						</div>
 					</div>
-					<div class="col-lg-10" style="padding: 0px;">
-						<table id="grid-table" style="width: 100%"></table>
+					<div class="col-lg-10" style="margin-bottom: 50px; padding: 0px;">
+						<table id="grid-table" style="width: 100%;"></table>
 					</div>
-					<div class="col-lg-offset-2"
-						style="color: gray; font-size: 12px; margin-bottom: 50px">
-						注：请从最高学历开始填写</div>
 
 					<div class="col-lg-offset-3">
-						<form method="post" id="education_info_form"
+						<form method="post" id="experience_info_form"
 							onsubmit="return false;">
+							<input type="hidden" name="userid" value="1">
 							<input type="hidden" name="user_email" value="neu_tianhc@126.com">
 							<input type="hidden" name="resumetype" value="CN"> <input
 								type="hidden" name="oper" value="add"> <input
@@ -331,72 +373,87 @@ label {
 									class="text-default">*</small></label> <span style="margin-left: 15px">
 									<input class="date-picker" id="sdate" placeholder="开始时间"
 									type="text" data-date-format="yyyy-mm-dd" name="sdate" />
-								</span> <span style="margin: 0 5px 0 5px">到</span> <span> <input
+								</span> <span style="margin: 0 5px">到</span> <span> <input
 									class="date-picker" id="edate" placeholder="结束时间，不填表示至今"
 									type="text" data-date-format="yyyy-mm-dd" name="edate" />
 								</span>
 							</div>
 							<div class="form-group">
-								<label for="school" class="col-md-2 control-label">学校<small
+								<label for="company" class="col-md-2 control-label">单位名称<small
 									class="text-default">*</small></label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" name="school"
-										id="school">
-								</div>
-							</div>
-							<div class="space" style="padding-bottom: 30px"></div>
-							<div class="form-group">
-								<label for="major" class="col-md-2 control-label">专业<small
-									class="text-default">*</small></label>
-								<div class="col-md-9">
-									<input type="text" class="form-control" name="major" id="major">
+								<div class="col-md-9" style="padding-bottom: 15px;">
+									<input type="text" class="form-control" name="company"
+										id="company">
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="degree" class="col-md-2 control-label">学历<small
+								<label for="industry" class="col-md-2 control-label">行业<small
 									class="text-default">*</small></label>
 								<div class="col-md-9">
-									<select class="form-control" name="degree" id="degree">
-										<option value="BACHELOR">学士</option>
-										<option value="MASTER">硕士</option>
-										<option value="DOCTOR">博士</option>
-										<option value="DOUBLE">双学位</option>
-										<option value="OTHER">其他</option>
+									<select class="form-control" name="industry" id="industry">
+										<option value="">请选择</option>
+										<option value="金融/投资/证券">金融/投资/证券</option>
+										<option value="银行/保险/信托">银行/保险/信托</option>
+										<option value="会计/审计/法律">会计/审计/法律</option>
+										<option value="专业咨询服务">专业咨询服务</option>
+										<option value="计算机/通信/电信">计算机/通信/电信</option>
+										<option value="互联网/电子商务">互联网/电子商务</option>
+										<option value="广告/媒体/宣传">广告/媒体/宣传</option>
+										<option value="贸易/进出口">贸易/进出口</option>
+										<option value="建筑/工程/房地产">建筑/工程/房地产</option>
+										<option value="石油/化工">石油/化工</option>
+										<option value="电力/水利">电力/水利</option>
+										<option value="制造/矿产">制造/矿产</option>
+										<option value="交通/运输/物流">交通/运输/物流</option>
+										<option value="医疗/制药/卫生">医疗/制药/卫生</option>
+										<option value="文化/体育/娱乐">文化/体育/娱乐</option>
+										<option value="多元化业务集团">多元化业务集团</option>
+										<option value="教育培训/学术科研">教育培训/学术科研</option>
+										<option value="政府/非盈利机构">政府/非盈利机构</option>
+										<option value="国际组织">国际组织</option>
+										<option value="其他行业">其他行业</option>
 									</select>
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="type" class="col-md-2 control-label">教育类型<small
+								<label for="dept" class="col-md-2 control-label">部门<small
 									class="text-default">*</small></label>
 								<div class="col-md-9">
-									<select class="form-control" name="type" id="type">
-										<option value="FULLTIME">全日制</option>
-										<option value="NONFULLTIME">非全日制</option>
-									</select>
+									<input type="text" class="form-control" name="dept" id="dept">
 								</div>
 							</div>
 							<div class="space"></div>
 							<div class="form-group">
-								<label for="desp" class="col-md-2 control-label">专业描述</label>
+								<label for="position" class="col-md-2 control-label">职位<small
+									class="text-default">*</small></label>
+								<div class="col-md-9">
+									<input type="text" class="form-control" name="position"
+										id="position">
+								</div>
+							</div>
+							<div class="space"></div>
+							<div class="form-group">
+								<label for="desp" class="col-md-2 control-label">工作内容<small
+									class="text-default">*</small></label>
 								<div class="col-md-9">
 									<textarea type="text" class="form-control" name="desp"
 										id="desp"></textarea>
 									<div style="color: gray;">
-										填写您所学的专业包括什么课程，您的毕业设计等（<span id="leftCnt" style="color: red">0</span>/1000字）
+										请详细描述您的职责范围、工作任务以及取得的成绩等（<span id="leftCnt" style="color: red">0</span>/1000字）
 									</div>
 								</div>
 							</div>
 							<div class="space"></div>
 							<!-- <div class="form-group">
-				<label for="oversea" class="col-md-2 control-label">海外学习经历</label>
+				<label for="referee" class="col-md-2 control-label">证明人</label>
 				<div class="col-md-9">
-					<input name="oversea" class="form-control" type="checkbox" />
-				</div>"
-			</div> -->
-							<div class="space"></div>
-							<div class="space"></div>
+					姓名：<input type="text" class="form-control" name="referee_name" id="referee_name" style="width:159px;">
+					联系电话：<input type="text" class="form-control" name="referee_phone" id="referee_phone" style="width:159px;">
+				</div>
+			</div>
+			<div class="space"></div> -->
 							<button class="btn btn-default radius" id="saveBtn">保存</button>
 							<button class="btn btn-default radius" id="nextBtn">下一步</button>
 						</form>
@@ -411,7 +468,7 @@ label {
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
+								<a href="http://www.nffund.com/" target="_blank">管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
 							</p>
 							<p style="margin-bottom: 10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
 						</div>
@@ -433,26 +490,24 @@ label {
 	</div>
 
 	<script type="text/javascript"
-		src="adminAssets/js/jqGrid/jquery.jqGrid.src.js"></script>
+		src="frontjsp/assets/js/jqGrid/jquery.jqGrid.src.js"></script>
 	<script type="text/javascript"
-		src="adminAssets/js/jqGrid/i18n/grid.locale-cn.js"></script>
-	<script type="text/javascript" src="assets/js/jquery-ui.1.11.3.js"></script>
-
+		src="frontjsp/assets/js/jqGrid/i18n/grid.locale-cn.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery-ui.1.11.3.js"></script>
 	<script type="text/javascript">
 		////////////////////////////////////////////////////////////////////////////////////////
-		var degreeHash = {
-			"BACHELOR" : "学士",
-			"MASTER" : "硕士",
-			"DOCTOR" : "博士",
-			"OTHER" : "其他",
-			"DOUBLE" : "双学位"
-		};
-		var typeHash = {
-			"FULLTIME" : "全日制",
-			"NONFULLTIME" : "非全日制"
-		};
-
 		$(function() {
+
+			function pickDate(cellvalue, options, cell) {
+				setTimeout(function() {
+					$(cell).find('input[type=text]').datepicker({
+						format : 'yyyy-mm-dd',
+						autoclose : true,
+						endDate : "-1d",
+						startDate : "-65y"
+					});
+				}, 0);
+			}
 
 			function serializeData(data) {
 				var user_email = "neu_tianhc@126.com";
@@ -467,15 +522,152 @@ label {
 				return result + "&eid=" + singleRow["eid"];
 			}
 
-			var editDegreeValue = '';
-			for (k in degreeHash)
-				editDegreeValue += ';' + k + ':' + degreeHash[k];
-			editDegreeValue = editDegreeValue.substring(1);
-
-			var editTypeValue = '';
-			for (k in typeHash)
-				editTypeValue += ';' + k + ':' + typeHash[k];
-			editTypeValue = editTypeValue.substring(1);
+			var containerWidth = $("#grid-table").width() - 70;
+			var grid_data = [ {
+				"position" : "组长",
+				"edate" : "2015-08-20",
+				"company" : "东软集团沈阳分公司",
+				"dept" : "实训部",
+				"sdate" : "2015-06-01",
+				"desp" : "工资管理系统开发",
+				"industry" : "计算机/通信/电信",
+				"eid" : 415391
+			} ];
+			$("#grid-table")
+					.jqGrid(
+							{
+								drag : true,
+								data : grid_data,
+								datatype : "local",
+								height : "auto",
+								colNames : [ ' ', 'eid', '公司', '行业', '部门',
+										'职位', '开始时间', '结束时间', '工作描述'/*, '证明人姓名', '证明人联系电话'*/],
+								colModel : [
+										{
+											name : 'myac',
+											index : '',
+											width : 70,
+											fixed : true,
+											sortable : false,
+											resize : false,
+											formatter : 'actions',
+											formatoptions : {
+												keys : true,
+												delOptions : {
+													recreateForm : true
+												},
+											}
+										},
+										{
+											name : 'eid',
+											index : 'eid',
+											width : 0,
+											editable : false
+										},
+										{
+											name : 'company',
+											index : 'company',
+											width : containerWidth / 7,
+											editable : true,
+											editoptions : {
+												maxlength : "128"
+											},
+											editrules : {
+												required : true
+											}
+										},
+										{
+											name : 'industry',
+											index : 'industry',
+											width : containerWidth / 7,
+											editable : true,
+											edittype : "select",
+											editrules : {
+												required : true
+											},
+											editoptions : {
+												value : "金融/投资/证券:金融/投资/证券;银行/保险/信托:银行/保险/信托;会计/审计/法律:会计/审计/法律;专业咨询服务:专业咨询服务;计算机/通信/电信:计算机/通信/电信;互联网/电子商务:互联网/电子商务;广告/媒体/宣传:广告/媒体/宣传;贸易/进出口:贸易/进出口;建筑/工程/房地产:建筑/工程/房地产;石油/化工:石油/化工;电力/水利:电力/水利;制造/矿产:制造/矿产;交通/运输/物流:交通/运输/物流;医疗/制药/卫生:医疗/制药/卫生;文化/体育/娱乐:文化/体育/娱乐;多元化业务集团:多元化业务集团;教育培训/学术科研:教育培训/学术科研;政府/非盈利机构:政府/非盈利机构;国际组织:国际组织;其他行业:其他行业"
+											}
+										},
+										{
+											name : 'dept',
+											index : 'dept',
+											width : containerWidth / 7,
+											editable : true,
+											editoptions : {
+												maxlength : "64"
+											},
+											editrules : {
+												required : true
+											}
+										},
+										{
+											name : 'position',
+											index : 'position',
+											width : containerWidth / 7,
+											editable : true,
+											editoptions : {
+												maxlength : "64"
+											},
+											editrules : {
+												required : true
+											}
+										},
+										{
+											name : 'sdate',
+											index : 'sdate',
+											width : containerWidth / 7,
+											editable : true,
+											sorttype : "date",
+											unformat : pickDate,
+											editrules : {
+												required : true,
+												date : true
+											}
+										},
+										{
+											name : 'edate',
+											index : 'edate',
+											width : containerWidth / 7,
+											editable : true,
+											sorttype : "date",
+											unformat : pickDate,
+											editrules : {
+												custom : true,
+												custom_func : dateCheck
+											}
+										},
+										{
+											name : 'desp',
+											index : 'desp',
+											width : containerWidth / 7,
+											editable : true,
+											edittype : "textarea",
+											editoptions : {
+												rows : "6",
+												cols : "50",
+												maxlength : "1000"
+											},
+											editrules : {
+												required : true
+											},
+											formatter : function(cellValue,
+													options, rawObject) { // in
+												if (typeof (cellValue) != "undefined") {
+													return cellValue.replace(
+															/\n/g, "<br>");
+												}
+												return "";
+											},
+											unformat : function(cellValue,
+													options, rawObject) { // out
+												return rawObject.innerText;
+											}
+										} ],
+								editurl : "saveExperienceInfo.do",
+								serializeRowData : serializeData,
+								autoencode : true,
+							}).hideCol("eid");
 
 			$.fn.center = function() {
 				var top = ($(window).height() - this.height()) / 2;
@@ -492,158 +684,6 @@ label {
 			$.jgrid.del.beforeShowForm = function() {
 				$("#delmodgrid-table").center();
 			}
-
-			var containerWidth = $("#grid-table").width() - 70;
-			var grid_data = [ {
-				"degree" : "BACHELOR",
-				"school" : "东北大学",
-				"edate" : "",
-				"sdate" : "2012-08-21",
-				"desp" : "专业课程：C语言程序设计、C++程序设计、java语言程序设计、软件工程、计算机网络、计算机操作系统、计算机组成原理、面向对象程序设计、数据库概论、通信原理",
-				"type" : "FULLTIME",
-				"eid" : 361857,
-				"major" : "软件工程"
-			} ];
-			$("#grid-table").jqGrid(
-					{
-						drag : true,
-						data : grid_data,
-						datatype : "local",
-						height : "auto",
-						colNames : [ ' ', 'eid', '学校', '专业', '学历', '开始时间',
-								'结束时间', '教育类型', '专业描述' ],
-						colModel : [
-								{
-									name : 'myac',
-									index : '',
-									width : 70,
-									fixed : true,
-									sortable : false,
-									resize : false,
-									formatter : 'actions',
-									formatoptions : {
-										keys : true,
-										delOptions : {
-											recreateForm : true
-										},
-									}
-								},
-								{
-									name : 'eid',
-									index : 'eid',
-									width : 0,
-									editable : false
-								},
-								{
-									name : 'school',
-									index : 'school',
-									width : containerWidth / 7,
-									editable : true,
-									editoptions : {
-										maxlength : "64",
-										minlength : "4"
-									},
-									editrules : {
-										required : true,
-										custom : true,
-										custom_func : schoolCheck
-									}
-								},
-								{
-									name : 'major',
-									index : 'major',
-									width : containerWidth / 7,
-									editable : true,
-									editoptions : {
-										maxlength : "32",
-										minlength : "2"
-									},
-									editrules : {
-										required : true,
-										custom : true,
-										custom_func : majorCheck
-									}
-								},
-								{
-									name : 'degree',
-									index : 'degree',
-									width : containerWidth / 7,
-									editable : true,
-									edittype : "select",
-									editoptions : {
-										value : editDegreeValue
-									},
-									editrules : {
-										required : true
-									},
-									formatter : "select"
-								},
-								{
-									name : 'sdate',
-									index : 'sdate',
-									width : containerWidth / 7,
-									editable : true,
-									sorttype : "date",
-									unformat : pickDate,
-									editrules : {
-										required : true,
-										date : true
-									}
-								},
-								{
-									name : 'edate',
-									index : 'edate',
-									width : containerWidth / 7,
-									editable : true,
-									sorttype : "date",
-									unformat : pickDate,
-									editrules : {
-										custom : true,
-										custom_func : dateCheck
-									}
-								},
-								{
-									name : 'type',
-									index : 'type',
-									width : containerWidth / 7,
-									editable : true,
-									edittype : "select",
-									editoptions : {
-										value : editTypeValue
-									},
-									editrules : {
-										required : true
-									},
-									formatter : "select"
-								},
-								{
-									name : 'desp',
-									index : 'desp',
-									width : containerWidth / 7,
-									editable : true,
-									edittype : "textarea",
-									editoptions : {
-										rows : "6",
-										cols : "50",
-										maxlength : "1000"
-									},
-									formatter : function(cellValue, options,
-											rawObject) { // in
-										if (typeof (cellValue) != "undefined") {
-											return cellValue.replace(/\n/g,
-													"<br>");
-										}
-										return "";
-									},
-									unformat : function(cellValue, options,
-											rawObject) { // out
-										return rawObject.innerText;
-									}
-								} ],
-						editurl : "saveEducationInfo.action",
-						serializeRowData : serializeData,
-						autoencode : true,
-					}).hideCol("eid");
 
 			$.extend($.jgrid.del, {
 				mtype : 'POST',
@@ -684,29 +724,32 @@ label {
 				showMonthAfterYear : true,
 				changeMonth : true,
 				changeYear : true,
-				yearRange : "c-50:c+30"
+				yearRange : "c-50:c"
 			};
 
 			$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 			$('.date-picker').removeClass("hasDatepicker");
 			$('.date-picker').datepicker();
 
-			$("#education_info_form").validate({
+			$("#experience_info_form").validate({
 				rules : {
 					sdate : {
 						required : true,
 					},
-					school : {
+					company : {
+						required : true,
+						maxlength : 128
+					},
+					dept : {
+						required : true,
+						maxlength : 64
+					},
+					position : {
 						required : true,
 						maxlength : 64,
-						minlength : 4
-					},
-					major : {
-						required : true,
-						maxlength : 32,
-						minlength : 2
 					},
 					desp : {
+						required : true,
 						maxlength : 1000,
 					}
 				},
@@ -714,18 +757,21 @@ label {
 					sdate : {
 						required : "请选择开始时间",
 					},
-					school : {
-						required : "请填写学校名称",
-						maxlength : "您填写的学校名称过长",
-						minlength : "请填写正确的学校名称"
+					company : {
+						required : "请填写单位名称",
+						maxlength : "您填写的单位名称过长"
 					},
-					major : {
-						required : "请填写专业名称",
-						maxlength : "您填写的专业名称过长",
-						minlength : "请填写正确的专业名称"
+					position : {
+						required : "请填写职位名称",
+						maxlength : "您填写的职位名称过长"
+					},
+					dept : {
+						required : "请填写部门名称",
+						maxlength : "您填写的部门名称过长"
 					},
 					desp : {
-						maxlength : "您填写的专业描述过长",
+						required : "请填写工作内容",
+						maxlength : "您填写的工作内容过长"
 					}
 				}
 			});
@@ -735,8 +781,8 @@ label {
 				var curLength = $("#desp").val().length;
 				if (curLength > MAX_LEN) {
 					$("#desp").val($("#desp").val().substr(0, MAX_LEN));
-					curLength = MAX_LEN;
 					alert("您的输入已经超过字数限制！");
+					curLength = MAX_LEN;
 				}
 
 				$("#leftCnt").text(curLength);
@@ -753,24 +799,13 @@ label {
 			});
 		});
 
-		function pickDate(cellvalue, options, cell) {
-			setTimeout(function() {
-				$(cell).find('input[type=text]').datepicker({
-					format : 'yyyy-mm-dd',
-					autoclose : true,
-					endDate : "-1d",
-					startDate : "-65y"
-				});
-			}, 0);
-		}
-
 		function saveInfo(bNext) {
 			if (bNext && !is_form_changed()) {
-				location.href = "fillExperience.action";
+				location.href = "fillLanguage.action";
 				return;
 			}
 
-			if (!$("#education_info_form").valid()) {
+			if (!$("#experience_info_form").valid()) {
 				return;
 			}
 
@@ -781,12 +816,12 @@ label {
 			}
 
 			if ($("#grid-table").getGridParam("reccount") >= 5) {
-				NFCommon.util.showTip("可添加的教育经历已超出限制", 2000);
+				NFCommon.util.showTip("可添加的工作经历已超出限制", 2000);
 				return;
 			}
 
 			var options = {
-				url : "saveEducationInfo.action",
+				url : "saveExperienceInfo.do",
 				type : "post",
 				success : function(data, statusText) {
 					if (typeof (data) == "undefined") {
@@ -799,26 +834,25 @@ label {
 						location.href = "tologin.action";
 					} else if (data.code == 'success') {
 						NFCommon.util.showSuccess(data.message, 2000);
-
 						var rowData = {};
 						rowData["eid"] = data.eid;
-						rowData["school"] = $("#school").val();
-						rowData["major"] = $("#major").val();
-						rowData["degree"] = $("#degree").val();
-						rowData["type"] = $("#type").val();
+						rowData["position"] = $("#position").val();
+						rowData["company"] = $("#company").val();
+						rowData["dept"] = $("#dept").val();
 						rowData["desp"] = $("#desp").val();
 						rowData["sdate"] = $("#sdate").val();
 						rowData["edate"] = $("#edate").val();
+						rowData["industry"] = $("#industry").val();
 						$("#grid-table").jqGrid("addRowData",
 								$("#grid-table").getGridParam("records") + 1,
 								rowData);
-						$(':input', '#education_info_form').not(
+						$(':input', '#experience_info_form').not(
 								':button, :submit, :reset, :hidden').val('')
 								.removeAttr('checked').removeAttr('selected');
 
 						resetFormValue();
 						if (bNext) {
-							location.href = "fillExperience.action";
+							location.href = "fillLanguage.action";
 						} else {
 							$("#my_" + $("#left_bar").val() + " > a").css(
 									"color", "#3d78d8");
@@ -834,7 +868,8 @@ label {
 				dataType : "json",
 				resetForm : true,
 				timeout : 15000,
-				data : $("#education_info_form").serialize()
+				data : $("#experience_info_form").serialize(),
+				autoencode : true,
 			};
 			$.ajax(options);
 		}
@@ -842,7 +877,7 @@ label {
 		function is_form_changed() {
 			var is_changed = false;
 
-			$("#education_info_form input").each(function() {
+			$("#experience_info_form input").each(function() {
 				var _v = $(this).attr('_value');
 				if (typeof (_v) == 'undefined') {
 					_v = '';
@@ -852,8 +887,7 @@ label {
 					is_changed = true;
 				}
 			});
-
-			$("#education_info_form textarea").each(function() {
+			$("#experience_info_form textarea").each(function() {
 				var _v = $(this).attr('_value');
 				if (typeof (_v) == 'undefined') {
 					_v = '';
@@ -868,10 +902,10 @@ label {
 		}
 
 		function resetFormValue() {
-			$("#education_info_form input").each(function() {
+			$("#experience_info_form input").each(function() {
 				$(this).attr('_value', $(this).val());
 			});
-			$("#education_info_form textarea").each(function() {
+			$("#experience_info_form textarea").each(function() {
 				$(this).attr('_value', $(this).val());
 			});
 		}
@@ -883,6 +917,7 @@ label {
 				return "您当前的编辑内容没有保存，确定离开吗？";
 			}
 		}
+
 		function dateCompare(sdate, edate) {
 			var arr = sdate.split("-");
 			var starttime = new Date(arr[0], arr[1], arr[2]);
@@ -907,33 +942,9 @@ label {
 				return [ true, "" ];
 			}
 		}
-
-		function schoolCheck(value, colname) {
-			var row = $('#grid-table').jqGrid('getGridParam', 'selrow');
-			var length = $("#" + row + "_school").val().length;
-			if (length < 4) {
-				return [ false, "请填写正确的学校名称" ];
-			} else if (length > 64) {
-				return [ false, "您填写的学校名称过长" ];
-			} else {
-				return [ true, "" ];
-			}
-		}
-
-		function majorCheck(value, colname) {
-			var row = $('#grid-table').jqGrid('getGridParam', 'selrow');
-			var length = $("#" + row + "_major").val().length;
-			if (length < 2) {
-				return [ false, "请填写正确的专业名称" ];
-			} else if (length > 32) {
-				return [ false, "您填写的专业名称过长" ];
-			} else {
-				return [ true, "" ];
-			}
-		}
 	</script>
-	<script type="text/javascript" src="../njs/jquery.validate.js"></script>
-	<script type="text/javascript" src="../njs/jquery.toastmessage.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/*

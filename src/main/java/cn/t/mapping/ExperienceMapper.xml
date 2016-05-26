@@ -10,10 +10,10 @@
     <result column="industry" property="industry" jdbcType="VARCHAR" />
     <result column="dept" property="dept" jdbcType="VARCHAR" />
     <result column="position" property="position" jdbcType="VARCHAR" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="desp" property="desp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    expinfoid, userid, sdate, edate, company, industry, dept, position, desc
+    expinfoid, userid, sdate, edate, company, industry, dept, position, desp
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -35,11 +35,11 @@
   <insert id="insert" parameterType="cn.t.entity.Experience" >
     insert into expinfo (expinfoid, userid, sdate, 
       edate, company, industry, 
-      dept, position, desc
+      dept, position, desp
       )
     values (#{expinfoid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{sdate,jdbcType=DATE}, 
       #{edate,jdbcType=DATE}, #{company,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
-      #{dept,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
+      #{dept,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{desp,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.t.entity.Experience" >
@@ -69,8 +69,8 @@
       <if test="position != null" >
         position,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="desp != null" >
+        desp,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -98,8 +98,8 @@
       <if test="position != null" >
         #{position,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="desp != null" >
+        #{desp,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -127,8 +127,8 @@
       <if test="position != null" >
         position = #{position,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="desp != null" >
+        desp = #{desp,jdbcType=VARCHAR},
       </if>
     </set>
     where expinfoid = #{expinfoid,jdbcType=INTEGER}
@@ -142,7 +142,7 @@
       industry = #{industry,jdbcType=VARCHAR},
       dept = #{dept,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR}
+      desp = #{desp,jdbcType=VARCHAR}
     where expinfoid = #{expinfoid,jdbcType=INTEGER}
   </update>
 </mapper>

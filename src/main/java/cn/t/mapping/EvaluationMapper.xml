@@ -30,9 +30,9 @@
     where evainfoid = #{evainfoid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.t.entity.Evaluation" >
-    insert into evainfo (evainfoid, userid, evaluation
+    insert into evainfo ( userid, evaluation
       )
-    values (#{evainfoid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{evaluation,jdbcType=VARCHAR}
+    values (#{userid,jdbcType=INTEGER}, #{evaluation,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.t.entity.Evaluation" >

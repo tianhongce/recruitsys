@@ -25,14 +25,12 @@ public class PositionServiceImpl implements PositionServiceI {
 	}
 
 	@Override
-	public Position getPosByPosname() {
-		// TODO Auto-generated method stub
+	public Position getPosByPosname(String posname) {
 		return null;
 	}
 
 	@Override
 	public List<Position> getAllPos() {
-		// TODO Auto-generated method stub
 		
 		return positionmapper.selectAllPos();
 	}
@@ -70,6 +68,10 @@ public class PositionServiceImpl implements PositionServiceI {
 	@Override
 	public int editPos(Position pos) {
 		return positionmapper.updateByPrimaryKeySelective(pos);
+	}
+	@Override
+	public Position getPosByPosnum(String posnum) {
+		return positionmapper.selectByPrimaryKey(posnum);
 	}
 
 }

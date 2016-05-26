@@ -24,7 +24,7 @@
 
 <script type="text/javascript">
 	if (!window.applicationCache) {
-		self.location = "validateHtml5.action";
+		self.location = "validateHtml5.do";
 	}
 </script>
 
@@ -125,13 +125,13 @@ label {
 							<div class="btn-group dropdown" style="display: none"
 								id="welcome">
 								<button type="button" class="btn"
-									onclick="location.href='myRecruit.action';">
+									onclick="location.href='myRecruit.do';">
 									<i class="fa fa-search"></i> 欢迎您，${username }
 								</button>
 							</div>
 							<div class="btn-group dropdown">
 								<button type="button" class="btn dropdown-toggle"
-									onclick="location.href='logout.action'">
+									onclick="location.href='logout.do'">
 									<i class="fa fa-user"></i> 退出
 								</button>
 							</div>
@@ -201,12 +201,12 @@ label {
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
+											<li class="bar_li" id="home_bar"><a href="index.do">招聘首页</a></li>
 
 											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">招聘岗位</a></li>
+												href="job_position.do?jobType=SOCIETY">招聘岗位</a></li>
 											<li class="bar_li" id="personal_bar"><a
-												href="myRecruit.action">我的应聘</a></li>
+												href="myRecruit.do">我的应聘</a></li>
 											<li class="bar_li" id="personal_bar"></li>
 
 										</ul>
@@ -243,7 +243,7 @@ label {
 						* color.length)];
 			}
 			function newsClick() {
-				location.href = "myQuestion.action";
+				location.href = "myQuestion.do";
 
 			}
 		</script>
@@ -305,20 +305,16 @@ label {
 								<nav>
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active_bar" id="my_baseinfo"><a
-											href="fillResume.action">基本资料</a></li>
-										<li class="active_bar" id="my_contact"><a
-											href="fillContact.action">联系方式</a></li>
+											href="fillResume.do">基本资料</a></li>
 										<li class="active_bar" id="my_education"><a
-											href="fillEducation.action">教育经历</a></li>
+											href="fillEducation.do">教育经历</a></li>
 										<li class="active_bar" id="my_experience"><a
-											href="fillExperience.action">工作/实习经验</a></li>
+											href="fillExperience.do">工作/实习经验</a></li>
 										<li class="active_bar" id="my_language"><a
-											href="fillLanguage.action">语言能力</a></li>
-										<li class="active_bar" id="my_family"><a
-											href="fillFamily.action">家庭成员信息</a></li>
+											href="fillLanguage.do">语言能力</a></li>
 										<li class="active_bar" id="my_evaluation"><a
-											href="fillEvaluation.action">自我评价</a></li>
-										<!-- <li class="active_bar" id="my_other"><a href="fillOther.action">附加信息</a></li> -->
+											href="fillEvaluation.do">自我评价</a></li>
+										<!-- <li class="active_bar" id="my_other"><a href="fillOther.do">附加信息</a></li> -->
 									</ul>
 								</nav>
 							</div>
@@ -564,11 +560,11 @@ label {
 
 					if (data.code == 'login') {
 						resetFormValue();
-						location.href = "tologin.action";
+						location.href = "tologin.do";
 					} else if (data.code == 'success') {
 						resetFormValue();
 						if (bNext) {
-							location.href = "fillContact.action";
+							location.href = "fillContact.do";
 						} else {
 							NFCommon.util.showSuccess(data.message, 2000);
 						}
@@ -591,7 +587,7 @@ label {
 		$(function() {
 			$
 					.ajax({
-						url : "findAttach.action?type=photo",
+						url : "findAttach.do?type=photo",
 						type : "get",
 						success : function(data) {
 							if (data.code == "not exists") {
@@ -601,7 +597,7 @@ label {
 							} else {
 								$("#base_photo")
 										.attr("src",
-												"/nfjjRecruitSystem/getAttach.action?type=photo");
+												"/nfjjRecruitSystem/getAttach.do?type=photo");
 								$("#base_photo").removeAttr("title");
 							}
 						},
@@ -616,7 +612,7 @@ label {
 								$(this)
 										.uploadFile(
 												{
-													url : "uploadAttach.action",
+													url : "uploadAttach.do",
 													fileName : "filepath",
 													formData : {
 														"type" : "photo"
@@ -633,7 +629,7 @@ label {
 														$("#base_photo")
 																.attr(
 																		"src",
-																		"/nfjjRecruitSystem/getAttach.action?type=photo&r="
+																		"/nfjjRecruitSystem/getAttach.do?type=photo&r="
 																				+ Math
 																						.random());
 													},
