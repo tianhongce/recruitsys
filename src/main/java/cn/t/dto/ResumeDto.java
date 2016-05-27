@@ -11,11 +11,27 @@ import cn.t.entity.Resume;
 public class ResumeDto {
 	private Integer userid;
 	private String username;
+	private String useremail;
+	private String userpwd;
 	private List<Resume> resume;
-	private List<Education> edulist;
-	private List<Experience> explist;
-	private List<Language> langlist;
-	private List<Evaluation> evalist;
+	private List<Education> eduinfo;
+	private List<Experience> expinfo;
+	private List<Language> langinfo;
+	private List<Evaluation> evainfo;
+	public String getUseremail() {
+		return useremail;
+	}
+	public void setUseremail(String useremail) {
+		this.useremail = useremail;
+	}
+	public String getUserpwd() {
+		return userpwd;
+	}
+	public void setUserpwd(String userpwd) {
+		this.userpwd = userpwd;
+	}
+
+
 	
 	public Integer getUserid() {
 		return userid;
@@ -35,39 +51,38 @@ public class ResumeDto {
 	public void setResume(List<Resume> resume) {
 		this.resume = resume;
 	}
-	public List<Education> getEdulist() {
-		return edulist;
+	public List<Education> getEduinfo() {
+		return eduinfo;
 	}
-	public void setEdulist(List<Education> edulist) {
-		this.edulist = edulist;
+	public void setEduinfo(List<Education> eduinfo) {
+		this.eduinfo = eduinfo;
 	}
-	public List<Experience> getExplist() {
-		return explist;
+	public List<Experience> getExpinfo() {
+		return expinfo;
 	}
-	public void setExplist(List<Experience> explist) {
-		this.explist = explist;
+	public void setExpinfo(List<Experience> expinfo) {
+		this.expinfo = expinfo;
 	}
-	public List<Language> getLanglist() {
-		return langlist;
+	public List<Language> getLanginfo() {
+		return langinfo;
 	}
-	public void setLanglist(List<Language> langlist) {
-		this.langlist = langlist;
+	public void setLanginfo(List<Language> langinfo) {
+		this.langinfo = langinfo;
 	}
-	public List<Evaluation> getEvalist() {
-		return evalist;
+	public List<Evaluation> getEvainfo() {
+		return evainfo;
 	}
-	public void setEvalist(List<Evaluation> evalist) {
-		this.evalist = evalist;
+	public void setEvainfo(List<Evaluation> evainfo) {
+		this.evainfo = evainfo;
 	}
-	
 	@Override
 	public String toString() {
 		return "ResumeDto [userid=" + userid + ", username=" + username
-				+ ", resume=" + resume + ", edulist=" + edulist + ", explist="
-				+ explist + ", langlist=" + langlist + ", evalist=" + evalist
+				+ ", useremail=" + useremail + ", userpwd=" + userpwd
+				+ ", resume=" + resume + ", eduinfo=" + eduinfo + ", expinfo="
+				+ expinfo + ", langinfo=" + langinfo + ", evainfo=" + evainfo
 				+ "]";
 	}
-	
 	
 	
 	

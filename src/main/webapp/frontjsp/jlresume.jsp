@@ -125,8 +125,8 @@ label {
 							<div class="btn-group dropdown" style="display: none"
 								id="welcome">
 								<button type="button" class="btn"
-									onclick="location.href='myRecruit.do';">
-									<i class="fa fa-search"></i> 欢迎您，${username }
+									onclick="location.href='myInfo.do';">
+									<i class="fa fa-search"></i> ${user.username }
 								</button>
 							</div>
 							<div class="btn-group dropdown">
@@ -136,10 +136,13 @@ label {
 								</button>
 							</div>
 							<div class="btn-group dropdown">
-								<a class="btn" target="_blank"
+								<!-- <a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="index.jsp/"><i class="fa fa-home"></i>
-									公司首页</a>
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+									<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -162,8 +165,8 @@ label {
 
 						<!-- logo -->
 						<div class="logo">
-							<a href="/nfjjRecruitSystem/"><img id="logo"
-								src="frontjsp/assets/images/index_logo.jpg" alt="公司"></a>
+							<a href="index.jsp"><img id="logo"
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -197,16 +200,16 @@ label {
 										</button>
 									</div>
 
-									<input type="hidden" id="active_bar" value="personal">
+									<input type="hidden" id="active_bar" value="campus">
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="bar_li" id="home_bar"><a href="index.do">招聘首页</a></li>
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
 
 											<li class="bar_li" id="society_bar"><a
-												href="job_position.do?jobType=SOCIETY">招聘岗位</a></li>
+												href="frontjsp/poslist.do">招聘岗位</a></li>
 											<li class="bar_li" id="personal_bar"><a
-												href="myRecruit.do">我的应聘</a></li>
+												href="myInfo.do">我的应聘</a></li>
 											<li class="bar_li" id="personal_bar"></li>
 
 										</ul>
@@ -564,7 +567,7 @@ label {
 					} else if (data.code == 'success') {
 						resetFormValue();
 						if (bNext) {
-							location.href = "fillContact.do";
+							location.href = "fillEducation.do";
 						} else {
 							NFCommon.util.showSuccess(data.message, 2000);
 						}
@@ -597,7 +600,7 @@ label {
 							} else {
 								$("#base_photo")
 										.attr("src",
-												"/nfjjRecruitSystem/getAttach.do?type=photo");
+												"/RecruitSystem/getAttach.do?type=photo");
 								$("#base_photo").removeAttr("title");
 							}
 						},

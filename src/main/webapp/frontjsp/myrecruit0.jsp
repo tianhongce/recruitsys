@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -8,28 +10,33 @@
 %>
 
 <!DOCTYPE html>
-<!-- saved from url=(0056)http://www.nffund.com/nfjjRecruitSystem/myRecruit.action -->
-<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<base href="<%=basePath%>"></base>
+<meta charset="utf-8">
+<meta name="description" content="人才招聘" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Mobile Meta -->
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
+<title>招聘岗位</title>
+
+<script type="text/javascript">
+	if (!window.applicationCache) {
+		self.location = "validateHtml5.do";
+	}
+</script>
 		
-		<meta name="description" content="南方基金人才招聘">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile Meta -->
-		<link rel="shortcut icon" href="http://www.nffund.com/nfjjRecruitSystem/assets/images/favicon.ico">
-		<title>南方基金人才招聘-我的应聘</title>
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 		
-		<script src="../njs/hm.js"></script><script type="text/javascript">
-		if (!window.applicationCache) {
-			 self.location = "validateHtml5.action";
-        }
-		</script>
-		
-		<link href="ncss/bootstrap.css" rel="stylesheet" />
-<link href="../ncss/font-awesome.css" rel="stylesheet" />
-<link href="../ncss/style.css" rel="stylesheet" />
-<link href="../ncss/blue.css" rel="stylesheet" />
-<link href="../ncss/jquery.toastmessage.css" rel="stylesheet" />
-		
-		<link rel="stylesheet" href="./南方基金人才招聘-我的应聘0_files/blue.css">
-	<link rel="stylesheet" href="./南方基金人才招聘-我的应聘0_files/ui.jqgrid.css">
+<link rel="stylesheet" href="frontjsp/assets/css/blue.css">
+<link rel="stylesheet" href="frontjsp/assets/css/ui.jqgrid.css">
 	<style type="text/css">
 	.table-striped td {
 		vertical-align: middle !important;
@@ -92,7 +99,7 @@
     	position:relative;
     }
 	</style>
-<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/jquery.min.js"></script><script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/bootstrap.min.js"></script></head>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script><script type="text/javascript" src="frontjsp/assets/js/bootstrap.min.js"></script></head>
 	
 	
 
@@ -110,115 +117,123 @@
 			<!-- ================ -->
 			<div id="header-top-second" class="clearfix">
 
-				<!-- header top dropdowns start -->
-				<!-- ================ -->
-				<div class="header-top-dropdown">
-					<div class="btn-group dropdown" style="display:none" id="news">
-							<button type="button" class="btn" onclick="newsClick();" id="blink">
-									<i class="fa fa-user"></i> 
-										新回复
-							</button>
-						</div> 			
-						<div class="btn-group dropdown" style="display: inline-block;" id="welcome">
-							<button type="button" class="btn" onclick="location.href=&#39;myRecruit.action&#39;;">
-									 <i class="fa fa-search"></i> 
-										 欢迎您，
-									 1196585084@qq.com</button>
-						</div>
-						<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-							    <i class="fa fa-search"></i> 
-							             欢迎您，
-							    1196585084@qq.com</button>
-						</div> -->
-						<div class="btn-group dropdown">
-						    <button type="button" class="btn dropdown-toggle" onclick="location.href=&#39;logout.action&#39;"><i class="fa fa-user"></i> 退出</button>
-					    </div>
-					<div class="btn-group dropdown">
-						<a class="btn" target="_blank" style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;" href="http://www.nffund.com/"><i class="fa fa-home"></i> 南方基金首页</a>
-					</div>
-				</div>
-				<!--  header top dropdowns end -->
-
-			</div>
-			<!-- header-top-second end -->			
-		</div>
-	</div>
-</div>
-<!-- header-top end -->
-
-<!-- header start (remove fixed class from header in order to disable fixed navigation mode) -->
-<!-- ================ --> 
-<header class="header fixed clearfix">
-	<div class="container">
-		<div class="col-md-4">
-			<!-- header-left start -->
-			<!-- ================ -->
-			<div class="header-left clearfix">
-
-				<!-- logo -->
-				<div class="logo">
-					<a href="http://www.nffund.com/nfjjRecruitSystem/"><img id="logo" src="./南方基金人才招聘-我的应聘0_files/index_logo.jpg" alt="南方基金"></a>
-				</div>
-
-				<!-- name-and-slogan -->
-				<div class="site-slogan">
-					一切为了客户，做受人敬重的理财专家。
-				</div>
-
-			</div>
-			<!-- header-left end -->
-		</div>
-		
-		<div class="col-md-8">
-			<!-- header-right start -->
-			<!-- ================ -->
-			<div class="header-right clearfix">
-
-				<!-- main-navigation start -->
-				<!-- ================ -->
-				<div class="main-navigation animated">
-
-					<!-- navbar start -->
-					<!-- ================ -->
-					<nav class="navbar navbar-default" role="navigation">
-						<div class="container-fluid">
-
-							<!-- Toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
+					<!-- header top dropdowns start -->
+						<!-- ================ -->
+						<div class="header-top-dropdown">
+							<div class="btn-group dropdown" style="display: none" id="news">
+								<button type="button" class="btn" onclick="newsClick();"
+									id="blink">
+									<i class="fa fa-user"></i> 新回复
 								</button>
 							</div>
-							
-							<input type="hidden" id="active_bar" value="personal">
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="navbar-collapse-1">
-								<ul class="nav navbar-nav navbar-right">
-									<li class="bar_li" id="home_bar"><a href="http://www.nffund.com/nfjjRecruitSystem/index.action">招聘首页</a></li>
-									<li class="bar_li" id="forum_bar"><a href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
-									<li class="bar_li" id="campus_bar"><a href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=CAMPUS">校园招聘</a></li>
-									<li class="bar_li" id="society_bar"><a href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=SOCIETY">社会招聘</a></li>
-									<li class="bar_li active" id="personal_bar"><a href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action">我的应聘</a></li>
-								</ul>
+							<div class="btn-group dropdown" style="display: none"
+								id="welcome">
+								<button type="button" class="btn"
+									onclick="location.href='myInfo.do';">
+									<i class="fa fa-search"></i> ${user.username }
+								</button>
+							</div>
+							<div class="btn-group dropdown">
+								<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='logout.do'">
+									<i class="fa fa-user"></i> 退出
+								</button>
+							</div>
+							<div class="btn-group dropdown">
+								<!-- <a class="btn" target="_blank"
+									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+									<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
-					</nav>
-					<!-- navbar end -->
+						<!--  header top dropdowns end -->
+
+					</div>
+					<!-- header-top-second end -->
+				</div>
+			</div>
+		</div>
+		<!-- header-top end -->
+
+		<!-- header start (remove fixed class from header in order to disable fixed navigation mode) -->
+		<!-- ================ -->
+		<header class="header fixed clearfix">
+			<div class="container">
+				<div class="col-md-4">
+					<!-- header-left start -->
+					<!-- ================ -->
+					<div class="header-left clearfix">
+
+						<!-- logo -->
+						<div class="logo">
+							<a href="index.jsp"><img id="logo"
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
+						</div>
+
+						<!-- name-and-slogan -->
+						<div class="site-slogan"></div>
+
+					</div>
+					<!-- header-left end -->
+				</div>
+
+				<div class="col-md-8">
+					<!-- header-right start -->
+					<!-- ================ -->
+					<div class="header-right clearfix">
+
+						<!-- main-navigation start -->
+						<!-- ================ -->
+						<div class="main-navigation animated">
+
+							<!-- navbar start -->
+							<!-- ================ -->
+							<nav class="navbar navbar-default" role="navigation">
+								<div class="container-fluid">
+
+									<!-- Toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle"
+											data-toggle="collapse" data-target="#navbar-collapse-1">
+											<span class="sr-only">Toggle navigation</span> <span
+												class="icon-bar"></span> <span class="icon-bar"></span> <span
+												class="icon-bar"></span>
+										</button>
+									</div>
+
+									<input type="hidden" id="active_bar" value="campus">
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse" id="navbar-collapse-1">
+										<ul class="nav navbar-nav navbar-right">
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
+
+											<li class="bar_li" id="society_bar"><a
+												href="frontjsp/poslist.do">招聘岗位</a></li>
+											<li class="bar_li" id="personal_bar"><a
+												href="myInfo.do">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
+										</ul>
+									</div>
+								</div>
+							</nav>
+							<!-- navbar end -->
+
+						</div>
+						<!-- main-navigation end -->
+
+					</div>
+					<!-- header-right end -->
 
 				</div>
-				<!-- main-navigation end -->
-
 			</div>
-			<!-- header-right end -->
+		</header>
+		<!-- header end -->
 
-		</div>
-	</div>
-</header>
-<!-- header end -->
+
 <script language="javascript"> 
 window.onload = function() {
 	var readStatus = "";
@@ -235,7 +250,7 @@ color=color.split("|");
 document.getElementById("blink").style.color=color[parseInt(Math.random() * color.length)]; 
 } 
 function newsClick(){
-	location.href="myQuestion.action";
+	location.href="myQuestion.do";
 	
 }
 </script><section class="main-container">
@@ -269,10 +284,10 @@ function newsClick(){
 			<input type="hidden" id="left_bar" value="resume">
 			<nav>
 				<ul class="nav nav-pills nav-stacked">
-					<li class="active_bar active" id="my_resume"><a href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action"><img src="./南方基金人才招聘-我的应聘0_files/resume.png" style="float:left;">&nbsp;简历信息</a></li>
-					<li class="active_bar" id="my_apply"><a href="http://www.nffund.com/nfjjRecruitSystem/myApply.action"><img src="./南方基金人才招聘-我的应聘0_files/yingpin.png" style="float:left;">&nbsp;应聘信息</a></li>
-					<li class="active_bar" id="my_account"><a href="http://www.nffund.com/nfjjRecruitSystem/myAccount.action"><img src="./南方基金人才招聘-我的应聘0_files/account.png" style="float:left;">&nbsp;账户信息</a></li>
-					<li class="active_bar" id="my_question"><a href="http://www.nffund.com/nfjjRecruitSystem/myQuestion.action"><img src="./南方基金人才招聘-我的应聘0_files/liuyanban.png" style="float:left;">&nbsp;我的留言</a></li>
+					<li class="active_bar active" id="my_resume"><a href="myRecruit.do"><img src="./人才招聘-我的应聘0_files/resume.png" style="float:left;">&nbsp;简历信息</a></li>
+					<li class="active_bar" id="my_apply"><a href="myApply.do"><img src="./人才招聘-我的应聘0_files/yingpin.png" style="float:left;">&nbsp;应聘信息</a></li>
+					<li class="active_bar" id="my_account"><a href="myAccount.do"><img src="./人才招聘-我的应聘0_files/account.png" style="float:left;">&nbsp;账户信息</a></li>
+					<li class="active_bar" id="my_question"><a href="myQuestion.do"><img src="./人才招聘-我的应聘0_files/liuyanban.png" style="float:left;">&nbsp;我的留言</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -282,7 +297,7 @@ function newsClick(){
 	<div class="tabs-style-2">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-		    <li class="active"><a href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action#h2tab1" role="tab" data-toggle="tab"><i class="fa fa-user pr-5"></i>简历</a></li>
+		    <li class="active"><a href="myRecruit.do#h2tab1" role="tab" data-toggle="tab"><i class="fa fa-user pr-5"></i>简历</a></li>
 			</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
@@ -290,11 +305,11 @@ function newsClick(){
 			    <div class="alert alert-info">
 				    亲，您还未创建任何简历
 				</div>
-				<a href="http://www.nffund.com/nfjjRecruitSystem/fillResume.action" class="btn btn-default">创建简历</a>
+				<a href="fillResume.do" class="btn btn-default">创建简历</a>
 			</div>
 			<div class="tab-pane fade" id="h2tab2" style="margin-top:-20px;">
 			<div>
-			<form method="post" action="http://www.nffund.com/nfjjRecruitSystem/imgLoad.action" enctype="multipart/form-data">
+			<form method="post" do="imgLoad.do" enctype="multipart/form-data">
 				<div class="tab-pane fade" id="h2tab4" style="margin-top:-20px;">
 				            </div><table class="table table-striped">
 					<thead>
@@ -314,7 +329,7 @@ function newsClick(){
 								    <a class="btn btn-sm radius btn-dark" state="0" type="photo" name="deleteAttach">删除</a>
 								</div>
 								<div class="op_upload">
-	                        		<div class="btn btn-sm radius btn-success" style="position: relative; overflow: hidden; cursor: default;">上传<form method="POST" action="http://www.nffund.com/nfjjRecruitSystem/uploadAttach.action" enctype="multipart/form-data" style="margin: 0px; padding: 0px;"><input type="file" id="ajax-upload-id-1461837033294" name="filepath" accept="*" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;"></form></div><a class="btn btn-sm radius btn-success" state="0" type="photo" name="uploadAttach" style="display: none;">上传</a><div class="upload_error"></div>
+	                        		<div class="btn btn-sm radius btn-success" style="position: relative; overflow: hidden; cursor: default;">上传<form method="POST" do="uploadAttach.do" enctype="multipart/form-data" style="margin: 0px; padding: 0px;"><input type="file" id="ajax-upload-id-1461837033294" name="filepath" accept="*" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;"></form></div><a class="btn btn-sm radius btn-success" state="0" type="photo" name="uploadAttach" style="display: none;">上传</a><div class="upload_error"></div>
 	                        	</div>
 	                        </td>						
 						</tr>
@@ -327,7 +342,7 @@ function newsClick(){
 								    <a class="btn btn-sm radius btn-dark" state="0" type="id_card" name="deleteAttach">删除</a>
 								</div>
 								<div class="op_upload">
-									<div class="btn btn-sm radius btn-success" style="position: relative; overflow: hidden; cursor: default;">上传<form method="POST" action="http://www.nffund.com/nfjjRecruitSystem/uploadAttach.action" enctype="multipart/form-data" style="margin: 0px; padding: 0px;"><input type="file" id="ajax-upload-id-1461837033297" name="filepath" accept="*" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;"></form></div><a class="btn btn-sm radius btn-success" state="0" type="id_card" name="uploadAttach" style="display: none;">上传</a><div class="upload_error"></div>
+									<div class="btn btn-sm radius btn-success" style="position: relative; overflow: hidden; cursor: default;">上传<form method="POST" do="uploadAttach.do" enctype="multipart/form-data" style="margin: 0px; padding: 0px;"><input type="file" id="ajax-upload-id-1461837033297" name="filepath" accept="*" style="position: absolute; cursor: pointer; top: 0px; width: 100%; height: 100%; left: 0px; z-index: 100; opacity: 0;"></form></div><a class="btn btn-sm radius btn-success" state="0" type="id_card" name="uploadAttach" style="display: none;">上传</a><div class="upload_error"></div>
 								</div>
 	                        </td>						
 						</tr>
@@ -336,8 +351,8 @@ function newsClick(){
 							<td class="text_mid">否</td>
 						    <td class="text_mid">
 								<div class="op_block" style="margin-right:275px;">
-									<a href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action#h2tab0" role="tab" data-toggle="tab" class="btn btn-sm radius btn-success">上传</a>
-									<a href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action#h2tab4" role="tab" data-toggle="tab" class="btn btn-sm radius btn-info" id="updown">
+									<a href="myRecruit.do#h2tab0" role="tab" data-toggle="tab" class="btn btn-sm radius btn-success">上传</a>
+									<a href="myRecruit.do#h2tab4" role="tab" data-toggle="tab" class="btn btn-sm radius btn-info" id="updown">
 									<i class="fa fa-angle-double-down pr-5">&nbsp;展开</i></a>
 								</div>
 	                        </td>
@@ -372,7 +387,7 @@ function newsClick(){
 		            <div class="space"></div>
 			        <div style="text-align: center;">
 			        	<a class="btn btn-sm radius btn-default" id="saveBtn">上传</a>
-			        	<a class="btn btn-sm radius btn-dark" href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action#h2tab2" role="tab" data-toggle="tab" id="backBtn">返回</a>
+			        	<a class="btn btn-sm radius btn-dark" href="myRecruit.do#h2tab2" role="tab" data-toggle="tab" id="backBtn">返回</a>
 			        </div>
 		        </form>
 		        
@@ -395,7 +410,7 @@ function newsClick(){
 		<div class="container">
 			<div class="row">
 				<div class="text-center" style="font-size:11px;">
-					<p style="margin-bottom:10px !important;"><a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号</p>
+					<p style="margin-bottom:10px !important;"><a href="/" target="_blank">管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号</p>
 					<p style="margin-bottom:10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
 				</div>
 			</div>
@@ -415,16 +430,16 @@ function newsClick(){
 
 
 		
-		<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/bootstrap.min.js"></script>
-	<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/jquery.jqGrid.src.js"></script>
-	<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/jquery.fileupload.js"></script>
-	<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/ajaxfileupload.js"></script>
+		<script type="text/javascript" src="frontjsp/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.jqGrid.src.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/ajaxfileupload.js"></script>
 	<script type="text/javascript">
 	    var count = 0;
 	    var tcount = 0;
 		function exportResume(type, id, time) {
-			window.open("/nfjjRecruitSystem/exportResume.action?type="+type);
-			//window.open("/nfjjRecruitSystem/exportResumes.action?type="+type+"&user_emails="+encodeURIComponent("a@b.com")+"&user_emails="+encodeURIComponent("b@c.com"));
+			window.open("exportResume.do?type="+type);
+			//window.open("exportResumes.do?type="+type+"&user_emails="+encodeURIComponent("a@b.com")+"&user_emails="+encodeURIComponent("b@c.com"));
 		}
 		
 		function deleteResume(type) {
@@ -433,7 +448,7 @@ function newsClick(){
 			}
 
 			var options = {
-				url : "deleteResume.action",
+				url : "deleteResume.do",
 				type : "post",
 				success : function(data, statusText) {
 					if (typeof(data) == "undefined") {
@@ -442,7 +457,7 @@ function newsClick(){
 					}				
 					
 					if (data.code == 'login') {
-						location.href = "tologin.action";
+						location.href = "tologin.do";
 					}
 					else if (data.code == 'success') {
 						location.reload();					
@@ -465,7 +480,7 @@ function newsClick(){
 		/* 获取其他上传证书列表 */
 		function showOthersList(){
 			var options = {
-				url : "getAttachBatch.action",
+				url : "getAttachBatch.do",
 				type : "post",
 				success : function(data, statusText) {
 					if(data != null)
@@ -495,7 +510,7 @@ function newsClick(){
 		function uploadOthers(obj){
 			var subtype = $(obj).parent().parent().parent().find("td").eq(0).text();
 			$(obj).uploadFile({
-				url:"uploadAttach.action",
+				url:"uploadAttach.do",
 				fileName:"filepath",
 				formData:{"type":$(obj).attr("type"),"ctype":subtype},
 				allowedTypes:"jpeg,jpg,png,gif",
@@ -518,7 +533,7 @@ function newsClick(){
 		
 		function previewOthers(obj){
 			var subtype = $(obj).parent().parent().parent().find("td").eq(0).text();
-			window.open('/nfjjRecruitSystem/getAttach.action?type='+$(obj).attr("type")+'&ctype='+encodeURIComponent(encodeURIComponent(subtype)));
+			window.open('getAttach.do?type='+$(obj).attr("type")+'&ctype='+encodeURIComponent(encodeURIComponent(subtype)));
 		}
 		
 		function deleteOthers(obj){
@@ -527,7 +542,7 @@ function newsClick(){
 				return;
 			}
 			var options = {
-				url : "delAttach.action",
+				url : "delAttach.do",
 				type : "post",
 				success : function(data, statusText) {
 					if (typeof(data) == "undefined") {
@@ -535,7 +550,7 @@ function newsClick(){
 						return;
 					}										
 					if (data.code == 'login') {
-						location.href = "tologin.action";
+						location.href = "tologin.do";
 						return;
 					}
 
@@ -571,7 +586,7 @@ function newsClick(){
 				var element = $(this);
 				
 				$(this).uploadFile({
-					url:"uploadAttach.action",
+					url:"uploadAttach.do",
 					fileName:"filepath",
 					formData:{"type":$(this).attr("type")},
 					allowedTypes:"jpeg,jpg,png,gif",
@@ -604,7 +619,7 @@ function newsClick(){
 						NFCommon.util.showTip("您尚未上传该附件", 2000);
 						return;
 					}
-					window.open('/nfjjRecruitSystem/getAttach.action?type='+$(this).attr("type"));
+					window.open('getAttach.do?type='+$(this).attr("type"));
 				});
 			});
 			
@@ -621,7 +636,7 @@ function newsClick(){
 					}
 
 					var options = {
-						url : "delAttach.action",
+						url : "delAttach.do",
 						type : "post",
 						success : function(data, statusText) {
 							if (typeof(data) == "undefined") {
@@ -630,7 +645,7 @@ function newsClick(){
 							}				
 							
 							if (data.code == 'login') {
-								location.href = "tologin.action";
+								location.href = "tologin.do";
 							}
 							else if (data.code == 'success') {
 								element.parent().parent().prev().text("否");
@@ -717,7 +732,7 @@ function newsClick(){
                    	}
                    	
                    	$.ajaxFileUpload({
-                       	url : 'uploadAttachBatch.action',
+                       	url : 'uploadAttachBatch.do',
                        	secureuri : false,
                        	fileElementId : files,
                        	dataType : 'json',
@@ -750,9 +765,9 @@ function newsClick(){
 		}
 		
 	</script>
-<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/jquery.validate.js"></script>
-		<script type="text/javascript" src="./南方基金人才招聘-我的应聘0_files/jquery.toastmessage.js"></script>
-		<script type="text/javascript">
+<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
+<script type="text/javascript">
 			$(function(){
 				/*
 				active_bar: 

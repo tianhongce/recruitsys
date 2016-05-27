@@ -93,27 +93,24 @@ label {
 							<div class="btn-group dropdown" style="display: none"
 								id="welcome">
 								<button type="button" class="btn"
-									onclick="location.href='myRecruit.action';">
-									<i class="fa fa-search"></i> 欢迎您， neu_tianhc@126.com
+									onclick="location.href='myInfo.do';">
+									<i class="fa fa-search"></i> ${user.username }
 								</button>
 							</div>
-							<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-							    <i class="fa fa-search"></i> 
-							             欢迎您，
-							    neu_tianhc@126.com</button>
-						</div> -->
 							<div class="btn-group dropdown">
 								<button type="button" class="btn dropdown-toggle"
-									onclick="location.href='logout.action'">
+									onclick="location.href='logout.do'">
 									<i class="fa fa-user"></i> 退出
 								</button>
 							</div>
 							<div class="btn-group dropdown">
-								<a class="btn" target="_blank"
+								<!-- <a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									首页</a>
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+									<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -136,12 +133,12 @@ label {
 
 						<!-- logo -->
 						<div class="logo">
-							<a href="/nfjjRecruitSystem/"><img id="logo"
+							<a href="index.jsp"><img id="logo"
 								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -171,19 +168,18 @@ label {
 										</button>
 									</div>
 
-									<input type="hidden" id="active_bar" value="personal">
+									<input type="hidden" id="active_bar" value="campus">
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
-											<li class="bar_li" id="campus_bar"><a
-												href="job_position.action?jobType=CAMPUS">校园招聘</a></li>
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
+
 											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">社会招聘</a></li>
+												href="frontjsp/poslist.do">招聘岗位</a></li>
 											<li class="bar_li" id="personal_bar"><a
-												href="myRecruit.action">我的应聘</a></li>
+												href="myInfo.do">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
 										</ul>
 									</div>
 								</div>
@@ -280,20 +276,16 @@ label {
 								<nav>
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active_bar" id="my_baseinfo"><a
-											href="fillResume.action">基本资料</a></li>
-										<li class="active_bar" id="my_contact"><a
-											href="fillContact.action">联系方式</a></li>
+											href="fillResume.do">基本资料</a></li>
 										<li class="active_bar" id="my_education"><a
-											href="fillEducation.action">教育经历</a></li>
+											href="fillEducation.do">教育经历</a></li>
 										<li class="active_bar" id="my_experience"><a
-											href="fillExperience.action">工作/实习经验</a></li>
+											href="fillExperience.do">工作/实习经验</a></li>
 										<li class="active_bar" id="my_language"><a
-											href="fillLanguage.action">语言能力</a></li>
-										<li class="active_bar" id="my_family"><a
-											href="fillFamily.action">家庭成员信息</a></li>
+											href="fillLanguage.do">语言能力</a></li>
 										<li class="active_bar" id="my_evaluation"><a
-											href="fillEvaluation.action">自我评价</a></li>
-										<!-- <li class="active_bar" id="my_other"><a href="fillOther.action">附加信息</a></li> -->
+											href="fillEvaluation.do">自我评价</a></li>
+										<!-- <li class="active_bar" id="my_other"><a href="fillOther.do">附加信息</a></li> -->
 									</ul>
 								</nav>
 							</div>
@@ -570,7 +562,7 @@ label {
 
 		function saveInfo(bNext) {
 			if (bNext && !is_form_changed()) {
-				location.href = "fillFamily.action";
+				location.href = "fillExperience.do";
 				return;
 			}
 

@@ -1,23 +1,30 @@
 package cn.t.test;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import cn.t.entity.Resume;
-import cn.t.serviceI.AdminUserServiceI;
+import cn.t.entity.Position;
 import cn.t.serviceI.EducationServiceI;
-import cn.t.serviceI.ResumeServiceI;
+import cn.t.serviceI.PositionServiceI;
+import cn.t.serviceI.UserResumeAllServiceI;
 
 public class TestDao {
 
 	@Test
-	public void test1() {
+	public void test1t() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				new String[] { "applicationContext.xml" });
 		EducationServiceI eduservice = (EducationServiceI) ac.getBean("EducationService");
-		ResumeServiceI resuservice = (ResumeServiceI) ac.getBean("ResumeService");
-		AdminUserServiceI adminuserservice = (AdminUserServiceI) ac.getBean("AdminUserService");
+//		ResumeServiceI resuservice = (ResumeServiceI) ac.getBean("ResumeService");
+//		AdminUserServiceI adminuserservice = (AdminUserServiceI) ac.getBean("AdminUserService");
+		UserResumeAllServiceI urasi = (UserResumeAllServiceI) ac.getBean("UserResumeAllService");
+		PositionServiceI positionservice=(PositionServiceI) ac.getBean("PositionService");
+		
 //		UserServiceI userservice = (UserServiceI) ac.getBean("UserService");
 //		User u1 = userservice.getUserById(1);
 //		System.out.println(u1.getUsername());
@@ -52,11 +59,19 @@ public class TestDao {
 		
 //		AdminUser au=adminuserservice.getAdminUserById("3");
 //		System.out.println(au);
-		Resume resu=new Resume();
-		resu.setPhone("111111");
-		resu.setUserid(1);
-		resuservice.addResume(resu);
-		
+//		Resume resu=new Resume();
+//		resu.setPhone("111111");
+//		resu.setUserid(1);
+//		resuservice.addResume(resu);
+//		System.out.println(urasi.getUserAllMsg());
+//		System.out.println(adminuserservice.getAllAdminUser());
+		Map param = new HashMap();
+		param.put("posname", "");
+		param.put("company", "");
+		param.put("dept", "");
+		param.put("place", "北京");
+		List<Position> list =positionservice.getByPosnameOrCompanyOrDeptOrPlace(param);
+		System.out.println(list);
 
 	}
 }

@@ -271,11 +271,18 @@
 										for="form-field-2"> 部门 </label>
 
 									<div class="col-sm-9">
-										<input type="text" id="form-field-2"
-											 class="col-xs-10 col-sm-5" name="adept"/> <span
-											class="help-inline col-xs-12 col-sm-7"> 
-										</span>
-									</div>
+											<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="adept">
+											<option value="">请选择</option>
+											<option value="研发部">研发部</option>
+											<option value="测试部">测试部</option>
+											<option value="设计部">设计部</option>
+											<option value="策划部">策划部</option>
+											<option value="运营部">运营部</option>
+											<option value="市场部">市场部</option>
+											<option value="客服部">客服部</option>
+											<option value="管理">管理</option>
+											</select>
+										</div>
 								</div>
 								<div class="space-4"></div>
 
@@ -283,12 +290,13 @@
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-2"> 公司 </label>
 
-									<div class="col-sm-9">
-										<input type="text" id="form-field-2"
-											 class="col-xs-10 col-sm-5" name="acompany"/> <span
-											class="help-inline col-xs-12 col-sm-7"> 
-										</span>
-									</div>
+										<div class="col-sm-9">
+											<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="acompany">
+											<option value="">请选择</option>
+											<option value="A公司">A公司</option>
+											<option value="B公司">B公司</option>
+											</select>
+										</div>
 								</div>
 
 								<div class="space-4"></div>
@@ -299,7 +307,7 @@
 										for="form-field-tags">账号权限</label>
 										<div class="col-sm-9">
 											<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="apow">
-											<option value="">&nbsp;</option>
+											<option value="">请选择;</option>
 											<option value="招聘管理员">招聘管理员</option>
 											<option value="超级管理员">超级管理员</option>
 											</select>

@@ -60,14 +60,16 @@ public class PositionController {
 	public String searctPos(@RequestParam("posname") String posname,
 			@RequestParam("company") String company,
 			@RequestParam("dept") String dept,
-			@RequestParam("place") String place){
+			@RequestParam("place") String place,HttpSession httpsession){
 		
 		Map param = new HashMap();
-		param.put("posname", "posname");
-		param.put("company", "company");
-		param.put("dept", "dept");
-		param.put("place", "place");
+		param.put("posname", posname);
+		param.put("company", company);
+		param.put("dept", dept);
+		param.put("place", place);
+		System.out.println(posname+company+dept+place);
 		List<Position> list =positionservice.getByPosnameOrCompanyOrDeptOrPlace(param);
+		httpsession.setAttribute("poslist", list);
 		return "frontjsp/zwlb";
 	}
 	

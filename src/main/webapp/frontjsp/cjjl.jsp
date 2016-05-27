@@ -14,25 +14,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta name="description" content="南方基金人才招聘">
+<meta name="description" content="人才招聘">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Mobile Meta -->
 <link rel="shortcut icon"
-	href="../frontjsp/assets/images/favicon.ico">
+	href="frontjsp/assets/images/favicon.ico">
 <title>我的简历</title>
-
-<script src="../frontjsp/assets/js/hm.js"></script>
+<base href="<%=basePath%>"></base>
+<script src="frontjsp/assets/js/hm.js"></script>
 <script type="text/javascript">
 		if (!window.applicationCache) {
 			 self.location = "validateHtml5.action";
         }
 		</script>
 
-<link href="../frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
-<link href="../frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
-<link href="../frontjsp/assets/css/style.css" rel="stylesheet" />
-<link href="../frontjsp/assets/css/blue.css" rel="stylesheet" />
-<link href="../frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="../frontjsp/assets/css/ui_datepicker.css">
 <style type="text/css">
@@ -99,8 +99,8 @@ label {
 	clear: both;
 }
 </style>
-<script type="text/javascript" src="../frontjsp/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="../frontjsp/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -127,30 +127,27 @@ label {
 									<i class="fa fa-user"></i> 新回复
 								</button>
 							</div>
-							<div class="btn-group dropdown" style="display: inline-block;"
+							<div class="btn-group dropdown" style="display: none"
 								id="welcome">
 								<button type="button" class="btn"
-									onclick="location.href=&#39;myRecruit.action&#39;;">
-									<i class="fa fa-search"></i> 欢迎您， 李四
+									onclick="location.href='myInfo.do';">
+									<i class="fa fa-search"></i> ${user.username }
 								</button>
 							</div>
-							<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-							    <i class="fa fa-search"></i> 
-							             欢迎您，
-							    1196585084@qq.com</button>
-						</div> -->
 							<div class="btn-group dropdown">
 								<button type="button" class="btn dropdown-toggle"
-									onclick="location.href=&#39;logout.action&#39;">
+									onclick="location.href='logout.do'">
 									<i class="fa fa-user"></i> 退出
 								</button>
 							</div>
 							<div class="btn-group dropdown">
-								<a class="btn" target="_blank"
+								<!-- <a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									首页</a>
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+									<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -173,8 +170,8 @@ label {
 
 						<!-- logo -->
 						<div class="logo">
-							<a href="http://www.nffund.com/nfjjRecruitSystem/"><img
-								id="logo" src="../frontjsp/assets/images/index_logo.jpg" alt="南方基金"></a>
+							<a href="index.jsp"><img id="logo"
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
@@ -208,19 +205,18 @@ label {
 										</button>
 									</div>
 
-									<input type="hidden" id="active_bar" value="personal">
+									<input type="hidden" id="active_bar" value="campus">
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="bar_li" id="home_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/index.action">招聘首页</a></li>
-											
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
+
 											<li class="bar_li" id="society_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=SOCIETY">招聘岗位</a></li>
-											<li class="bar_li active" id="personal_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action">我的应聘</a></li>
-												<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank"></a></li>
+												href="frontjsp/poslist.do">招聘岗位</a></li>
+											<li class="bar_li" id="personal_bar"><a
+												href="myInfo.do">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
 										</ul>
 									</div>
 								</div>

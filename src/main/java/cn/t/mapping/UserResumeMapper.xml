@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.t.dao.UserMapper" >
+<mapper namespace="cn.t.dao.UserResumeAllMapper" >
   <resultMap id="BaseResultMap" type="cn.t.entity.User" >
     <id column="userid" property="userid" jdbcType="INTEGER" />
     <result column="useremail" property="useremail" jdbcType="VARCHAR" />
@@ -8,7 +8,7 @@
     <result column="userpwd" property="userpwd" jdbcType="VARCHAR" />
   </resultMap>
   
-  <resultMap id="queryForListMap" type="cn.t.entity.User" >
+  <resultMap id="queryForListMap" type="cn.t.dto.ResumeDto" >
     <id column="userid" property="userid" jdbcType="INTEGER" />
     <result column="useremail" property="useremail" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
@@ -67,104 +67,17 @@
     
   </resultMap>
   
+   <select id="selectUserAllMsg" resultMap="queryForListMap">  
+   select * from
+   user 
+   left join resume on user.userid=resume.userid 
+   left join eduinfo on user.userid=eduinfo.userid
+   left join expinfo on user.userid=expinfo.userid
+   left join langinfo on user.userid=langinfo.userid
+   left join evainfo on user.userid=evainfo.userid
+   
+   
+   
+   </select>
   
-  
-  
-  
-  
-  <sql id="Base_Column_List" >
-    userid, useremail, username, userpwd
-  </sql>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where userid = #{userid,jdbcType=INTEGER}
-  </select>
-  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where username = #{username,jdbcType=VARCHAR}
-  </select>
-  
-  <select id="selectByUseremail" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where useremail = #{useremail,jdbcType=VARCHAR}
-  </select>
-  
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user
-    where userid = #{userid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="cn.t.entity.User" >
-    insert into user (userid, useremail, username, 
-      userpwd)
-    values (#{userid,jdbcType=INTEGER}, #{useremail,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{userpwd,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="cn.t.entity.User" >
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
-        userid,
-      </if>
-      <if test="useremail != null" >
-        useremail,
-      </if>
-      <if test="username != null" >
-        username,
-      </if>
-      <if test="userpwd != null" >
-        userpwd,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="useremail != null" >
-        #{useremail,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userpwd != null" >
-        #{userpwd,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.t.entity.User" >
-    update user
-    <set >
-      <if test="useremail != null" >
-        useremail = #{useremail,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userpwd != null" >
-        userpwd = #{userpwd,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where userid = #{userid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.t.entity.User" >
-    update user
-    set useremail = #{useremail,jdbcType=VARCHAR},
-      username = #{username,jdbcType=VARCHAR},
-      userpwd = #{userpwd,jdbcType=VARCHAR}
-    where userid = #{userid,jdbcType=INTEGER}
-  </update>
 </mapper>

@@ -101,126 +101,121 @@
 
 	<body class="front">
 		<div class="page-wrapper">
-			<!-- header-top start -->
-<!-- ================ -->
-<div class="header-top">
-	<div class="container">
-		<div class="col-xs-2 col-sm-6">
-		</div>
-		<div class="col-xs-10 col-sm-6">
-
-			<!-- header-top-second start -->
-			<!-- ================ -->
-			<div id="header-top-second"  class="clearfix">
-
 				<!-- header top dropdowns start -->
-				<!-- ================ -->
-				<div class="header-top-dropdown">
-					<div class="btn-group dropdown" style="display:none" id="news">
-							<button type="button" class="btn" onclick="newsClick();" id="blink" >
-									<i class="fa fa-user" ></i> 
-										新回复
-							</button>
-						</div> 			
-						<div class="btn-group dropdown" style="display:none" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-									 <i class="fa fa-search"></i> 
-										 欢迎您，
-									 李四</button>
-						</div>
-						<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-							    <i class="fa fa-search"></i> 
-							             欢迎您，
-							    neu_tianhc@126.com</button>
-						</div> -->
-						<div class="btn-group dropdown">
-						    <button type="button" class="btn dropdown-toggle" onclick="location.href='logout.action'"><i class="fa fa-user"></i> 退出</button>
-					    </div>
-					<div class="btn-group dropdown">
-						<a class="btn" target="_blank" style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;" href="http://www.nffund.com/"><i class="fa fa-home"></i> 首页</a>
-					</div>
-				</div>
-				<!--  header top dropdowns end -->
-
-			</div>
-			<!-- header-top-second end -->			
-		</div>
-	</div>
-</div>
-<!-- header-top end -->
-
-<!-- header start (remove fixed class from header in order to disable fixed navigation mode) -->
-<!-- ================ --> 
-<header class="header fixed clearfix">
-	<div class="container">
-		<div class="col-md-4">
-			<!-- header-left start -->
-			<!-- ================ -->
-			<div class="header-left clearfix">
-
-				<!-- logo -->
-				<div class="logo">
-					<a href="/nfjjRecruitSystem/"><img id="logo" src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
-				</div>
-
-				<!-- name-and-slogan -->
-				<div class="site-slogan">
-					
-				</div>
-
-			</div>
-			<!-- header-left end -->
-		</div>
-		
-		<div class="col-md-8">
-			<!-- header-right start -->
-			<!-- ================ -->
-			<div class="header-right clearfix">
-
-				<!-- main-navigation start -->
-				<!-- ================ -->
-				<div class="main-navigation animated">
-
-					<!-- navbar start -->
-					<!-- ================ -->
-					<nav class="navbar navbar-default" role="navigation">
-						<div class="container-fluid">
-
-							<!-- Toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
+						<!-- ================ -->
+						<div class="header-top-dropdown">
+							<div class="btn-group dropdown" style="display: none" id="news">
+								<button type="button" class="btn" onclick="newsClick();"
+									id="blink">
+									<i class="fa fa-user"></i> 新回复
 								</button>
 							</div>
-							
-							<input type="hidden" id="active_bar" value="personal">
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="navbar-collapse-1">
-								<ul class="nav navbar-nav navbar-right">
-									<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
-									<li class="bar_li" id="society_bar"><a href="job_position.action?jobType=SOCIETY" >招聘岗位</a></li>
-									<li class="bar_li" id="personal_bar"><a href="myRecruit.action" >我的应聘</a></li>
-									<li class="bar_li" id="forum_bar"><a href="http://www.nffund.com/jforum/" target="_blank"></a></li>
-								</ul>
+							<div class="btn-group dropdown" style="display: none"
+								id="welcome">
+								<button type="button" class="btn"
+									onclick="location.href='myInfo.do';">
+									<i class="fa fa-search"></i> ${user.username }
+								</button>
+							</div>
+							<div class="btn-group dropdown">
+								<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='logout.do'">
+									<i class="fa fa-user"></i> 退出
+								</button>
+							</div>
+							<div class="btn-group dropdown">
+								<!-- <a class="btn" target="_blank"
+									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+									<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
-					</nav>
-					<!-- navbar end -->
+						<!--  header top dropdowns end -->
+
+					</div>
+					<!-- header-top-second end -->
+				</div>
+			</div>
+		</div>
+		<!-- header-top end -->
+
+		<!-- header start (remove fixed class from header in order to disable fixed navigation mode) -->
+		<!-- ================ -->
+		<header class="header fixed clearfix">
+			<div class="container">
+				<div class="col-md-4">
+					<!-- header-left start -->
+					<!-- ================ -->
+					<div class="header-left clearfix">
+
+						<!-- logo -->
+						<div class="logo">
+							<a href="index.jsp"><img id="logo"
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
+						</div>
+
+						<!-- name-and-slogan -->
+						<div class="site-slogan"></div>
+
+					</div>
+					<!-- header-left end -->
+				</div>
+
+				<div class="col-md-8">
+					<!-- header-right start -->
+					<!-- ================ -->
+					<div class="header-right clearfix">
+
+						<!-- main-navigation start -->
+						<!-- ================ -->
+						<div class="main-navigation animated">
+
+							<!-- navbar start -->
+							<!-- ================ -->
+							<nav class="navbar navbar-default" role="navigation">
+								<div class="container-fluid">
+
+									<!-- Toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle"
+											data-toggle="collapse" data-target="#navbar-collapse-1">
+											<span class="sr-only">Toggle navigation</span> <span
+												class="icon-bar"></span> <span class="icon-bar"></span> <span
+												class="icon-bar"></span>
+										</button>
+									</div>
+
+									<input type="hidden" id="active_bar" value="campus">
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse" id="navbar-collapse-1">
+										<ul class="nav navbar-nav navbar-right">
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
+
+											<li class="bar_li" id="society_bar"><a
+												href="frontjsp/poslist.do">招聘岗位</a></li>
+											<li class="bar_li" id="personal_bar"><a
+												href="myInfo.do">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
+										</ul>
+									</div>
+								</div>
+							</nav>
+							<!-- navbar end -->
+
+						</div>
+						<!-- main-navigation end -->
+
+					</div>
+					<!-- header-right end -->
 
 				</div>
-				<!-- main-navigation end -->
-
 			</div>
-			<!-- header-right end -->
-
-		</div>
-	</div>
-</header>
-<!-- header end -->
+		</header>
+		<!-- header end -->
 <script language="javascript"> 
 window.onload = function() {
 	var readStatus = "";

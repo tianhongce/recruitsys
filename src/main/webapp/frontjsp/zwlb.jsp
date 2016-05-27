@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -64,20 +65,24 @@
 							<div class="btn-group dropdown" style="display: none"
 								id="welcome">
 								<button type="button" class="btn"
-									onclick="location.href='myRecruit.action';">
+									onclick="location.href='myInfo.do';">
 									<i class="fa fa-search"></i> ${user.username }
 								</button>
 							</div>
 							<div class="btn-group dropdown">
 								<button type="button" class="btn dropdown-toggle"
-									onclick="location.href='logout.action'">
+									onclick="location.href='logout.do'">
 									<i class="fa fa-user"></i> 退出
 								</button>
 							</div>
 							<div class="btn-group dropdown">
-								<a class="btn" target="_blank"
+								<!-- <a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="index.jsp"><i class="fa fa-home"></i> 首页</a>
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+									<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -100,7 +105,7 @@
 
 						<!-- logo -->
 						<div class="logo">
-							<a href="/nfjjRecruitSystem/"><img id="logo"
+							<a href="index.jsp"><img id="logo"
 								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
@@ -139,12 +144,12 @@
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="bar_li" id="home_bar"><a href="index.action">招聘首页</a></li>
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
 
 											<li class="bar_li" id="society_bar"><a
-												href="job_position.action?jobType=SOCIETY">招聘岗位</a></li>
+												href="frontjsp/poslist.do">招聘岗位</a></li>
 											<li class="bar_li" id="personal_bar"><a
-												href="myRecruit.action">我的应聘</a></li>
+												href="myInfo.do">我的应聘</a></li>
 											<li class="bar_li" id="personal_bar"></li>
 
 										</ul>
@@ -190,30 +195,76 @@
 				<!-- sidebar start -->
 				<aside class="col-md-3">
 					<div class="siebar">
-						<form id="search" name="search" method="post">
+						<form id="search" name="search" method="post" action="searchPos.do">
 							<div style="margin-top: 20px;">
 								<h6>部 门：</h6>
-								<select id="department" name="department" class="form-control">
+								<select id="department" name="dept" class="form-control">
+											<option value="">请选择</option>
+											<option value="研发部">研发部</option>
+											<option value="测试部">测试部</option>
+											<option value="设计部">设计部</option>
+											<option value="策划部">策划部</option>
+											<option value="运营部">运营部</option>
+											<option value="市场部">市场部</option>
+											<option value="客服部">客服部</option>
+											<option value="管理">管理</option>
+								</select>
+							</div>
+							<div style="margin-top: 20px;">
+								<h6>公司：</h6>
+								<select id="department" name="company" class="form-control">
+											<option value="">请选择</option>
+											<option value="A公司">A公司</option>
+											<option value="B公司">B公司</option>
 								</select>
 							</div>
 							<div style="margin-top: 20px;">
 								<h6>工作地点：</h6>
-								<select class="form-control" id="location" name="location">
-									<option value="">所有</option>
-									<option value="深圳">深圳</option>
-									<option value="合肥">合肥</option>
-									<option value="北京">北京</option>
-									<option value="上海">上海</option>
-									<option value="成都">成都</option>
+								<select class="form-control" id="location" name="place">
+										<option value="">请选择</option>
+										<option value="北京">北京市</option>
+                                         <option value="浙江省">浙江省</option>
+                                         <option value="天津市">天津市</option>
+                                         <option value="安徽省">安徽省</option>
+                                         <option value="上海市">上海市</option>
+                                         <option value="福建省">福建省</option>
+                                         <option value="重庆市">重庆市</option>
+                                         <option value="江西省">江西省</option>
+                                         <option value="山东省">山东省</option>
+                                         <option value="河南省">河南省</option>
+                                         <option value="湖北省">湖北省</option>
+                                         <option value="湖南省">湖南省</option>
+                                         <option value="广东省">广东省</option>
+                                         <option value="海南省">海南省</option>
+                                         <option value="山西省">山西省</option>
+                                         <option value="青海省">青海省</option>
+                                         <option value="江苏省">江苏省</option>
+                                         <option value="辽宁省">辽宁省</option>
+                                         <option value="吉林省">吉林省</option>
+                                         <option value="台湾省">台湾省</option>
+                                         <option value="河北省">河北省</option>
+                                         <option value="贵州省">贵州省</option>
+                                         <option value="四川省">四川省</option>
+                                         <option value="云南省">云南省</option>
+                                         <option value="陕西省">陕西省</option>
+                                         <option value="甘肃省">甘肃省</option>
+                                         <option value="黑龙江省">黑龙江省</option>
+                                         <option value="香港特别行政区">香港特别行政区</option>
+                                         <option value="澳门特别行政区">澳门特别行政区</option>
+                                         <option value="广西壮族自治区">广西壮族自治区</option>
+                                         <option value="宁夏回族自治区">宁夏回族自治区</option>
+                                         <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+                                         <option value="内蒙古自治区">内蒙古自治区</option>
+                                         <option value="西藏自治区">西藏自治区</option>
 								</select>
 							</div>
 							<div style="margin-top: 20px;">
-								<h6>关键字 ：</h6>
-								<input type="text" id="searchtext" name="searchtext"
+								<h6>岗位名称 ：</h6>
+								<input type="text" id="searchtext" name="posname"
 									class="form-control" maxlength=8 />
 							</div>
 							<div style="margin-top: 20px; align: center;">
-								<input type="button" onclick="searchposition()" value="搜索">
+								<input type="submit"  value="搜索">
 							</div>
 						</form>
 					</div>
@@ -236,30 +287,28 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th style="width: 14%;">职位名称</th>
-										<th style="width: 14%;">所属部门</th>
+										<th style="width: 18%;">职位名称</th>
+										<th style="width: 13%;">所属部门</th>
 										<th style="width: 14%;">所属公司</th>
-										<th style="width: 14%;">工作地点</th>
-										<th style="width: 5%;">招聘人数</th>
-										<th style="width: 14%;">截止时间</th>
-										<th style="width: 20%;">岗位介绍</th>
-										<th style="width: 5%;">申请</th>
+										<th style="width: 12%;">工作地点</th>
+										<th style="width: 12%;">招聘人数</th>
+										<th style="width: 18%;">截止时间</th>
+										<!-- <th style="width: 20%;">岗位介绍</th> -->
+										<th style="width: 10%;">申请</th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:forEach var="pos" items="${poslist}" varStatus="stat">
-									<form name="campus" method="post"
-										action="apply.action?jobid=${pos.posnum}">
-										<tr style="cursor: pointer"
-											onclick="showJobDesp($('#${pos.posname}'), ${pos.posnum})">
+									<form name="campus" method="post" action="">
+										<tr style="cursor: pointer">
 											<td>${pos.posname}</td>
 											<td>${pos.dept}</td>
 											<td>${pos.company}</td>
 											<td>${pos.place}</td>
 											<td>${pos.num}</td>
-											<td>${pos.endtime}</td>
-											<td>${pos.posdesc}</td>
-											<td>aa</td>
+											<td><fmt:formatDate value="${pos.endtime }" pattern="yyyy-MM-dd" /> </td>
+											<%-- <td>${pos.posdesc}</td> --%>
+											<td>申请</td>
 											<%-- <td><span id="${pos.posname}"><b
 													class="arrow fa fa-angle-down"></b></span></td> --%>
 										</tr>
@@ -281,6 +330,7 @@
 										</tr> --%>
 									</form>
 									</c:forEach>
+									
 								</tbody>
 							</table>
 

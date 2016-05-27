@@ -264,10 +264,50 @@
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 工作地点 </label>
 
-									<div class="col-sm-9">
+						<!-- 			<div class="col-sm-9">
 										<input type="text" name="place" id="place" placeholder="地点"
 											class="col-xs-10 col-sm-5" />
-									</div>
+									</div> -->
+									<div class="col-sm-9">
+											<select class="col-xs-10 col-sm-5" id="place form-field-select-1" name="place">
+											<option value="">请选择</option>
+											<option value="北京">北京市</option>
+                                         <option value="浙江省">浙江省</option>
+                                         <option value="天津市">天津市</option>
+                                         <option value="安徽省">安徽省</option>
+                                         <option value="上海市">上海市</option>
+                                         <option value="福建省">福建省</option>
+                                         <option value="重庆市">重庆市</option>
+                                         <option value="江西省">江西省</option>
+                                         <option value="山东省">山东省</option>
+                                         <option value="河南省">河南省</option>
+                                         <option value="湖北省">湖北省</option>
+                                         <option value="湖南省">湖南省</option>
+                                         <option value="广东省">广东省</option>
+                                         <option value="海南省">海南省</option>
+                                         <option value="山西省">山西省</option>
+                                         <option value="青海省">青海省</option>
+                                         <option value="江苏省">江苏省</option>
+                                         <option value="辽宁省">辽宁省</option>
+                                         <option value="吉林省">吉林省</option>
+                                         <option value="台湾省">台湾省</option>
+                                         <option value="河北省">河北省</option>
+                                         <option value="贵州省">贵州省</option>
+                                         <option value="四川省">四川省</option>
+                                         <option value="云南省">云南省</option>
+                                         <option value="陕西省">陕西省</option>
+                                         <option value="甘肃省">甘肃省</option>
+                                         <option value="黑龙江省">黑龙江省</option>
+                                         <option value="香港特别行政区">香港特别行政区</option>
+                                         <option value="澳门特别行政区">澳门特别行政区</option>
+                                         <option value="广西壮族自治区">广西壮族自治区</option>
+                                         <option value="宁夏回族自治区">宁夏回族自治区</option>
+                                         <option value="新疆维吾尔自治区">新疆维吾尔自治区</option>
+                                         <option value="内蒙古自治区">内蒙古自治区</option>
+                                         <option value="西藏自治区">西藏自治区</option>
+											</select>
+										</div>
+									
 								</div>
 
 								<div class="space-4"></div>
@@ -275,10 +315,23 @@
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 所在部门 </label>
 
-									<div class="col-sm-9">
+<!-- 									<div class="col-sm-9">
 										<input type="text" name="dept" id="dept" placeholder="部门"
 											class="col-xs-10 col-sm-5" />
-									</div>
+									</div> -->
+										<div class="col-sm-9">
+											<select class="col-xs-10 col-sm-5" id="dept form-field-select-1" name="dept">
+											<option value="">请选择</option>
+											<option value="研发部">研发部</option>
+											<option value="测试部">测试部</option>
+											<option value="设计部">设计部</option>
+											<option value="策划部">策划部</option>
+											<option value="运营部">运营部</option>
+											<option value="市场部">市场部</option>
+											<option value="客服部">客服部</option>
+											<option value="管理">管理</option>
+											</select>
+										</div>
 								</div>
 
 								<div class="space-4"></div>
@@ -286,10 +339,18 @@
 									<label class="col-sm-3 control-label no-padding-right"
 										for="form-field-1"> 所属公司 </label>
 
-									<div class="col-sm-9">
+								<!-- 	<div class="col-sm-9">
 										<input type="text" name="company" id="company" placeholder="公司"
 											class="col-xs-10 col-sm-5" />
-									</div>
+									</div> -->
+									<div class="col-sm-9">
+											<select class="col-xs-10 col-sm-5" id="company form-field-select-1" name="company">
+											<option value="">请选择</option>
+											<option value="A公司">A公司</option>
+											<option value="B公司">B公司</option>
+											</select>
+										</div>
+									
 								</div>
 
 								<div class="space-4"></div>

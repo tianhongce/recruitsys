@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -8,59 +10,35 @@
 %>
 
 <!DOCTYPE html>
-<!-- saved from url=(0056)http://www.nffund.com/nfjjRecruitSystem/myAccount.action -->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="description" content="南方基金人才招聘">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="<%=basePath%>"></base>
+<meta charset="utf-8">
+<meta name="description" content="人才招聘" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Mobile Meta -->
-<link rel="shortcut icon" href="../nimages/favicon.ico">
-<title>南方基金人才招聘-账户信息</title>
+<link rel="shortcut icon" href="frontjsp/assets/images/favicon.ico" />
+<title>招聘岗位</title>
 
-<script src="../njs/hm.js"></script>
 <script type="text/javascript">
-		if (!window.applicationCache) {
-			 self.location = "validateHtml5.action";
-        }
-		</script>
+	if (!window.applicationCache) {
+		self.location = "validateHtml5.do";
+	}
+</script>
 
-<link href="../ncss/bootstrap.css" rel="stylesheet" />
-<link href="../ncss/font-awesome.css" rel="stylesheet" />
-<link href="../ncss/style.css" rel="stylesheet" />
-<link href="../ncss/blue.css" rel="stylesheet" />
-<link href="../ncss/jquery.toastmessage.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/font-awesome.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/style.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/blue.css" rel="stylesheet" />
+<link href="frontjsp/assets/css/jquery.toastmessage.css"
+	rel="stylesheet" />
 
-<style type="text/css">
-#chgpwd_form label.error {
-	color: red;
-	line-height: 2;
-}
-
-#bindinfo_form label.error {
-	color: red;
-	line-height: 2;
-}
-
-.form-control {
-	width: 48%;
-	float: left;
-	margin-right: 1px;
-}
-
-#inputBindCode-error {
-	float: right;
-	margin-top: -30px;
-	margin-right: 180px;
-}
-</style>
-<script type="text/javascript" src="../njs/jquery.min.js"></script>
-<script type="text/javascript" src="../njs/bootstrap.min.js"></script>
 </head>
-
-
+<script type="text/javascript" src="frontjsp/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="frontjsp/assets/js/bootstrap.min.js"></script>
 
 <body class="front">
 	<div class="page-wrapper">
@@ -84,30 +62,27 @@
 									<i class="fa fa-user"></i> 新回复
 								</button>
 							</div>
-							<div class="btn-group dropdown" style="display: inline-block;"
+							<div class="btn-group dropdown" style="display: none"
 								id="welcome">
 								<button type="button" class="btn"
-									onclick="location.href=&#39;myRecruit.action&#39;;">
-									<i class="fa fa-search"></i> 欢迎您， neu_tianhc@126.com
+									onclick="location.href='myInfo.do';">
+									<i class="fa fa-search"></i> ${user.username }
 								</button>
 							</div>
-							<!-- <div class="btn-group dropdown" style="display:inline-block" id="welcome">
-							<button type="button" class="btn" onclick="location.href='myRecruit.action';" >
-							    <i class="fa fa-search"></i> 
-							             欢迎您，
-							    neu_tianhc@126.com</button>
-						</div> -->
 							<div class="btn-group dropdown">
 								<button type="button" class="btn dropdown-toggle"
-									onclick="location.href=&#39;logout.action&#39;">
+									onclick="location.href='logout.do'">
 									<i class="fa fa-user"></i> 退出
 								</button>
 							</div>
 							<div class="btn-group dropdown">
-								<a class="btn" target="_blank"
+								<!-- <a class="btn" target="_blank"
 									style="padding: 8px 10px; margin: 0; font-size: 12px; color: #999; text-align: center; min-width: 0; background-color: transparent;"
-									href="http://www.nffund.com/"><i class="fa fa-home"></i>
-									南方基金首页</a>
+									href="index.jsp"><i class="fa fa-home"></i> 首页</a> -->
+								<button type="button" class="btn dropdown-toggle"
+									onclick="location.href='index.jsp'">
+									<i class="fa fa-home"></i> 首页
+								</button>
 							</div>
 						</div>
 						<!--  header top dropdowns end -->
@@ -130,12 +105,12 @@
 
 						<!-- logo -->
 						<div class="logo">
-							<a href="http://www.nffund.com/nfjjRecruitSystem/"><img
-								id="logo" src="../nimages/index_logo.jpg" alt="南方基金"></a>
+							<a href="index.jsp"><img id="logo"
+								src="frontjsp/assets/images/index_logo.jpg" alt=""></a>
 						</div>
 
 						<!-- name-and-slogan -->
-						<div class="site-slogan">一切为了客户，做受人敬重的理财专家。</div>
+						<div class="site-slogan"></div>
 
 					</div>
 					<!-- header-left end -->
@@ -165,20 +140,17 @@
 										</button>
 									</div>
 
-									<input type="hidden" id="active_bar" value="personal">
+									<input type="hidden" id="active_bar" value="campus">
 									<!-- Collect the nav links, forms, and other content for toggling -->
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<ul class="nav navbar-nav navbar-right">
-											<li class="bar_li" id="home_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/index.action">招聘首页</a></li>
-											<li class="bar_li" id="forum_bar"><a
-												href="http://www.nffund.com/jforum/" target="_blank">未来之星</a></li>
-											<li class="bar_li" id="campus_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=CAMPUS">校园招聘</a></li>
+											<li class="bar_li" id="home_bar"><a href="index.jsp">招聘首页</a></li>
+
 											<li class="bar_li" id="society_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/job_position.action?jobType=SOCIETY">社会招聘</a></li>
-											<li class="bar_li active" id="personal_bar"><a
-												href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action">我的应聘</a></li>
+												href="frontjsp/poslist.do">招聘岗位</a></li>
+											<li class="bar_li" id="personal_bar"><a href="myInfo.do">我的应聘</a></li>
+											<li class="bar_li" id="personal_bar"></li>
+
 										</ul>
 									</div>
 								</div>
@@ -211,7 +183,7 @@ color=color.split("|");
 document.getElementById("blink").style.color=color[parseInt(Math.random() * color.length)]; 
 } 
 function newsClick(){
-	location.href="myQuestion.action";
+	location.href="myQuestion.do";
 	
 }
 </script>
@@ -247,17 +219,17 @@ function newsClick(){
 							<nav>
 								<ul class="nav nav-pills nav-stacked">
 									<li class="active_bar" id="my_resume"><a
-										href="http://www.nffund.com/nfjjRecruitSystem/myRecruit.action"><img
-											src="../nimages/resume.png" style="float: left;">&nbsp;简历信息</a></li>
+										href="myRecruit.do"><img
+											src="frontjsp/assets/images/resume.png" style="float: left;">&nbsp;简历信息</a></li>
 									<li class="active_bar" id="my_apply"><a
-										href="http://www.nffund.com/nfjjRecruitSystem/myApply.action"><img
-											src="../nimages/yingpin.png" style="float: left;">&nbsp;应聘信息</a></li>
+										href="myApply.do"><img
+											src="frontjsp/assets/images/yingpin.png" style="float: left;">&nbsp;应聘信息</a></li>
 									<li class="active_bar active" id="my_account"><a
-										href="http://www.nffund.com/nfjjRecruitSystem/myAccount.action"><img
-											src="../nimages/account.png" style="float: left;">&nbsp;账户信息</a></li>
+										href="myAccount.do"><img
+											src="frontjsp/assets/images/account.png" style="float: left;">&nbsp;账户信息</a></li>
 									<li class="active_bar" id="my_question"><a
-										href="http://www.nffund.com/nfjjRecruitSystem/myQuestion.action"><img
-											src="../nimages/liuyanban.png" style="float: left;">&nbsp;我的留言</a></li>
+										href="myQuestion.do"><img
+											src="frontjsp/assets/images/liuyanban.png" style="float: left;">&nbsp;我的留言</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -270,11 +242,11 @@ function newsClick(){
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="active"><a
-								href="http://www.nffund.com/nfjjRecruitSystem/myAccount.action#h2tab1"
+								href="myAccount.do#h2tab1"
 								id="tab1" role="tab" data-toggle="tab"><i
 									class="fa fa-user pr-5"></i>修改密码</a></li>
 							<li><a
-								href="http://www.nffund.com/nfjjRecruitSystem/myAccount.action#h2tab2"
+								href="myAccount.do#h2tab2"
 								id="tab2" role="tab" data-toggle="tab"><i
 									class="fa fa-cog pr-5"></i>信息绑定</a></li>
 						</ul>
@@ -283,7 +255,7 @@ function newsClick(){
 							<div class="tab-pane fade in active" id="h2tab1">
 								<form class="form-horizontal" role="form" method="post"
 									id="chgpwd_form"
-									action="http://www.nffund.com/nfjjRecruitSystem/chgpwd.action"
+									do="chgpwd.do"
 									novalidate="novalidate">
 									<div class="col-lg-12">
 										<div class="form-group">
@@ -325,7 +297,7 @@ function newsClick(){
 												<img
 													style="cursor: pointer; margin-right: 10px; width: 250px; height: 90px;"
 													onclick="refreshImage(true);return false;" id="randomImg"
-													border="1" src="./南方基金人才招聘-账户信息_files/getImgCode.action">
+													border="1" src="./南方基金人才招聘-账户信息_files/getImgCode.do">
 												<a href="javascript:;"
 													style="float: right; margin-top: -20px; margin-right: 380px;"
 													onclick="refreshImage(true);return false;">看不清？换一张</a>
@@ -343,7 +315,7 @@ function newsClick(){
 							<div class="tab-pane fade" id="h2tab2">
 								<form class="form-horizontal" role="form" method="post"
 									id="bindinfo_form"
-									action="http://www.nffund.com/nfjjRecruitSystem/bindUserInfo.action"
+									do="bindUserInfo.do"
 									novalidate="novalidate">
 									<div class="col-lg-12">
 										<div class="form-group">
@@ -367,7 +339,7 @@ function newsClick(){
 													<img
 														style="cursor: pointer; margin-right: 10px; width: 250px; height: 90px;"
 														onclick="refreshImage(false);return false;" id="bindImg"
-														border="1" src="./南方基金人才招聘-账户信息_files/getImgCode.action">
+														border="1" src="./南方基金人才招聘-账户信息_files/getImgCode.do">
 													<a href="javascript:;"
 														style="float: right; margin-top: -20px; margin-right: 380px;"
 														onclick="refreshImage(false);return false;">看不清？换一张</a>
@@ -447,7 +419,7 @@ function newsClick(){
 			}
 
 			$.ajax({
-				url:"getBindInfo.action",
+				url:"getBindInfo.do",
 				type:"post",
 				dataType:"json",
 				success:function(data){
@@ -469,7 +441,7 @@ function newsClick(){
 				//获取短信验证码
 				var userinfo = $("#userinfo").val();
 				var options = {
-						url:"sendSmsCode.action",
+						url:"sendSmsCode.do",
 						type:"post",
 						dataType:"json",
 						success:function(data){
@@ -560,9 +532,9 @@ function newsClick(){
 
 		function refreshImage(status) {
 			if(status == true){
-				document.getElementById("randomImg").setAttribute("src", "getImgCode.action?r="+Math.random());
+				document.getElementById("randomImg").setAttribute("src", "getImgCode.do?r="+Math.random());
 			}else{
-				document.getElementById("bindImg").setAttribute("src", "getImgCode.action?r="+Math.random());
+				document.getElementById("bindImg").setAttribute("src", "getImgCode.do?r="+Math.random());
 			}
 		}
 	</script>
