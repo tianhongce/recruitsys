@@ -405,18 +405,20 @@ function newsClick(){
 </div>
 </section></div>
 				
-<footer id="footer" style="right:0px;left:0px;bottom:0px">
-	<div class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="text-center" style="font-size:11px;">
-					<p style="margin-bottom:10px !important;"><a href="/" target="_blank">管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号</p>
-					<p style="margin-bottom:10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
+<footer id="footer" style="right: 0px; left: 0px; bottom: 0px">
+			<div class="footer">
+				<div class="container">
+					<div class="row">
+						<div class="text-center" style="font-size: 11px;">
+							<p style="margin-bottom: 10px !important;">
+								<a href="index.jsp/" target="_blank">********有限公司</a>&nbsp;版权所有&nbsp;&nbsp;*********
+							</p>
+							<p style="margin-bottom: 10px !important;">地址：************************，&nbsp;&nbsp;邮编：000000</p>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-</footer>
+		</footer>
 
 <script type="text/javascript">
 	var _hmt = _hmt || [];

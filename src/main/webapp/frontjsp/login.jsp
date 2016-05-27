@@ -260,9 +260,9 @@
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">公司管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;
+								<a href="index.jsp/" target="_blank">********有限公司</a>&nbsp;版权所有&nbsp;&nbsp;*********
 							</p>
-							<p style="margin-bottom: 10px !important;">校址：辽宁省沈阳市和平区文化路三巷11号 | 三舍C区&nbsp;&nbsp;邮编：110819</p>
+							<p style="margin-bottom: 10px !important;">地址：************************，&nbsp;&nbsp;邮编：000000</p>
 						</div>
 					</div>
 				</div>

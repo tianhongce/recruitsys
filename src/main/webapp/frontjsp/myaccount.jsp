@@ -297,10 +297,11 @@ function newsClick(){
 												<img
 													style="cursor: pointer; margin-right: 10px; width: 250px; height: 90px;"
 													onclick="refreshImage(true);return false;" id="randomImg"
-													border="1" src="./南方基金人才招聘-账户信息_files/getImgCode.do">
+													border="1" src="imgcodeController/kaptcha-image.do">
 												<a href="javascript:;"
 													style="float: right; margin-top: -20px; margin-right: 380px;"
-													onclick="refreshImage(true);return false;">看不清？换一张</a>
+													onclick="changeVerifyCode(this)"; return false;">看不清？换一张</a>
+													
 											</div>
 										</div>
 										<div class="form-group">
@@ -339,10 +340,10 @@ function newsClick(){
 													<img
 														style="cursor: pointer; margin-right: 10px; width: 250px; height: 90px;"
 														onclick="refreshImage(false);return false;" id="bindImg"
-														border="1" src="./南方基金人才招聘-账户信息_files/getImgCode.do">
+														border="1" src="imgcodeController/kaptcha-image.do">
 													<a href="javascript:;"
 														style="float: right; margin-top: -20px; margin-right: 380px;"
-														onclick="refreshImage(false);return false;">看不清？换一张</a>
+														onclick="changeVerifyCode(this);return false;">看不清？换一张</a>
 												</div>
 												<div id="verifyMsgCode" style="">
 													<input type="button" class="form-control"
@@ -372,9 +373,9 @@ function newsClick(){
 					<div class="row">
 						<div class="text-center" style="font-size: 11px;">
 							<p style="margin-bottom: 10px !important;">
-								<a href="http://www.nffund.com/" target="_blank">南方基金管理有限公司</a>&nbsp;版权所有&nbsp;&nbsp;粤ICP备05103745号
+								<a href="index.jsp/" target="_blank">********有限公司</a>&nbsp;版权所有&nbsp;&nbsp;*********
 							</p>
-							<p style="margin-bottom: 10px !important;">地址：深圳市福田中心区福华一路6号免税商务大厦22层，31-33层&nbsp;&nbsp;邮编：518048</p>
+							<p style="margin-bottom: 10px !important;">地址：************************，&nbsp;&nbsp;邮编：000000</p>
 						</div>
 					</div>
 				</div>
@@ -530,6 +531,10 @@ function newsClick(){
 			});
 		});
 
+		function changeVerifyCode(img){
+	        img.src = "imgcodeController/kaptcha-image.do?"+Math.floor(Math.random()*100);   
+		}
+		
 		function refreshImage(status) {
 			if(status == true){
 				document.getElementById("randomImg").setAttribute("src", "getImgCode.do?r="+Math.random());
@@ -538,8 +543,8 @@ function newsClick(){
 			}
 		}
 	</script>
-	<script type="text/javascript" src="../njs/jquery.validate.js"></script>
-	<script type="text/javascript" src="../njs/jquery.toastmessage.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.validate.js"></script>
+	<script type="text/javascript" src="frontjsp/assets/js/jquery.toastmessage.js"></script>
 	<script type="text/javascript">
 			$(function(){
 				/*
